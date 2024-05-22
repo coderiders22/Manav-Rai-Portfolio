@@ -1423,9 +1423,9 @@ document.addEventListener("DOMContentLoaded", function () {
     <footer class="footer">
         <div class="footer__container container">
             <h1 class="footer__title">Manav Rai</h1>
-
-            <ul class="footer__list">
-
+    
+            <!---<ul class="footer__list">
+    
                 <li class="footer__item">
                     <a href="#" class="footer__link">Home</a>
                 </li>
@@ -1436,10 +1436,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     <a href="#skills" class="footer__link">Skills</a>
                 </li>
                 <li class="footer__item">
-                    <a href="#projects"  class="footer__link">Work</a>
+                    <a href="#projects"  class="footer__link">Projects</a>
                 </li>
                 <li class="footer__item">
-                    <a href="#experience" class="footer__link">Contact</a>
+                    <a href="#experience" class="footer__link">Experience</a>
                 </li>
                 <li class="footer__item">
                     <a href="#achievements"  class="footer__link">Achievements</a>
@@ -1447,69 +1447,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 <li class="footer__item">
                     <a href="#contact"  class="footer__link">Contact</a>
                 </li>
-            </ul>
-            <style>
-                .footer {
-                    padding: 20px 0;
-                    background-color: var(--first-color);
-                    color: #fff;
-                    text-align: center;
-                }
-                
-                .footer__container {
-                    max-width: 1200px;
-                    margin: 0 auto;
-                    padding: 0 20px;
-                }
-                
-                .footer__title {
-                    font-size: 24px;
-                    margin-bottom: 10px;
-                }
-                
-                .footer__list {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: center;
-                    list-style: none;
-                    padding: 0;
-                    margin: 0;
-                }
-                
-                .footer__item {
-                    margin: 5px 15px;
-                }
-                
-                .footer__link {
-                    color: #fff;
-                    text-decoration: none;
-                    font-size: 16px;
-                }
-                
-                .footer__link:hover {
-                    text-decoration: underline;
-                }
-                
-                /* Media queries for responsiveness */
-                @media (max-width: 768px) {
-                    .footer__list {
-                        flex-direction: column;
-                        align-items: center;
-                    }
-                    
-                    .footer__item {
-                        margin: 10px 0;
-                    }
-                }
-                
-            </style>
-
+            </ul>--->
+    
             <ul class="footer__social">
-               
-            
                 <li class="footer__social-item">
                     <a href="https://www.linkedin.com/in/manavrai/" target="_blank" class="footer__social-link">
                         <i class='bx bxl-linkedin footer__social-icon'></i>
+                    </a>
+                </li>
+                <li class="footer__social-item">
+                    <a href="https://github.com/coderiders22" target="_blank" class="footer__social-link">
+                        <i class='bx bxl-github footer__social-icon'></i>
                     </a>
                 </li>
                 <li class="footer__social-item">
@@ -1518,13 +1466,94 @@ document.addEventListener("DOMContentLoaded", function () {
                     </a>
                 </li>
             </ul>
-
+    
             <span class="footer__copy">
                 &#169; 2024 Manav Rai. All rights reserved.
             </span>
         </div>
     </footer>
-
+    
+    <style>
+        .footer {
+            background: linear-gradient(
+                180deg,
+                hsla(var(--first-hue), var(--sat), var(--lig), 0.5),
+                hsla(var(--first-hue), var(--sat), var(--lig), 0.2)
+            );
+            box-shadow: 0 0 16px hsla(var(--first-hue), var(--sat), var(--lig), 0.4);
+            width: 100%; /* Adjust the width as needed */
+            height: 300px; /* Adjust the height as needed */
+        }
+        
+        
+        
+        .footer__container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .footer__title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .footer__list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer__social {
+            margin-top: 20px; /* Adjust this value as needed */
+        }
+        
+        .footer__item {
+            margin: 5px 15px;
+        }
+        
+        
+        .footer__link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        
+        .footer__link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            .footer__list {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer__item {
+                margin: 10px 0;
+            }
+        }
+    
+        /* Media query for mobile responsiveness */
+        @media (max-width: 768px) {
+            .footer__list,
+            .footer__social {
+                text-align: center;
+            }
+    
+            .footer__item {
+                margin: 10px 0;
+            }
+    
+            .footer__social-item {
+                margin: 0 10px;
+            }
+        }
+    </style>
+    
     <!--=============== SCROLLREVEAL ===============-->
 
     <!-- <script src="assets/js/scrollreveal.min.js"></script> -->

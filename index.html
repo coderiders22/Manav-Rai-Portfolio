@@ -88,20 +88,16 @@
                     <span class="home__greeting">Hello, I'm</span>
                     <h1 class="home__name">Manav Rai</h1>
                     <h3 class="home__education">Full Stack Developer and Blockchain Enthusiast</h3>
-
                     <div class="home__button">
                         <a download="" href="assets/pdf/Manav Rai resume.pdf" class="button button--ghost">
                             Download Resume
                         </a>
-
                         <a href="#about" class="button">About</a>
                     </div>
                 </div>
-
                 <div class="home__handle">
                     <img src="assets/img/me4.png" alt="" class="home__img">
                 </div>
-
                 <div class="home__social">
                     <a href="https://www.linkedin.com/in/manavrai/" target="_blank" class="home__social-link">
                         <i class='bx bxl-linkedin'></i>
@@ -113,13 +109,45 @@
                         <i class='bx bxl-instagram'></i>
                     </a>
                 </div>
-
                 <a href="#about" class="home__scroll">
                     <i class='bx bx-mouse home__scroll-icon'></i>
                     <span class="home__scroll-name">Scroll Down</span>
                 </a>
             </div>
+            <svg class="spotlight" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3787 2842" fill="none">
+                <g filter="url(#filter1)">
+                    <ellipse cx="1924.71" cy="273.501" rx="1924.71" ry="273.501"
+                        transform="matrix(-0.822377 -0.568943 -0.568943 0.822377 3631.88 2291.09)"
+                        fill="white" fill-opacity="0.21"></ellipse>
+                </g>
+                <defs>
+                    <filter id="filter1" x="0.860352" y="0.838989" width="3785.16" height="2840.26"
+                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
+                        <feGaussianBlur stdDeviation="151" result="effect1_foregroundBlur_1065_8"></feGaussianBlur>
+                    </filter>
+                </defs>
+            </svg>
+            <svg class="spotlight" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3787 2842" fill="none">
+                <g filter="url(#filter2)">
+                    <ellipse cx="1924.71" cy="273.501" rx="1924.71" ry="273.501"
+                        transform="matrix(-0.822377 -0.568943 -0.568943 0.822377 3631.88 2291.09)"
+                        fill="blue" fill-opacity="0.21"></ellipse>
+                </g>
+                <defs>
+                    <filter id="filter2" x="0.860352" y="0.838989" width="3785.16" height="2840.26"
+                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
+                        <feGaussianBlur stdDeviation="151" result="effect1_foregroundBlur_1065_8"></feGaussianBlur>
+                    </filter>
+                </defs>
+            </svg>
         </section>
+      
+ 
+    
         <section class="about section" id="about">
             <span class="section__subtitle">My Intro</span>
             <h2 class="section__title">About Me</h2>
@@ -200,7 +228,25 @@
         margin-top: 40px;
         user-select: none;
       }
-      
+       
+      .spotlight {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+        opacity: 0.5; /* Adjust opacity as needed */
+    }
+
+    /* Positioning for mobile devices */
+    @media (max-width: 768px) {
+        .spotlight {
+            top: 30%;
+        }
+    }
       .education__subtitle {
         font-size: 24px;
         color: #ffffff;
@@ -535,6 +581,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="projects__container container grid">
                 <!-- First Project -->
                 <div class="projects__card">
+                      
                     <h3 class="projects__title">Development of a Healthcare App for <a href="https://pgimer.edu.in/PGIMER_PORTAL/PGIMERPORTAL/home.jsp" class="links-style">PGIMER</a> Sector 12, Chandigarh</h3>
                     <p class="projects__description">
                         Collaborated with    <a href="https://pgimer.edu.in/PGIMER_PORTAL/PGIMERPORTAL/home.jsp" class="link-style">PGIMER</a> Sector 12, Chandigarh to develop a comprehensive healthcare app aimed at facilitating patient self-management and adherence to prescribed treatment plans.
@@ -872,7 +919,13 @@ document.addEventListener("DOMContentLoaded", function () {
     font-weight: bold;
     margin-right: 0.5rem;
 }
-
+.projects__card {
+    position: relative;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 1.75rem;
+    overflow: hidden;
+}
 
 .projects__card {
     background-color: var(--container-color);

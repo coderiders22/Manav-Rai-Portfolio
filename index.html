@@ -1528,16 +1528,33 @@ document.addEventListener("DOMContentLoaded", function () {
         <section class="work section" id="experience">
             <span class="section__subtitle">My Experience</span>
             <h2 class="section__title">Work Experience</h2>
+
+            <div class="work__container container">
+                <div class="work__item">
+                    <i class='bx bx-code-alt work__icon'></i>
+                    <h3 class="work__position">Frontend App Developer/UI-UX Designer </h3>
+                    <p class="work__company">Development of a Healthcare App for <a href="https://pgimer.edu.in/PGIMER_PORTAL/PGIMERPORTAL/home.jsp" class="link-style">PGIMER </a>Sector-12 Chandigarh</p>
+                    <span class="work__date">July 2023 - Present</span>
+                    <ul class="work__details">
+                       
+                        <li>Responsibilities: Designing and developing the frontend user interface, connecting it with backend services</li>
+                        <li>Key Features: User information collection, medical history logging, initial assessments, personalized treatment plans, educational resources</li>
+                        <li>Technologies Using: React Native, SpringBoot, MySql, RESTful APIs</li>
+                    </ul>
+                    <div class="projects__status-container">
+                        <i class='bx bxs-cog projects__modals-icon'></i>
+                        <p class="projects__status inprogress" id="pgimerStatus">App Is In Development Phase</p>
+                      </div>
+                </div>
         
             <div class="work__container container">
                 <div class="work__item">
                     <i class='bx bx-code-alt work__icon'></i>
                     <h3 class="work__position">Frontend Web Developer/UI-UX Designer</h3>
-       
                     <p class="work__company"><a href="https://www.linkedin.com/company/tpo-pec/" class="link-style">CDGC</a> PEC Chandigarh</p>
                     <span class="work__date">September 2023 - Present</span>
                     <ul class="work__details">
-                        <li>Working as a Frontend developer/Ui-Ux for <a href="https://www.linkedin.com/company/tpo-pec/" class="link-style">CDGC</a>Training and Placement Cell at Punjab Engineering College, Deemed to be University, Chandigarh.</li>
+                        <li>Working as a Frontend developer/Ui-Ux for <a href="https://www.linkedin.com/company/tpo-pec/" class="link-style">CDGC</a> Training and Placement Cell at Punjab Engineering College, Deemed to be University, Chandigarh.</li>
                     </ul>
                 </div>
            
@@ -1546,10 +1563,16 @@ document.addEventListener("DOMContentLoaded", function () {
                     <h3 class="work__position">Founder</h3>
                     <p class="work__company">WebInOrbit</p>
                     <span class="work__date">August 2023 - Present</span>
+                    <span class="highlight-text">
+                        <i class='bx bx-user student-icon'></i> Currently 100+ students are using this platform
+                    </span>
                     <ul class="work__details">
                         <li>Established WebInOrbit in August 2023, propelling a small startup into a thriving venture.</li>
                         <li>Founded WebInOrbit, a responsive website, app, Software Development, ML Models Development Company.</li>
                         <li>Made Platform for college students to enhance skills and minimize off-campus/on-campus placement challenges. (PLATFORM WHERE STUDENTS SHOWCASE THEIR SKILLS)</li>
+                        <li> Developed a user-friendly interface for students to showcase their skills and projects, enabling direct connections with Companies globally.</li>
+                        <li> Designed and developed integrated features like secure communication tools, personalized dashboards, and transparent payment systems.</li>
+                        <li> Introduced a dynamic progress-tracking for students, allowing them to track their ongoing paid projects and view ratings for enhanced user experience.</li>
                         <li>Spearheaded the creation of a dynamic team with a shared vision for innovative solutions. Collaborated closely with team members Anubhav and Vishwas to drive successful projects. For more information, visit <a href="https://webinorbit.com" target="_blank">webinorbit.com</a>.</li>
                     </ul>
                 </div>
@@ -1557,7 +1580,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="work__item">
                     <i class='bx bx-group work__icon'></i>
                     <h3 class="work__position">Implementation Body Member</h3>
-                
                     <p class="work__company">PEC ACM-CSS Student Chapter</p>
                     <span class="work__date">January 2024 - Present</span>
                     <ul class="work__details">
@@ -1566,117 +1588,184 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             </div>
         </section>
-<style>
-
-    .section__subtitle {
-        display: block;
-        font-size: 1.25rem;
-        color: var(--text-color-light);
-        text-align: center;
-        margin-bottom: .5rem;
-        user-select: none;
-    }
-    
-    .section__title {
-        font-size: 2rem;
-        color: var(--text-color);
-        text-align: center;
-        margin-bottom: 1.5rem;
-        user-select: none;
-    }
-    
-    .work__container {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        user-select: none;
-    }
-    
-    .work__item {
-        background-color: var(--container-color);
-        padding: 1.5rem;
-        border-radius: 1.25rem;
-        position: relative;
-        overflow: hidden;
-        transition: transform 0.3s ease-in-out;
-        user-select: none;
-    }
-    
-    .work__item:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         
-    }
-    
-    .work__icon {
-        font-size: 2rem;
-        color: var(--first-color);
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        opacity: 0.1;
-        user-select: none;
-    }
-    
-    .work__position {
-        font-size: 1.5rem;
-        color: var(--first-color);
-        margin-bottom: .5rem;
-    }
-    
-    .work__company {
-        font-size: 1.25rem;
-        color: var(--text-color-light);
-        margin-bottom: .5rem;
-        user-select: none;
-    }
-    
-    .work__date {
-        font-size: 1rem;
-        color: var(--text-color);
-        margin-bottom: 1rem;
-        user-select: none;
-    }
-    
-    .work__details {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        user-select: none;
-    }
-    
-    .work__details li {
-        font-size: 1rem;
-        color: var(--text-color-light);
-        margin-bottom: .5rem;
-        position: relative;
-        padding-left: 1.5rem;
-        user-select: none;
-    }
-    
-    .work__details li:before {
-        content: '\2022';
-        position: absolute;
-        left: 0;
-        color: var(--first-color);
-        font-weight: bold;
-        user-select: none;
-    }
-    
-    .work__details a {
-        color: var(--first-color);
-        text-decoration: none;
-        transition: color 0.3s ease-in-out;
-        user-select: none;
-    }
-    
-    .work__details a:hover {
-        text-decoration: underline;
-        color: var(--first-color-alt);
-        user-select: none;
-    }
-    
-</style>        
+        <style>
+            @import url("https://fonts.googleapis.com/css?family=Raleway:400");
+        
+            .section__subtitle {
+                display: block;
+                font-size: 1.25rem;
+                color: var(--text-color-light);
+                text-align: center;
+                margin-bottom: .5rem;
+                user-select: none;
+            }
+            
+            .section__title {
+                font-size: 2rem;
+                color: var(--text-color);
+                text-align: center;
+                margin-bottom: 1.5rem;
+                user-select: none;
+            }
+            
+            .work__container {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+                user-select: none;
+                
+            }
+            
+            .work__item {
+                background-color: var(--container-color);
+                padding: 1.5rem;
+                border-radius: 1.25rem;
+                position: relative;
+                overflow: hidden;
+                transition: transform 0.3s ease-in-out;
+                user-select: none;
+                border: 0.9rem solid;
+                border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
+                animation: borderRotate var(--d) linear infinite forwards;
+            }
+            
+            .work__item:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            .work__icon {
+                font-size: 2rem;
+                color: var(--first-color);
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                opacity: 0.1;
+                user-select: none;
+            }
+            
+            .work__position {
+                font-size: 1.5rem;
+                color: var(--first-color);
+                margin-bottom: .5rem;
+            }
+            
+            .work__company {
+                font-size: 1.25rem;
+                color: var(--text-color-light);
+                margin-bottom: .5rem;
+                user-select: none;
+            }
+            
+            .work__date {
+                font-size: 1rem;
+                color: var(--text-color);
+                margin-bottom: 1rem;
+                user-select: none;
+            }
+            
+            .work__details {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                user-select: none;
+            }
+            
+            .work__details li {
+                font-size: 1rem;
+                color: var(--text-color-light);
+                margin-bottom: .5rem;
+                position: relative;
+                padding-left: 1.5rem;
+                user-select: none;
+            }
+            
+            .work__details li:before {
+                content: '\2022';
+                position: absolute;
+                left: 0;
+                color: var(--first-color);
+                font-weight: bold;
+                user-select: none;
+            }
+            
+            .work__details a {
+                color: var(--first-color);
+                text-decoration: none;
+                transition: color 0.3s ease-in-out;
+                user-select: none;
+            }
+            
+            .work__details a:hover {
+                text-decoration: underline;
+                color: var(--first-color-alt);
+                user-select: none;
+            }
+        
+            @property --angle {
+                syntax: '<angle>';
+                initial-value: 90deg;
+                inherits: true;
+            }
+            
+            @property --gradX {
+                syntax: '<percentage>';
+                initial-value: 50%;
+                inherits: true;
+            }
+            
+            @property --gradY {
+                syntax: '<percentage>';
+                initial-value: 0%;
+                inherits: true;
+            }
+        
+            :root {
+                --d: 2500ms;
+                --angle: 90deg;
+                --gradX: 100%;
+                --gradY: 50%;
+                --c1: #534677;
+                --c2: rgba(168, 239, 255, 0.1);
+                
+            }
+        
+            .wrapper {
+                min-width: min(40rem, 100%);
+            }
+        
+            @keyframes borderRotate {
+                100% {
+                    --angle: 420deg;
+                }
+            }
+        
+            @keyframes borderRadial {
+                20% {
+                    --gradX: 100%;
+                    --gradY: 50%;
+                }
+                40% {
+                    --gradX: 100%;
+                    --gradY: 100%;
+                }
+                60% {
+                    --gradX: 50%;
+                    --gradY: 100%;
+                }
+                80% {
+                    --gradX: 0%;
+                    --gradY: 50%;
+                }
+                100% {
+                    --gradX: 50%;
+                    --gradY: 0%;
+                }
+            }
+        </style>
+        
+        
         <!--=============== Certifications ===============-->
         <section class="certification section" id="achievements">
             <span class="section__subtitle">My Achievements</span>

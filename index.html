@@ -730,7 +730,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="projects__card">
                     <h3 class="projects__title">WebInOrbit- Where Innovation Knows No Bounds</h3>
                     <p class="projects__description">
-                        WebInOrbit revolutionizes the connection between college students and Companies by offering a dynamic platform. For students, it's a virtual gateway to showcase skills, eliminating the need for physical visits.
+                        WebInOrbit revolutionizes the connection between college students and Companies by offering a dynamic platform. For students, it's a virtual gateway to showcase skills, eliminating the need for physical visits.  
+                        <span class="highlight-text">
+                            <i class='bx bx-user student-icon'></i> Currently 100+ students are using this platform
+                        </span>
                     </p>
                     <button class=" magic-button" data-project="webinorbit">
                         <span class="magic-button-border"></span>
@@ -839,7 +842,19 @@ document.addEventListener("DOMContentLoaded", function () {
       </span>
     </button>
 </div>
-
+<div class="projects__card">
+    <h3 class="projects__title">Mera Certi</h3>
+    <p class="projects__description">
+        The "MeraCerti" app is tailored for users to store and manage their certificates efficiently. It provides a centralized digital repository, ensuring that all important documents are easily accessible and well-organized.
+    </p>
+    <button class=" magic-button" data-project="meracerti" >
+        <span class="magic-button-border"></span>
+        <span class="magic-button-content">
+        View Project 
+        <i class='bx bx-right-arrow-alt projects__icon'></i>
+      </span>
+    </button>
+</div>
 
 
 
@@ -871,7 +886,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const projects = {
                     webinorbit: {
                         title: "WebInOrbit - Where Innovation <br> Knows  No Bounds",
-                        description: "Developed and implemented the entire frontend for WebInOrbit, a platform revolutionizing the connection between college students and clients.",
+                        description: "Developed and implemented the entire frontend for WebInOrbit, a platform revolutionizing the connection between college students and clients. ",
                         items: [
                             "Developed a user-friendly interface for students to showcase their skills and projects, enabling direct connections with Companies globally.",
                             "Designed and developed integrated features like secure communication tools, personalized dashboards, and transparent payment systems.",
@@ -957,6 +972,16 @@ document.addEventListener("DOMContentLoaded", function () {
                         "<i class='bx bxs-cog projects__modals-icon'></i><a><span class='projects__status inprogress'>App is in Development Phase</span></a>"
              
                             
+                        ]
+                    },
+                    meracerti: {
+                        title: "Mera-Certi",
+                        description: "The MeraCerti app is designed to help users keep all their certificates organized in one place",
+                        items: [
+                            " A standout feature of the app is the inclusion of voice instructions on each page, enhancing user experience, especially for those who may prefer or require audio guidance.",
+                            "This feature aids in navigation and ensures that users can operate the app with ease, making it a practical tool for managing certificates securely and conveniently.",
+                            "User-Friendly",
+                            "<i class='bx bxl-github projects__modal-icon'></i> <a href='https://github.com/coderiders22/Mera-Certi' target='_blank' class='projects__github-link'>GitHub Repository</a>"
                         ]
                     },
                     decentralisedportfolio: {
@@ -1063,6 +1088,44 @@ document.addEventListener("DOMContentLoaded", function () {
             font-size: 1rem;
             color: var(--first-color);
             padding: 0.5rem 0;
+        }
+        .highlight-text {
+            color: #FFA500;
+            display: flex;
+            margin-top: 15px;
+            align-items: center;
+        
+        
+        }
+        
+        @keyframes highlight-animation {
+            0% {
+                background-color: transparent;
+            }
+            50% {
+                background-color: rgba(255, 165, 0, 0.3);
+            }
+            100% {
+                background-color: transparent;
+            }
+        }
+        
+        .student-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0); /* At these keyframes, the icon is at its original position */
+            }
+            40% {
+                transform: translateY(-15px); /* At 40%, the icon moves up by 15px */
+            }
+            60% {
+                transform: translateY(-7px); /* At 60%, the icon moves up by 7px */
+            }
         }
         .projects__status-container {
             display: flex;

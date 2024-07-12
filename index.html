@@ -89,13 +89,13 @@
                     <h1 class="home__name">Manav Rai</h1>
                     <h3 class="home__education">Full Stack Developer and Blockchain Enthusiast</h3>
                     <div class="home__button">
-                         <a download="" href="assets/pdf/Manav Rai resume.pdf" class="magic-button">
-                        <span class="magic-button-border"></span>
-                        <span class="magic-button-content">Download Resume <i class='bx bx-download projects__icon'></i></span>
+                         <a download="" href="assets/pdf/Manav Rai resume.pdf" class="magic-button1">
+                        <span class="magic-button-border1"></span>
+                        <span class="magic-button-content1">Download Resume <i class='bx bx-download projects__icon1'></i></span>
                     </a>
-                    <a href="#about" class="magic-button">
-                        <span class="magic-button-border"></span>
-                        <span class="magic-button-content">About <i class='bx bx-right-arrow-alt projects__icon'></i></span>
+                    <a href="#about" class="magic-button1">
+                        <span class="magic-button-border1"></span>
+                        <span class="magic-button-content1">About <i class='bx bx-right-arrow-alt projects__icon1'></i></span>
                     </a>
                     </div>
                 </div>
@@ -211,7 +211,11 @@
                         </div>
                     </div>
         
-                    <a href="mailto:manavrai454@gmail.com?subject=Job%20Opportunity&body=Hello%20Manav,%0D%0A%0D%0AI%20am%20interested%20in%20discussing%20a%20job%20opportunity%20with%20you.%0D%0A%0D%0AThank%20you,%0D%0A[Your%20Name]" class="button about__button-contact">Hire Me</a>
+                    <a href="mailto:manavrai454@gmail.com?subject=Job%20Opportunity&body=Hello%20Manav,%0D%0A%0D%0AI%20am%20interested%20in%20discussing%20a%20job%20opportunity%20with%20you.%0D%0A%0D%0AThank%20you,%0D%0A[Your%20Name]" class="magic-buttons">
+                        <span class="magic-buttons-border"></span>
+                        <span class="magic-buttons-content">Hire Me <i class='bx bx-envelope projects__icon'></i></span>
+                    </a>
+                    
 
                 </div>
             </div>
@@ -225,13 +229,68 @@
       }
       
       .about__img {
-        margin-bottom: 20px; /* Adjust margin as needed */
+        margin-bottom: 20px; 
         user-select: none;
       }
     .about__education {
         margin-top: 40px;
         user-select: none;
       }
+      .magic-buttons {
+        position: relative;
+        display: inline-flex;
+        height: 48px;
+        width:25%;
+        max-width: 240px; 
+        margin-top: 2.5rem; 
+        overflow: hidden;
+        border-radius: 0.5rem; 
+        padding: 1px; 
+        background-color: transparent;
+        cursor: pointer;
+        outline: none;
+    }
+    
+    .magic-buttons-border {
+        position: absolute;
+        top: -1000%;
+        left: -1000%;
+        width: 2000%;
+        height: 2000%;
+        background: conic-gradient(from 90deg at 50% 50%, #E2CBFF 0%, #212386 50%, #E2CBFF 100%);
+        animation: spin 2s linear infinite;
+        z-index: 0;
+    }
+    
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    
+    .magic-buttons-content {
+        display: inline-flex;
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.5rem; 
+        background-color: #0b111e; 
+        color: white;
+        font-size: 0.875rem; 
+        font-weight: 500; 
+        backdrop-filter: blur(12px); 
+        padding: 0 1.25rem; 
+        z-index: 1;
+        gap: 0.5rem; 
+    }
+    
+    .magic-buttons-content .projects__icon {
+        margin-left: 0.5rem; 
+    }
        
       .spotlight {
         position: absolute;
@@ -242,8 +301,64 @@
         height: 100%;
         pointer-events: none;
         z-index: 1;
-        opacity: 0.5; /* Adjust opacity as needed */
+        opacity: 0.5;
     }
+    .magic-button1 {
+        position: relative;
+        display: inline-flex;
+        height: 48px;
+        width:80%;
+        max-width: 240px; 
+        margin-bottom: -3rem; 
+        overflow: hidden;
+        border-radius: 0.5rem; 
+        padding: 1px; 
+        background-color: transparent;
+        cursor: pointer;
+        outline: none;
+    }
+    
+    .magic-button-border1 {
+        position: absolute;
+        top: -1000%;
+        left: -1000%;
+        width: 2000%;
+        height: 2000%;
+        background: conic-gradient(from 90deg at 50% 50%, #E2CBFF 0%, #212386 50%, #E2CBFF 100%);
+        animation: spin 2s linear infinite;
+        z-index: 0;
+    }
+    
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    
+    .magic-button-content1 {
+        display: inline-flex;
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.5rem; 
+        background-color: #0b111e; 
+        color: white;
+        font-size: 0.875rem; 
+        font-weight: 500; 
+        backdrop-filter: blur(12px); 
+        padding: 0 1.25rem; 
+        z-index: 1;
+        gap: 0.5rem; 
+    }
+    
+    .magic-button-content .projects__icon1 {
+        margin-left: 0.5rem; 
+    }
+       
 
     /* Positioning for mobile devices */
     @media (max-width: 768px) {
@@ -1177,11 +1292,11 @@ document.addEventListener("DOMContentLoaded", function () {
             display: inline-flex;
             height: 48px;
             width: 100%;
-            max-width: 240px; /* Adjust to your design */
-            margin-top: 2.5rem; /* Equivalent to md:mt-10 in Tailwind */
+            max-width: 240px; 
+            margin-top: 2.5rem;
             overflow: hidden;
-            border-radius: 0.5rem; /* Equivalent to rounded-lg in Tailwind */
-            padding: 1px; /* Padding for the gradient border */
+            border-radius: 0.5rem; 
+            padding: 1px; 
             background: transparent;
             cursor: pointer;
             outline: none;
@@ -1213,19 +1328,19 @@ document.addEventListener("DOMContentLoaded", function () {
             width: 100%;
             align-items: center;
             justify-content: center;
-            border-radius: 0.5rem; /* Equivalent to rounded-lg in Tailwind */
-            background-color: #2d3748; /* Equivalent to bg-slate-950 in Tailwind */
+            border-radius: 0.5rem; 
+            background-color: #0b111e; 
             color: white;
-            font-size: 0.875rem; /* Equivalent to text-sm in Tailwind */
-            font-weight: 500; /* Equivalent to font-medium in Tailwind */
-            backdrop-filter: blur(12px); /* Equivalent to backdrop-blur-3xl in Tailwind */
-            padding: 0 1.25rem; /* Adjust padding to match your design */
+            font-size: 0.875rem;
+            font-weight: 500; 
+            backdrop-filter: blur(12px); 
+            padding: 0 1.25rem; 
             z-index: 1;
-            gap: 0.5rem; /* Equivalent to gap-2 in Tailwind */
+            gap: 0.5rem;
         }
         
         .magic-button-content .projects__icon {
-            margin-left: 0.5rem; /* Adjust margin if needed */
+            margin-left: 0.5rem; 
         }
         
         /* Responsive Styles */

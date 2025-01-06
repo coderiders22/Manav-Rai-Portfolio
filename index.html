@@ -490,12 +490,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     <!-- Third Project -->
                 <div class="projects__card">
-                    <h3 class="projects__title">WebInOrbit- Where Innovation Knows No Bounds</h3>
+                    <h3 class="projects__title">WebInOrbit - Empowering Startups, Redefining Growth</h3>
                     <p class="projects__description">
-                        WebInOrbit revolutionizes the connection between college students and Companies by offering a dynamic platform. For students, it's a virtual gateway to showcase skills, eliminating the need for physical visits.  
+                        Connecting Startups, Driving Innovation, and Empowering Growth for a Better Tomorrow.  
                         <span class="highlight-text">
-                            <i class='bx bx-user student-icon'></i> Currently 100+ students are using this platform
+                            <i class='bx bx-rocket startup-icon'></i> 
+                            <span class="highlight-text-content">Currently impacting 15+ startups across 3+ international countries and India</span>
                         </span>
+                        
+                        <style>
+                            .startup-icon {
+                                font-size: 24px; /* Increases the size of the icon */
+                                margin-right: 8px; /* Adds spacing between the icon and text */
+                                animation: rocket-launch 1.5s infinite ease-in-out;
+                                display: inline-block;
+                            }
+                        
+                            .highlight-text-content {
+                                vertical-align: middle; /* Aligns the text with the icon properly */
+                            }
+                        
+                            @keyframes rocket-launch {
+                                0% { transform: translateY(0); }
+                                50% { transform: translateY(-5px); }
+                                100% { transform: translateY(0); }
+                            }
+                        </style>
+                        
                     </p>
                     <button class=" magic-button" data-project="webinorbit">
                         <span class="magic-button-border"></span>
@@ -704,20 +725,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 const closeButton = modal.querySelector('.projects__modal-close');
             
                 const projects = {
-                    webinorbit: {
-                        title: "WebInOrbit - Where Innovation <br> Knows  No Bounds",
-                        description: "Developed and implemented the entire frontend for WebInOrbit, a platform revolutionizing the connection between college students and clients. <span class='highlight-text'><i class='bx bx-user student-icon'></i> Currently 100+ students are using this platform</span> ",
-                        items: [
-                        
-                            "Developed a user-friendly interface for students to showcase their skills and projects, enabling direct connections with Companies globally.",
-                            "Designed and developed integrated features like secure communication tools, personalized dashboards, and transparent payment systems.",
-                            "Introduced a dynamic progress-tracking for students, allowing them to track their ongoing paid projects and view ratings for enhanced user experience.",
-                            "Ensured robust security measures, including encryption protocols and access controls, to protect user data and privacy.",
-                            "Utilized modern technologies and frameworks to enhance the platform's scalability, performance, and user experience.",
-                            "Played a key role in expanding job opportunities for students from tier 1, 2, and 3 colleges by providing a global stage to shine.",
-                            "<i class='bx bx-link-external projects__modal-icon'></i> <a href='https://webinorbit.com/' target='_blank' class='projects__github-link'>Website Link</a>"
-                        ]
-                    },
+    webinorbit: {
+        title: "WebInOrbit - Empowering Startups, Redefining Growth",
+        description: "Developed and implemented the entire platform for WebInOrbit, an ecosystem empowering startups globally by providing tailored solutions and measurable growth. <span class='highlight-text'>  <i class='bx bx-rocket startup-icon'></i> Currently impacting 15+ startups across 3+ international countries and India</span>",
+        items: [
+            "Built a responsive and user-friendly interface offering tailored services like legal guidance, market strategies, and AI-driven tools.",
+            "Designed integrated features such as secure communication tools, personalized dashboards, and transparent workflows for seamless user experience.",
+            "Developed a scalable platform serving startups at various stages, ensuring access to essential resources for growth and success.",
+            "Ensured robust security measures with encryption protocols and access controls to safeguard user data and privacy.",
+            "Collaborated with a skilled team to enhance the platform's performance, scalability, and user satisfaction.",
+            "Empowered startups globally by bridging challenges and opportunities, with measurable impact across industries.",
+            "<i class='bx bx-link-external projects__modal-icon'></i> <a href='https://webinorbit.com/' target='_blank' class='projects__github-link'>Website Link</a>"
+        ]
+    },
+
                     ombrowser: {
                         title: "Om Browser",
                         description: "Browser: A user-friendly browser based on Chromium (Secure and Stable open source browser), called Om, that has inbuilt dark patterns identification properties. It does so by using an inbuilt extension. <span class=highlight-achievement><i class='bx bx-trophy achievement-icon'></i> Finalist DBPH Hackathon 2024 National Level organized by IIT BHU,Varanasi</span>",

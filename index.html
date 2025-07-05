@@ -89,10 +89,10 @@
                     <h1 class="home__name">Manav Rai</h1>
                     <h3 class="home__education">Full Stack Developer and Software Development Enthusiast</h3>
                     <div class="home__button">
-                         <a download="" href="assets/pdf/MANAV RAI Resume.pdf" class="magic-button1">
-                        <span class="magic-button-border1"></span>
-                        <span class="magic-button-content1">Download Resume <i class='bx bx-download projects__icon1'></i></span>
-                    </a>
+                        <a href="assets/pdf/MANAV RAI Resume.pdf" class="magic-button1" onclick="showSuccessModal()">
+                            <span class="magic-button-border1"></span>
+                            <span class="magic-button-content1">Download Resume <i class='bx bx-download projects__icon1'></i></span>
+                        </a>
                     <a href="#about" class="magic-button1">
                         <span class="magic-button-border1"></span>
                         <span class="magic-button-content1">About <i class='bx bx-down-arrow-alt projects__icon1'></i></span>
@@ -150,7 +150,13 @@
             </svg>
         </section>
       
- 
+        <div id="successModal" class="modal hidden">
+            <div class="modal-content">
+              <i class='bx bx-check-circle modal-icon'></i>
+              <p>Resume download initiated successfully!</p>
+            </div>
+          </div>
+          
     
         <section class="about section" id="about">
             <span class="section__subtitle">My Intro</span>
@@ -941,7 +947,19 @@ document.addEventListener("DOMContentLoaded", function () {
         
           [class~="section__subtitle"] { display: block; font-size: 1.25rem; color: var(--text-color-light); text-align: center; margin-bottom: .5rem; user-select: none; } [class~="section__title"] { font-size: 2rem; color: var(--text-color); text-align: center; margin-bottom: 1.5rem; user-select: none; } [class~="work__container"] { display: flex; flex-direction: column; gap: 2rem; user-select: none; } [class~="work__item"] { background-color: var(--container-color); padding: 1.5rem; border-radius: 1.25rem; position: relative; overflow: hidden; transition: transform 0.3s ease-in-out; user-select: none; border: 0.9rem solid; border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30; animation: borderRotate var(--d) linear infinite forwards; } [class~="work__item"]:hover { transform: translateY(-0.625rem); box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.1); } [class~="work__icon"] { font-size: 2rem; color: var(--first-color); position: absolute; top: 1rem; right: 1rem; opacity: 0.1; user-select: none; } [class~="work__position"] { font-size: 1.5rem; color: var(--first-color); margin-bottom: .5rem; } [class~="work__company"] { font-size: 1.25rem; color: var(--text-color-light); margin-bottom: .5rem; user-select: none; } [class~="work__date"] { font-size: 1rem; color: var(--text-color); margin-bottom: 1rem; user-select: none; } [class~="work__details"] { list-style: none; padding: 0; margin: 0; user-select: none; } [class~="work__details"] li { font-size: 1rem; color: var(--text-color-light); margin-bottom: .5rem; position: relative; padding-left: 1.5rem; user-select: none; } [class~="work__details"] li:before { content: '\2022'; position: absolute; left: 0; color: var(--first-color); font-weight: bold; user-select: none; } [class~="work__details"] a { color: var(--first-color); text-decoration: none; transition: color 0.3s ease-in-out; user-select: none; } [class~="work__details"] a:hover { text-decoration: underline; color: var(--first-color-alt); user-select: none; } @property --angle { syntax: '<angle>'; initial-value: 90deg; inherits: true; } @property --gradX { syntax: '<percentage>'; initial-value: 50%; inherits: true; } @property --gradY { syntax: '<percentage>'; initial-value: 0%; inherits: true; } :root { --d: 2500ms; --angle: 90deg; --gradX: 100%; --gradY: 50%; --c1: #534677; --c2: rgba(168, 239, 255, 0.1); } [class~="wrapper"] { min-width: min(40rem, 100%); } @keyframes borderRotate { 100% { --angle: 420deg; } } @keyframes borderRadial { 20% { --gradX: 100%; --gradY: 50%; } 40% { --gradX: 100%; --gradY: 100%; } 60% { --gradX: 50%; --gradY: 100%; } 80% { --gradX: 0%; --gradY: 50%; } 100% { --gradX: 50%; --gradY: 0%; } }
         </style>
-        
+        <script>
+  function showSuccessModal() {
+    const modal = document.getElementById('successModal');
+    modal.classList.remove('hidden');
+    modal.classList.add('show');
+
+    setTimeout(() => {
+      modal.classList.remove('show');
+      modal.classList.add('hidden');
+    }, 2500);
+  }
+</script>
+
         
         <!--=============== Certifications ===============-->
 <section class="certification section" id="achievements">
@@ -1083,6 +1101,35 @@ document.addEventListener("DOMContentLoaded", function () {
         align-items: center; /* Center vertically */
         padding: 2rem 0; /* Adjust padding as needed */
     }
+    .modal {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #1e1e2f;
+  color: #fff;
+  padding: 20px 30px;
+  border-radius: 12px;
+  z-index: 9999;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+}
+.modal-icon {
+  font-size: 2rem;
+  color: #4ade80; /* Green success */
+  margin-bottom: 10px;
+}
+.modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+.hidden {
+  display: none;
+}
+
 </style>        
     <!--=============== FOOTER ===============-->
     <footer class="footer">

@@ -1,1280 +1,1379 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manav Rai | Software Developer</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+    <link rel="apple-touch-icon" href="assets/img/favicon.svg">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <style>
+        :root {
+            --bg-dark: #05070a;
+            --bg-card: #0c0f14;
+            --bg-elevated: #12161d;
+            --accent-primary: #6366f1;
+            --accent-secondary: #22d3ee;
+            --accent-warm: #f59e0b;
+            --text-white: #ffffff;
+            --text-gray: #94a3b8;
+            --text-muted: #475569;
+            --border-color: #1e293b;
+            --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+            --gradient-secondary: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%);
+            --gradient-warm: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+            --glow-primary: 0 0 60px rgba(99, 102, 241, 0.3);
+        }
 
-    <!--=============== FAVICON ===============-->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon.png">
-    <link rel="manifest" href="assets/img/favicon.png">
-    <link rel="mask-icon" href="assets/img/favicon.png" color="#5bbad5">
-    <link rel="shortcut icon" href="assets/img/favicon.png">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-config" content="assets/img/favicon.png">
-    <meta name="theme-color" content="#a789d4">
-    <script>var s="!=mjol!sfm>#tuzmftiffu#!isfg>#iuuqt;00deo/ktefmjws/ofu0cpyjdpot03/1/80dtt0cpyjdpot/njo/dtt#?!!!!=mjol!sfm>#tuzmftiffu#!isfg>#iuuqt;00voqlh/dpn0txjqfs0txjqfs.cvoemf/njo/dtt#?!!!!=\"..>>>>>>>>>>>>>>>!CPYJDPOT!>>>>>>>>>>>>>>>..?!!!!=mjol!isfg>(iuuqt;00voqlh/dpn0cpyjdpotA3/2/30dtt0cpyjdpot/njo/dtt(!sfm>(tuzmftiffu(?!!!!=mjol!sfm>#tuzmftiffu#!isfg>#iuuqt;00deo/ktefmjws/ofu0cpyjdpot03/1/80dtt0cpyjdpot/njo/dtt#?!!!!=mjol!sfm>#tuzmftiffu#!isfg>#bttfut0dtt0txjqfs.cvoemf/njo/dtt#?!!!!=mjol!sfm>#tuzmftiffu#!isfg>#bttfut0dtt0tuzmft/dtt#?";var m="";for(var i=0;i<s.length;i++)m+=String.fromCharCode(s.charCodeAt(i)-1);document.write(m);</script>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-   
-    <title> Manav Rai's Portfolio </title>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Custom Cursor Glow Effect */
+        .cursor-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Animated Background Grid */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.25rem 0;
+            z-index: 100;
+            background: rgba(5, 7, 10, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav__logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--text-white);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav__logo span {
+            color: var(--accent-primary);
+        }
+
+        .nav__links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav__links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav__links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav__links a:hover {
+            color: var(--text-white);
+        }
+
+        .nav__links a:hover::after {
+            width: 100%;
+        }
+
+        .nav__cta {
+            background: var(--gradient-primary);
+            color: var(--text-white);
+            padding: 0.75rem 1.75rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--glow-primary);
+        }
+
+        .nav__cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 80px rgba(99, 102, 241, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 10rem 0 6rem;
+            position: relative;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 0.8fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero__label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.25rem;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+
+        .hero__label-dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+            50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+        }
+
+        .hero__greeting {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--text-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero__title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3.5rem, 7vw, 5.5rem);
+            font-weight: 400;
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+        }
+
+        .hero__title-highlight {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-style: italic;
+        }
+
+        .hero__description {
+            font-size: 1.15rem;
+            color: var(--text-gray);
+            max-width: 520px;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero__description strong {
+            color: var(--text-white);
+            font-weight: 600;
+        }
+
+        .hero__metrics {
+            display: flex;
+            gap: 3.5rem;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .metric {
+            text-align: left;
+        }
+
+        .metric__value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+
+        .metric__label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-top: 0.5rem;
+        }
+
+        .hero__actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn--primary {
+            background: var(--gradient-primary);
+            color: var(--text-white);
+            box-shadow: var(--glow-primary);
+        }
+
+        .btn--primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 80px rgba(99, 102, 241, 0.5);
+        }
+
+        .btn--outline {
+            background: transparent;
+            color: var(--text-white);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn--outline:hover {
+            border-color: var(--accent-primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        /* Hero Image */
+        .hero__visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero__image-container {
+            position: relative;
+            width: 420px;
+            height: 520px;
+        }
+
+        .hero__image-frame {
+            position: absolute;
+            inset: 0;
+            border-radius: 220px 220px 30px 30px;
+            background: var(--gradient-primary);
+            padding: 3px;
+            overflow: hidden;
+        }
+
+        .hero__image-frame::before {
+            content: '';
+            position: absolute;
+            inset: -100%;
+            background: conic-gradient(from 0deg, var(--accent-primary), var(--accent-secondary), var(--accent-primary));
+            animation: spin 6s linear infinite;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero__image-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 218px 218px 28px 28px;
+            overflow: hidden;
+            background: var(--bg-dark);
+        }
+
+        .hero__image-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        .hero__card {
+            position: absolute;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+
+        .hero__card--top {
+            top: 40px;
+            right: -60px;
+        }
+
+        .hero__card--bottom {
+            bottom: 80px;
+            left: -80px;
+        }
+
+        .hero__card-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .hero__card-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-white);
+            margin-top: 0.25rem;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 7rem 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section__header {
+            margin-bottom: 4rem;
+        }
+
+        .section__label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section__title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+        }
+
+        /* Experience Section */
+        .experience {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .experience__timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .experience__item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 4rem;
+            padding: 2.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .experience__item:last-child {
+            border-bottom: none;
+        }
+
+        .experience__item:hover {
+            background: linear-gradient(90deg, rgba(99, 102, 241, 0.05) 0%, transparent 100%);
+            padding-left: 2rem;
+            margin-left: -2rem;
+            margin-right: -2rem;
+            padding-right: 2rem;
+        }
+
+        .experience__date {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            padding-top: 0.25rem;
+        }
+
+        .experience__content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience__content h3 a {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+
+        .experience__content h3 a:hover {
+            text-decoration: underline;
+        }
+
+        .experience__company {
+            color: var(--text-gray);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience__description {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .experience__description li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .experience__description li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+        }
+
+        /* Projects Section */
+        .projects__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .project {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-8px);
+            box-shadow: var(--glow-primary);
+        }
+
+        .project--featured {
+            grid-column: span 2;
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
+        }
+
+        .project__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+        }
+
+        .project__badge--gold {
+            background: var(--gradient-warm);
+            color: #000;
+        }
+
+        .project__badge--silver {
+            background: linear-gradient(135deg, #94a3b8 0%, #cbd5e1 100%);
+            color: #000;
+        }
+
+        .project__badge--finalist {
+            background: var(--gradient-secondary);
+            color: #000;
+        }
+
+        .project__badge--enterprise {
+            background: var(--gradient-primary);
+            color: #fff;
+        }
+
+        .project__title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-white);
+        }
+
+        .project__description {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .project__tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project__tech span {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: var(--text-gray);
+        }
+
+        .project__link {
+            color: var(--accent-primary);
+            font-size: 0.875rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            transition: gap 0.3s ease;
+        }
+
+        .project__link:hover {
+            gap: 0.75rem;
+        }
+
+        .project__link--disabled {
+            color: var(--text-muted);
+        }
+
+        /* Achievements Section */
+        .achievements {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .achievements__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .achievement {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .achievement:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-5px);
+        }
+
+        .achievement__icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .achievement__title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement__subtitle {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Skills Section */
+        .skills__container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .skills__category h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--accent-primary);
+        }
+
+        .skills__list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            color: var(--text-gray);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent-primary);
+            color: var(--text-white);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        /* Contact Section */
+        .contact {
+            text-align: center;
+            padding: 8rem 0;
+        }
+
+        .contact__title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .contact__description {
+            color: var(--text-gray);
+            font-size: 1.15rem;
+            max-width: 550px;
+            margin: 0 auto 3rem;
+        }
+
+        .contact__actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .contact__socials {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .contact__social {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-gray);
+            font-size: 1.25rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact__social:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            transform: translateY(-3px);
+            box-shadow: var(--glow-primary);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .footer__text {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .projects__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .project--featured {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero__description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero__metrics {
+                justify-content: center;
+            }
+
+            .hero__actions {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .hero__image-container {
+                width: 320px;
+                height: 400px;
+            }
+
+            .hero__card {
+                display: none;
+            }
+
+            .nav__links {
+                display: none;
+            }
+
+            .experience__item {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .projects__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project--featured {
+                grid-column: span 1;
+            }
+
+            .achievements__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .skills__container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero__metrics {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: center;
+            }
+
+            .metric {
+                text-align: center;
+            }
+
+            .achievements__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+      </style>
 </head>
-
 <body>
-    <!--=============== HEADER ===============-->
-    <header class="header" id="header">
-        <nav class="nav container">
-            <a href="#" class="nav__logo">Manav Rai</a>
-    
-            <div class="nav__menu">
-                <ul class="nav__list">
-                    <li class="nav__item">
-                        <a href="#home" class="nav__link">
-                            <i class='bx bx-home'></i>
-                        </a>
-                    </li>
-    
-                    <li class="nav__item">
-                        <a href="#about" class="nav__link">
-                            <i class='bx bx-user'></i>
-                        </a>
-                    </li>
-    
-                    <li class="nav__item">
-                        <a href="#skills" class="nav__link">
-                            <i class='bx bx-book'></i>
-                        </a>
-                    </li>
-    
-                 
-    
-                    <li class="nav__item">
-                        <a href="#projects" class="nav__link">
-                            <i class='bx bx-code-block'></i>
-                        </a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#experience" class="nav__link">
-                            <i class='bx bx-briefcase'></i>
-                        </a>
-                    </li>
-                
-    
-                    <li class="nav__item">
-                        <a href="#achievements" class="nav__link">
-                            <i class='bx bx-trophy'></i>
-                        </a>
-                    </li>
-    
-                  
-    
-                    <li class="nav__item">
-                        <a href="#contact" class="nav__link">
-                            <i class='bx bx-message-square-dots'></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-    
-            <i class='bx bx-moon change-theme change-theme-button' id="theme-button"></i>
-        </nav>
-    </header>
-    
-    <main class="main">
-        <section class="home section" id="home">
-            <div class="home__container container grid">
-                <div class="home__data">
-                    <span class="home__greeting">Hello, I'm</span>
-                    <h1 class="home__name">Manav Rai</h1>
-                    <h3 class="home__education">Full Stack Developer and Software Development Enthusiast</h3>
-                    <div class="home__button">
-                        <a href="assets/pdf/MANAV RAI Resume.pdf" class="magic-button1" onclick="showSuccessModal()">
-                            <span class="magic-button-border1"></span>
-                            <span class="magic-button-content1">Download Resume <i class='bx bx-download projects__icon1'></i></span>
-                        </a>
-                    <a href="#about" class="magic-button1">
-                        <span class="magic-button-border1"></span>
-                        <span class="magic-button-content1">About <i class='bx bx-down-arrow-alt projects__icon1'></i></span>
-                    </a>
+    <div class="bg-grid"></div>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <a href="#" class="nav__logo">Manav<span>.</span></a>
+            <ul class="nav__links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+                    </ul>
+            <a href="assets/pdf/MANAV RAI Resume.pdf" class="nav__cta" download>Download CV</a>
+                </div> 
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="container">
+            <div class="hero__content">
+                <div class="hero__label">
+                    <span class="hero__label-dot"></span>
+                    Available for Full-Time Opportunities
+                </div>
+                <p class="hero__greeting">Hello, I'm</p>
+                <h1 class="hero__title">
+                    Manav Rai<br>
+                    <span class="hero__title-highlight">Software Developer</span>
+                </h1>
+                <p class="hero__description">
+                    Building <strong>production-grade applications</strong> with expertise in Full Stack Development. 
+                    Delivered solutions for <strong>PGIMER</strong>, <strong>Indian Air Force</strong>, and global startups. 
+                    B.Tech CSE (Data Science) at Punjab Engineering College, Chandigarh.
+                </p>
+                <div class="hero__metrics">
+                    <div class="metric">
+                        <div class="metric__value">15+</div>
+                        <div class="metric__label">Projects Built</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric__value">100+</div>
+                        <div class="metric__label">Patients Impacted</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric__value">4</div>
+                        <div class="metric__label">Hackathon Wins</div>
                     </div>
                 </div>
-                <div class="home__handle">
-                    <img src="assets/img/me4.png" alt="" class="home__img">
-                </div>
-                <div class="home__social">
-                    <a href="https://www.linkedin.com/in/manavrai/" target="_blank" class="home__social-link">
-                        <i class='bx bxl-linkedin'></i>
+                <div class="hero__actions">
+                    <a href="mailto:manavrai454@gmail.com?subject=Job%20Opportunity" class="btn btn--primary">
+                        <i class='bx bx-envelope'></i> Get In Touch
                     </a>
-                    <a href="https://github.com/coderiders22" target="_blank" class="home__social-link">
-                        <i class='bx bxl-github'></i>
-                    </a>
-                    <a href="https://www.instagram.com/manav_rai1234?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D" target="_blank" class="home__social-link">
-                        <i class='bx bxl-instagram'></i>
+                    <a href="#projects" class="btn btn--outline">
+                        Explore Work <i class='bx bx-right-arrow-alt'></i>
                     </a>
                 </div>
-                <a href="#about" class="home__scroll">
-                    <i class='bx bx-mouse home__scroll-icon'></i>
-                    <span class="home__scroll-name">Scroll Down</span>
+            </div>
+            <div class="hero__visual">
+                <div class="hero__image-container">
+                    <div class="hero__image-frame">
+                        <div class="hero__image-inner">
+                            <img src="assets/img/hero.png" alt="Manav Rai">
+                        </div>
+                    </div>
+                    <div class="hero__card hero__card--top">
+                        <div class="hero__card-label">Currently</div>
+                        <div class="hero__card-value">SDE Intern @ Syncloop</div>
+                    </div>
+                    <div class="hero__card hero__card--bottom">
+                        <div class="hero__card-label">Education</div>
+                        <div class="hero__card-value">B.Tech @ PEC CHD</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience section" id="experience">
+        <div class="container">
+            <div class="section__header">
+                <span class="section__label">Professional Journey</span>
+                <h2 class="section__title">Work Experience</h2>
+            </div>
+            <div class="experience__timeline">
+                <div class="experience__item">
+                    <div class="experience__date">Jan 2025 - Jun 2025</div>
+                    <div class="experience__content">
+                        <h3>Software Developer Intern | <a href="https://syncloop.com" target="_blank">Syncloop.com</a></h3>
+                        <p class="experience__company">Nature9 Consulting Private Limited</p>
+                        <ul class="experience__description">
+                            <li>Designed 3+ use cases and built key tools (flowchart builder, VS Code extension, Chathire.ai, product demo)</li>
+                            <li>Built Spring Boot microservices for AI agent/team creation on Syncloop.ai, enabling SEO, access control, and workflow automation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="experience__item">
+                    <div class="experience__date">Oct 2024 - Jan 2025</div>
+                    <div class="experience__content">
+                        <h3>Mobile App Developer</h3>
+                        <p class="experience__company">PGIMER Sector-12, Chandigarh</p>
+                        <ul class="experience__description">
+                            <li>Launched Flutter Healthcare app used by 100+ patients, improving tracking by 35%</li>
+                            <li>Built medical history & assessment modules with smooth data flow and secure API integration</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="experience__item">
+                    <div class="experience__date">Aug 2024 - Sep 2024</div>
+                    <div class="experience__content">
+                        <h3>Founder's Office Intern</h3>
+                        <p class="experience__company">Foundingame (London, GB)</p>
+                        <ul class="experience__description">
+                            <li>Contributed to operations and UI development by streamlining processes and enhancing user interface designs</li>
+                    </ul>
+                </div>
+                </div>
+                <div class="experience__item">
+                    <div class="experience__date">Oct 2023 - Feb 2024</div>
+                    <div class="experience__content">
+                        <h3>Windows Application Developer</h3>
+                        <p class="experience__company">Indian Air Force | Aircraft Health Predictor</p>
+                        <ul class="experience__description">
+                            <li>Created a Windows application to predict aircraft engine health, improving diagnostics speed by 40%</li>
+                            <li>Processed aircraft data using ML models for predictive analytics</li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+        
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section__header">
+                <span class="section__label">Featured Work</span>
+                <h2 class="section__title">Projects</h2>
+            </div>
+            <div class="projects__grid">
+                <!-- Featured Project -->
+                <div class="project project--featured">
+                    <span class="project__badge project__badge--enterprise"><i class='bx bx-building-house'></i> Enterprise</span>
+                    <h3 class="project__title">Healthcare App – PGIMER Sector-12, Chandigarh</h3>
+                    <p class="project__description">
+                        Built a Flutter-based healthcare app for patient self-management in collaboration with medical professionals. 
+                        Features 3D Body Mapping for pain location, medical history modules, and secure API integration. 
+                        Adopted by 100+ patients, improving tracking and usability.
+                    </p>
+                    <div class="project__tech">
+                        <span>Flutter</span>
+                        <span>Spring Boot</span>
+                        <span>MySQL</span>
+                        <span>REST APIs</span>
+                    </div>
+                    <span class="project__link project__link--disabled">
+                        <i class='bx bx-lock-alt'></i> Confidential Project
+                    </span>
+                </div>
+
+                <!-- WebInOrbit -->
+                <div class="project">
+                    <span class="project__badge project__badge--finalist"><i class='bx bx-rocket'></i> Personal Project</span>
+                    <h3 class="project__title">WebInOrbit - Startup Platform</h3>
+                    <p class="project__description">
+                        Full-stack startup platform with Next.js frontend and Spring Boot APIs. Used by 15+ startups across India and international regions. Features AI-assisted tools and secure data handling.
+                    </p>
+                    <div class="project__tech">
+                        <span>Next.js</span>
+                        <span>Spring Boot</span>
+                        <span>PostgreSQL</span>
+                    </div>
+                    <a href="https://webinorbit.com" target="_blank" class="project__link">
+                        Visit Live <i class='bx bx-right-arrow-alt'></i>
+                    </a>
+                </div>
+
+                <!-- VYC -->
+                <div class="project">
+                    <span class="project__badge project__badge--silver"><i class='bx bx-trophy'></i> 2nd Place</span>
+                    <h3 class="project__title">VYC (Verify Your Customer)</h3>
+                    <p class="project__description">
+                        Interactive KYC platform with advanced image verification, liveness detection, and AI-generated image detection. Won 2nd at STGI 24-Hour Coding Marathon.
+                    </p>
+                    <div class="project__tech">
+                        <span>React</span>
+                        <span>Computer Vision</span>
+                        <span>AI/ML</span>
+                    </div>
+                    <a href="https://github.com/coderiders22/Data-Mavericks" target="_blank" class="project__link">
+                        View GitHub <i class='bx bx-right-arrow-alt'></i>
+                    </a>
+                </div>
+
+                <!-- Om Browser -->
+                <div class="project">
+                    <span class="project__badge project__badge--finalist"><i class='bx bx-trophy'></i> IIT BHU Finalist</span>
+                    <h3 class="project__title">Om Browser - Dark Pattern Detection</h3>
+                    <p class="project__description">
+                        Chromium-based secure browser with ML-powered extension to identify and eliminate dark patterns on e-commerce websites. Finalist at DPBH Hackathon, IIT BHU.
+                    </p>
+                    <div class="project__tech">
+                        <span>Chromium</span>
+                        <span>ML</span>
+                        <span>JavaScript</span>
+                </div>
+                    <a href="https://github.com/coderiders22/Dark-Pattern-IIT-BHU-hackathon" target="_blank" class="project__link">
+                        View GitHub <i class='bx bx-right-arrow-alt'></i>
+                    </a>
+            </div>
+
+                <!-- Exoplanets -->
+                <div class="project">
+                    <span class="project__badge project__badge--gold"><i class='bx bx-trophy'></i> 1st Place</span>
+                    <h3 class="project__title">Exoplanet Detection ML Model</h3>
+                    <p class="project__description">
+                        Machine learning model detecting exoplanets through stellar light flux analysis using Random Forest Classifier. Won 1st Prize at Astronomix Hackathon, PEC Chandigarh.
+                    </p>
+                    <div class="project__tech">
+                        <span>Python</span>
+                        <span>Random Forest</span>
+                        <span>Flask</span>
+                </div>
+                    <a href="https://github.com/coderiders22/Astronomicx_Hackathon" target="_blank" class="project__link">
+                        View GitHub <i class='bx bx-right-arrow-alt'></i>
+                    </a>
+            </div>
+
+                <!-- IAF Project -->
+                <div class="project">
+                    <span class="project__badge project__badge--enterprise"><i class='bx bx-shield'></i> Defense</span>
+                    <h3 class="project__title">IAF Aircraft Health Predictor</h3>
+                    <p class="project__description">
+                        Windows application for Indian Air Force to predict aircraft engine health using ML. Processes Excel data for predictive analytics, improving diagnostics speed by 40%.
+                    </p>
+                    <div class="project__tech">
+                        <span>Python</span>
+                        <span>ML</span>
+                        <span>Windows App</span>
+                </div>
+                    <span class="project__link project__link--disabled">
+                        <i class='bx bx-lock-alt'></i> Confidential
+                    </span>
+            </div>
+
+                <!-- AUSCULTATECH -->
+                <div class="project">
+                    <span class="project__badge project__badge--gold"><i class='bx bx-star'></i> A+ Grade</span>
+                    <h3 class="project__title">AUSCULTATECH - Lung Diagnostics</h3>
+                    <p class="project__description">
+                        AI-driven platform for lung sound diagnostics that identifies key patterns, providing fast and accurate classification to reduce misdiagnoses.
+                    </p>
+                    <div class="project__tech">
+                        <span>React</span>
+                        <span>AI/ML</span>
+                        <span>Python</span>
+                </div>
+                    <a href="https://github.com/coderiders22/Minor-Project-PEC-Chd" target="_blank" class="project__link">
+                        View GitHub <i class='bx bx-right-arrow-alt'></i>
+                    </a>
+            </div>
+
+                <!-- High Frequency Trading -->
+                <div class="project">
+                    <h3 class="project__title">High-Frequency Trading Platform</h3>
+                    <p class="project__description">
+                        Advanced trading platform powered by ML/AI algorithms analyzing market data in real-time to execute optimized trading strategies.
+                    </p>
+                    <div class="project__tech">
+                        <span>Python</span>
+                        <span>ML</span>
+                        <span>Trading APIs</span>
+                </div>
+                    <a href="https://github.com/coderiders22/lakshmi_chit_funds" target="_blank" class="project__link">
+                        View GitHub <i class='bx bx-right-arrow-alt'></i>
+                    </a>
+            </div>
+
+                <!-- Stock Prediction -->
+                <div class="project">
+                    <h3 class="project__title">Stock Prediction with Sentiment</h3>
+                    <p class="project__description">
+                        Stock predictions using LSTM models integrated with news sentiment analysis. Includes portfolio guidance for beginners.
+                    </p>
+                    <div class="project__tech">
+                        <span>LSTM</span>
+                        <span>NLP</span>
+                        <span>Python</span>
+                </div>
+                    <a href="https://github.com/coderiders22/AlphaStocks" target="_blank" class="project__link">
+                        View GitHub <i class='bx bx-right-arrow-alt'></i>
+                    </a>
+            </div>
+
+                <!-- Salary Prediction -->
+                <div class="project">
+                    <h3 class="project__title">Data Scientist Salary Prediction</h3>
+                    <p class="project__description">
+                        ML model to predict data scientist salaries using regression models. Features comprehensive data preprocessing and feature engineering.
+                    </p>
+                    <div class="project__tech">
+                        <span>Python</span>
+                        <span>Regression</span>
+                        <span>Jupyter</span>
+        </div>
+                    <a href="https://github.com/coderiders22/Data-Scientist-salary-prediction" target="_blank" class="project__link">
+                        View GitHub <i class='bx bx-right-arrow-alt'></i>
+                    </a>
+    </div>
+
+                <!-- Blockchain Article -->
+                <div class="project">
+                    <h3 class="project__title">Decentralized Article Management</h3>
+                    <p class="project__description">
+                        Blockchain-based platform on Klaytn for seamless article management with smart contract integration and Metamask security.
+                    </p>
+                    <div class="project__tech">
+                        <span>Blockchain</span>
+                        <span>Klaytn</span>
+                        <span>Smart Contracts</span>
+                    </div>
+                    <a href="https://github.com/coderiders22/BLOCKARTICLES" target="_blank" class="project__link">
+                        View GitHub <i class='bx bx-right-arrow-alt'></i>
+                            </a>
+                        </div>
+        
+                <!-- Mera Certi -->
+                <div class="project">
+                    <h3 class="project__title">Mera Certi - Certificate Manager</h3>
+                    <p class="project__description">
+                        Mobile app for storing and managing certificates efficiently with voice instructions for enhanced accessibility.
+                    </p>
+                    <div class="project__tech">
+                        <span>Flutter</span>
+                        <span>Firebase</span>
+                        <span>Voice AI</span>
+                    </div>
+                    <a href="https://github.com/coderiders22/Mera-Certi" target="_blank" class="project__link">
+                        View GitHub <i class='bx bx-right-arrow-alt'></i>
+                            </a>
+                        </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="achievements section" id="achievements">
+        <div class="container">
+            <div class="section__header">
+                <span class="section__label">Recognition</span>
+                <h2 class="section__title">Key Achievements</h2>
+            </div>
+            <div class="achievements__grid">
+                <div class="achievement">
+                    <div class="achievement__icon">🥇</div>
+                    <h3 class="achievement__title">1st Place</h3>
+                    <p class="achievement__subtitle">Astronomix Hackathon, ASPS & ACM (2023)</p>
+                </div>
+                <div class="achievement">
+                    <div class="achievement__icon">🥈</div>
+                    <h3 class="achievement__title">2nd Place</h3>
+                    <p class="achievement__subtitle">STGI Technologies 24-Hour Coding Marathon</p>
+                </div>
+                <div class="achievement">
+                    <div class="achievement__icon">🏆</div>
+                    <h3 class="achievement__title">Finalist</h3>
+                    <p class="achievement__subtitle">IIT BHU Dark Patterns Hackathon (2024)</p>
+                </div>
+                <div class="achievement">
+                    <div class="achievement__icon">📜</div>
+                    <h3 class="achievement__title">Letter of Appreciation</h3>
+                    <p class="achievement__subtitle">PEC for PGIMER Android Work</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="container">
+            <div class="section__header">
+                <span class="section__label">Expertise</span>
+                <h2 class="section__title">Skills & Technologies</h2>
+                        </div>
+            <div class="skills__container">
+                <div class="skills__category">
+                    <h3>Languages</h3>
+                    <div class="skills__list">
+                        <span class="skill-tag">Java 21</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Dart</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                    </div>
+                </div>
+                <div class="skills__category">
+                    <h3>Frameworks & Libraries</h3>
+                    <div class="skills__list">
+                        <span class="skill-tag">Spring Boot</span>
+                        <span class="skill-tag">Next.js</span>
+                        <span class="skill-tag">React.js</span>
+                        <span class="skill-tag">Flutter</span>
+                        <span class="skill-tag">Tailwind CSS</span>
+                    </div>
+                </div>
+                <div class="skills__category">
+                    <h3>Databases & DevTools</h3>
+                    <div class="skills__list">
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Vercel</span>
+                        <span class="skill-tag">API Integration</span>
+                    </div>
+                </div>
+                <div class="skills__category">
+                    <h3>AI & Next-Gen Tools</h3>
+                    <div class="skills__list">
+                        <span class="skill-tag">GitHub Copilot</span>
+                        <span class="skill-tag">OpenAI API</span>
+                        <span class="skill-tag">Prompt Engineering</span>
+                        <span class="skill-tag">ML/AI</span>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- Contact Section -->
+    <section class="contact section" id="contact">
+        <div class="container">
+            <span class="section__label">Get In Touch</span>
+            <h2 class="contact__title">Let's Work Together</h2>
+            <p class="contact__description">
+                Currently seeking full-time Software Development opportunities. 
+                Open to discuss how I can contribute to your team.
+            </p>
+            <div class="contact__actions">
+                <a href="mailto:manavrai454@gmail.com?subject=Job%20Opportunity" class="btn btn--primary">
+                    <i class='bx bx-envelope'></i> manavrai454@gmail.com
+                </a>
+                <a href="tel:+918054776034" class="btn btn--outline">
+                    <i class='bx bx-phone'></i> +91 8054776034
                 </a>
             </div>
-            <svg class="spotlight" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3787 2842" fill="none">
-                <g filter="url(#filter1)">
-                    <ellipse cx="1924.71" cy="273.501" rx="1924.71" ry="273.501"
-                        transform="matrix(-0.822377 -0.568943 -0.568943 0.822377 3631.88 2291.09)"
-                        fill="white" fill-opacity="0.21"></ellipse>
-                </g>
-                <defs>
-                    <filter id="filter1" x="0.860352" y="0.838989" width="3785.16" height="2840.26"
-                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                        <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
-                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
-                        <feGaussianBlur stdDeviation="151" result="effect1_foregroundBlur_1065_8"></feGaussianBlur>
-                    </filter>
-                </defs>
-            </svg>
-            <svg class="spotlight" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3787 2842" fill="none">
-                <g filter="url(#filter2)">
-                    <ellipse cx="1924.71" cy="273.501" rx="1924.71" ry="273.501"
-                        transform="matrix(-0.822377 -0.568943 -0.568943 0.822377 3631.88 2291.09)"
-                        fill="blue" fill-opacity="0.21"></ellipse>
-                </g>
-                <defs>
-                    <filter id="filter2" x="0.860352" y="0.838989" width="3785.16" height="2840.26"
-                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                        <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
-                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
-                        <feGaussianBlur stdDeviation="151" result="effect1_foregroundBlur_1065_8"></feGaussianBlur>
-                    </filter>
-                </defs>
-            </svg>
-        </section>
-      
-        <div id="successModal" class="modal hidden">
-            <div class="modal-content">
-              <i class='bx bx-check-circle modal-icon'></i>
-              <p>Resume download initiated successfully!</p>
-            </div>
-          </div>
-          
-    
-        <section class="about section" id="about">
-            <span class="section__subtitle">My Intro</span>
-            <h2 class="section__title">About Me</h2>
-        
-            <div class="about__container container grid">
-                <img src="assets/img/me2.png" alt="" class="about__img">
-                
-        
-                <div class="about__data">
-                    <div class="about__info">
-                        <div class="about__box">
-                            <i class='bx bx-award about__icon'></i>
-                            <h3 class="about__title">Experience</h3>
-                            <span class="about__subtitle">2 Years Working</span>
-                        </div>
-                        <div class="about__box">
-                            <i class='bx bx-briefcase-alt about__icon'></i>
-                            <h3 class="about__title">Completed</h3>
-                            <span class="about__subtitle">15+ Projects</span>
-                        </div>
-                        <div class="about__box">
-                            <i class='bx bx-support about__icon'></i>
-                            <h3 class="about__title">Support</h3>
-                            <span class="about__subtitle">Online 24/7</span>
-                        </div>
-                    </div>
-        
-                    <p class="about__description">
-                        I'm a Full Stack Developer with 2+ years of hands-on experience in building production-grade web and mobile applications using technologies like Next.js, Flutter, and Spring Boot. I specialize in designing scalable systems, crafting responsive UIs, and integrating robust APIs. I'm actively targeting Software Engineering roles where I can contribute to impactful digital products that blend tech execution with thoughtful design.
-                        </p>
-                        
-        
-                    <!-- Education Section -->
-                    <div class="about__education">
-                        <h3 class="education__subtitle">Education Qualifications</h3>
-                        <div class="education__details">
-                           
-                            <div class="education__item">
-                                <p class="education__degree">Punjab Engineering College</p>
-                                <p class="education__info">Bachelor of Technology - BTech, Computer Science Engineering (Data Science), 2022-2026</p>
-                                
-                                <p class="education__status inprogress" id="btechStatus">Status: In Progress</p>
-                                
-                                
-                            </div>
-                            <div class="education__item">
-                                <p class="education__degree">Shishu Niketan School</p>
-                                <p class="education__info">10th, Completed in 2020</p>
-                                <p class="education__status completed">Status: Completed</p>
-                                
-                            </div>
-                            <div class="education__item">
-                                <p class="education__degree">GMSSS 37 - B Chandigarh</p>
-                                <p class="education__info">12th, Non-medical, Completed in 2022</p>
-                         
-                                <p class="education__status completed">Status: Completed</p>
-                            </div>
-                        </div>
-                    </div>
-        
-                    <a href="mailto:manavrai454@gmail.com?subject=Job%20Opportunity&body=Hello%20Manav,%0D%0A%0D%0AI%20am%20interested%20in%20discussing%20a%20job%20opportunity%20with%20you.%0D%0A%0D%0AThank%20you,%0D%0A[Your%20Name]" class="magic-buttons">
-                        <span class="magic-buttons-border"></span>
-                        <span class="magic-buttons-content">Hire Me <i class='bx bx-envelope projects__icon'></i></span>
-                    </a>
-                    
-
-                </div>
-            </div>
-        </section>
-<style>
-   [class~="about__container"] { display: flex; flex-direction: column; align-items: center; user-select: none; } [class~="about__img"] { margin-bottom: 1.25rem; user-select: none; } [class~="about__education"] { margin-top: 2.5rem; user-select: none; } [class~="magic-buttons"] { position: relative; display: inline-flex; height: 3rem; width:40%; max-width: 15rem; margin-top: 2.5rem; overflow: hidden; border-radius: 0.5rem; padding: 0.0625rem; background-color: transparent; cursor: pointer; outline: none; } [class~="magic-buttons-border"] { position: absolute; top: -1000%; left: -1000%; width: 2000%; height: 2000%; background: conic-gradient(from 90deg at 50% 50%, #E2CBFF 0%, #212386 50%, #E2CBFF 100%); animation: spin 2s linear infinite; z-index: 0; } @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } } [class~="magic-buttons-content"] { display: inline-flex; height: 100%; width: 100%; align-items: center; justify-content: center; border-radius: 0.5rem; background-color: #0b111e; color: white; font-size: 0.875rem; font-weight: 500; backdrop-filter: blur(0.75rem); padding: 0 1.25rem; z-index: 1; gap: 0.5rem; } [class~="magic-buttons-content"] [class~="projects__icon"] { margin-left: 0.5rem; } [class~="spotlight"] { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 100%; pointer-events: none; z-index: 1; opacity: 0.5; } [class~="magic-button1"] { position: relative; display: inline-flex; height: 3rem; width:80%; max-width: 15rem; margin-bottom: -3rem; overflow: hidden; border-radius: 0.5rem; padding: 0.0625rem; background-color: transparent; cursor: pointer; outline: none; } [class~="magic-button-border1"] { position: absolute; top: -1000%; left: -1000%; width: 2000%; height: 2000%; background: conic-gradient(from 90deg at 50% 50%, #E2CBFF 0%, #212386 50%, #E2CBFF 100%); animation: spin 2s linear infinite; z-index: 0; } @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } } [class~="magic-button-content1"] { display: inline-flex; height: 100%; width: 100%; align-items: center; justify-content: center; border-radius: 0.5rem; background-color: #0b111e; color: white; font-size: 0.875rem; font-weight: 500; backdrop-filter: blur(0.75rem); padding: 0 1.25rem; z-index: 1; gap: 0.5rem; } [class~="magic-button-content"] [class~="projects__icon1"] { margin-left: 0.5rem; } @media (max-width: 48rem) { [class~="spotlight"] { top: 30%; } } [class~="education__subtitle"] { font-size: 1.5rem; color: #ffffff; margin-bottom: 1.25rem; user-select: none; } [class~="education__details"] { display: grid; gap: 1.25rem; user-select: none; } [class~="education__item"] { background-color: var(--container-color); padding: 1.5rem; border-radius: 1.25rem; user-select: none; } [class~="education__degree"] { font-size: var(--normal-font-size); font-weight: var(--font-medium); color: var(--first-color); margin-bottom: 1.5rem; user-select: none; } [class~="education__info"] { font-size: var(--normal-font-size); font-weight: var(--font-medium); color: var(--first-color); margin-bottom: 1.5rem; user-select: none; } [class~="education__status"] { font-size: var(--normal-font-size); color: var(--first-color); margin-bottom: 0; user-select: none; } @keyframes liveStatus { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } } .education__status[class~="completed"] { color: green; user-select: none; } .education__status[class~="inprogress"] { color: red; animation: liveStatus 2s infinite; user-select: none; } [class~="education__status-info"] { font-size: var(--small-font-size); color: var(--first-color); user-select: none; } [class~="about__button-contact"] { margin-top: 1.25rem; } @media screen and (min-width: 48rem) { [class~="about__container"] { flex-direction: row; justify-content: center; } [class~="about__img"] { margin-right: 1.25rem; margin-bottom: 0; user-select: none; } [class~="about__data"] { width: auto; user-select: none; } [class~="about__education"] { margin-top: 0; user-select: none; } }
-</style>        
-<script>
-
-document.addEventListener("DOMContentLoaded", function () {
-        var educationItems = document.querySelectorAll(".education__item");
-    educationItems.forEach(function (item) {
-      
-        var status = item.querySelector(".education__status").textContent.trim();
-
-
-        if (status === "Status: Completed") {
-            item.classList.add("completed");
-        } else if (status === "Status: In Progress") {
-            item.classList.add("inprogress");
-        }
-    });
-});
-
-
-</script>
-
-<section class="skills section" id="skills">
-    <span class="section__subtitle">My Abilities</span>
-    <h2 class="section__title">My Skills</h2>
-  
-    <div class="skills__container container grid">
-  
-      <!-- Development Skills -->
-      <div class="skills__content">
-        <h3 class="skills__title">Development Skills</h3>
-        <div class="skills__box">
-          <div class="skills__group">
-            <div class="skills__data"><i class='bx bxs-badge-check'></i><div><h3 class="skills__name">HTML</h3><span class="skills__level">Intermediate</span></div></div>
-            <div class="skills__data"><i class='bx bxs-badge-check'></i><div><h3 class="skills__name">CSS</h3><span class="skills__level">Intermediate</span></div></div>
-            <div class="skills__data"><i class='bx bxs-badge-check'></i><div><h3 class="skills__name">JavaScript</h3><span class="skills__level">Intermediate</span></div></div>
-            <div class="skills__data"><i class='bx bxs-badge-check'></i><div><h3 class="skills__name">Node.js</h3><span class="skills__level">Intermediate</span></div></div>
-          </div>
-  
-          <div class="skills__group">
-            <div class="skills__data"><i class='bx bxs-badge-check'></i><div><h3 class="skills__name">Next.js</h3><span class="skills__level">Intermediate</span></div></div>
-            <div class="skills__data"><i class='bx bxs-badge-check'></i><div><h3 class="skills__name">Tailwind CSS</h3><span class="skills__level">Intermediate</span></div></div>
-            <div class="skills__data"><i class='bx bxs-badge-check'></i><div><h3 class="skills__name">PostgreSQL</h3><span class="skills__level">Intermediate</span></div></div>
-            <div class="skills__data"><i class='bx bxs-badge-check'></i><div><h3 class="skills__name">MySQL</h3><span class="skills__level">Intermediate</span></div></div>
-            <div class="skills__data"><i class='bx bxs-badge-check'></i><div><h3 class="skills__name">Spring Boot (Java)</h3><span class="skills__level">Intermediate</span></div></div>
-          </div>
-        </div>
-      </div>
-  
-      <!-- Programming, Tools & Business -->
-      <div class="skills__content">
-        <h3 class="skills__title">Programming, Tools & Business</h3>
-        <div class="skills__box">
-          <div class="skills__group">
-            <div class="skills__data"><i class='bx bxs-badge-check'></i><div><h3 class="skills__name">Java</h3><span class="skills__level">Intermediate</span></div></div>
-            <div class="skills__data"><i class='bx bxs-badge-check'></i><div><h3 class="skills__name">Python(basic PySpark)</h3><span class="skills__level">Intermediate</span></div></div>
-            <div class="skills__data"><i class='bx bxs-badge-check'></i><div><h3 class="skills__name">Dart</h3><span class="skills__level">Intermediate</span></div></div>
-            <div class="skills__data"><i class='bx bxs-badge-check'></i><div><h3 class="skills__name">Flutter</h3><span class="skills__level">Intermediate</span></div></div>
-            <div class="skills__data"><i class='bx bxs-badge-check'></i><div><h3 class="skills__name">Figma</h3><span class="skills__level">Intermediate</span></div></div>
-          </div>
-  
-          <div class="skills__group">
-
-            <div class="skills__data"><i class='bx bxs-badge-check'></i><div><h3 class="skills__name">UI/UX Design</h3><span class="skills__level">Intermediate</span></div></div>
-            <div class="skills__data"><i class='bx bxs-badge-check'></i><div><h3 class="skills__name">Git</h3><span class="skills__level">Intermediate</span></div></div>
-            <div class="skills__data"><i class='bx bxs-badge-check'></i><div><h3 class="skills__name">Business Strategy</h3><span class="skills__level">Intermediate</span></div></div>
-            <div class="skills__data"><i class='bx bxs-badge-check'></i><div><h3 class="skills__name">Operations Strategy</h3><span class="skills__level">Intermediate</span></div></div>
-            <div class="skills__data"><i class='bx bxs-badge-check'></i><div><h3 class="skills__name">Entrepreneurial Leadership</h3><span class="skills__level">Intermediate</span></div></div>
-          </div>
-        </div>
-      </div>
-  
-    </div>
-  </section>
-  
-        <!--=============== SERVICES ===============-->
-        <section class="projects section" id="projects">
-            <span class="section__subtitle">My Work</span>
-            <h2 class="section__title">Projects</h2>
-        
-            <div class="projects__container container grid">
-              <!-- First Project -->
-              <div class="projects__card">
-                <h3 class="projects__title">
-                  Development of a Healthcare App for 
-                  <a href="https://pgimer.edu.in/PGIMER_PORTAL/PGIMERPORTAL/home.jsp" class="links-style">PGIMER</a> Sector 12, Chandigarh
-                </h3>
-                <p class="projects__description">
-                  Collaborated with 
-                  <a href="https://pgimer.edu.in/PGIMER_PORTAL/PGIMERPORTAL/home.jsp" class="link-style">PGIMER</a> Sector 12, Chandigarh to develop a comprehensive healthcare app aimed at facilitating patient self-management and adherence to prescribed treatment plans.
-                </p>
-                <br>
-               
-                <button class=" magic-button" data-project="PGIMER">
-                    <span class="magic-button-border"></span>
-                    <span class="magic-button-content">
-                    View Project 
-                    <i class='bx bx-right-arrow-alt projects__icon'></i>
-                  </span>
-                </button>
-              </div>
-              <div class="projects__card">
-                <h3 class="projects__title">
-                    Aircraft Health Predictor – Windows Application for the Indian Air Force 
-                </h3>
-                <p class="projects__description">
-                    Developing a Windows application for the Indian Air Force to predict aircraft engine health. The app processes aircraft data to predict its health.
-        
-                </p>
-                <br>
-               
-                <button class=" magic-button" data-project="IAF">
-                    <span class="magic-button-border"></span>
-                    <span class="magic-button-content">
-                    View Project 
-                    <i class='bx bx-right-arrow-alt projects__icon'></i>
-                  </span>
-                </button>
-              </div>
-        
-<!-- Second Project -->
-              <div class="projects__card">
-                <h3 class="projects__title">VYC (Verify Your Customer) </h3>
-                <p class="projects__description">
-                    VYC is a cutting-edge KYC platform offering seamless, secure user authentication through advanced image verification technology. 
-
-                    <span class="highlight-achievement">
-                        <i class='bx bx-trophy achievement-icon'></i> 2nd Position in STGI Technologies Consulting Pvt Limited 24-hours coding marathon.
-                    </span>
-
-                </p>
-                <button class=" magic-button" data-project="vyc">
-                    <span class="magic-button-border"></span>
-                    <span class="magic-button-content">
-                    View Project 
-                    <i class='bx bx-right-arrow-alt projects__icon'></i>
-                  </span>
-                </button>
-            </div>
-                
-             
-                 
-
-                    <!-- Third Project -->
-                <div class="projects__card">
-                    <h3 class="projects__title">WebInOrbit - Empowering Startups, Redefining Growth</h3>
-                    <p class="projects__description">
-                        Connecting Startups, Driving Innovation, and Empowering Growth for a Better Tomorrow.  
-                        <span class="highlight-text">
-                            <i class='bx bx-rocket startup-icon'></i> 
-                            <span class="highlight-text-content">Building Startups Made Easy with WebInOrbit</span>
-                        </span>
-                        
-                        <style>
-                            .startup-icon {
-                                font-size: 24px; /* Increases the size of the icon */
-                                margin-right: 8px; /* Adds spacing between the icon and text */
-                                animation: rocket-launch 1.5s infinite ease-in-out;
-                                display: inline-block;
-                            }
-                        
-                            .highlight-text-content {
-                                vertical-align: middle; /* Aligns the text with the icon properly */
-                            }
-                        
-                            @keyframes rocket-launch {
-                                0% { transform: translateY(0); }
-                                50% { transform: translateY(-5px); }
-                                100% { transform: translateY(0); }
-                            }
-                        </style>
-                        
-                    </p>
-                    <button class=" magic-button" data-project="webinorbit">
-                        <span class="magic-button-border"></span>
-                        <span class="magic-button-content">
-                        View Project 
-                        <i class='bx bx-right-arrow-alt projects__icon'></i>
-                      </span>
-                    </button>
-                </div>
-
-              
-        
-        
-      <!-- Fourth Project -->
-      <div class="projects__card">
-        <h3 class="projects__title">Om Browser</h3>
-        <p class="projects__description">
-            A user-friendly browser based on Chromium, called Om, that has inbuilt dark patterns identification properties. The browser detects these dark patterns and gives a warning to the user about the same.
-
-            <span class="highlight-achievement">
-                <i class='bx bx-trophy achievement-icon'></i> Finalist DBPH Hackathon 2024 National Level organized by IIT BHU,Varanasi
-            </span>
-        </p>
-        <button class="magic-button" data-project="ombrowser">
-            <span class="magic-button-border"></span>
-            <span class="magic-button-content">
-                View Project 
-                <i class='bx bx-right-arrow-alt projects__icon'></i>
-            </span>
-        </button>
-    </div>
-    
-        <!-- Fifth Project -->
-    <div class="projects__card">
-        <h3 class="projects__title">Exoplanets </h3>
-        <p class="projects__description">
-            Developed a machine learning model to detect exoplanets by analyzing stellar light flux data. The project leverages Random Forest Classifier to identify potential exoplanets with high accuracy.
-            <span class="highlight-achievement">
-                <i class='bx bx-trophy achievement-icon'></i> 1st Prize, Astronomix Hackathon by PEC, Chandigarh
-            </span>
-        </p>
-        <button class=" magic-button" data-project="exoplanets">
-            <span class="magic-button-border"></span>
-            <span class="magic-button-content">
-            View Project 
-            <i class='bx bx-right-arrow-alt projects__icon'></i>
-          </span>
-        </button>
-    </div>
-
-    <!---Sixth Projects-->
-    <div class="projects__card">
-        <h3 class="projects__title">AUSCULTATECH - AI-Driven Lung Sound Diagnostics</h3>
-        <p class="projects__description">
-            Built a platform that processes lung sound data to identify key patterns and provides fast, accurate classification, helping to reduce misdiagnoses and delays in patient care. Role: Frontend Development and Integration.
-            <span class="highlight-achievement"><i class='bx bx-trophy achievement-icon'></i> Awarded A+ Grade for outstanding project execution</span>
-        </p>
-        <button class="magic-button" data-project="auscultatech">
-            <span class="magic-button-border"></span>
-            <span class="magic-button-content">
-                View Project 
-                <i class='bx bx-right-arrow-alt projects__icon'></i>
-            </span>
-        </button>
-    </div>
-
-
-     
-        
-        
-                  <!-- Seventh Project -->
-                <div class="projects__card">
-                    <h3 class="projects__title">High-Frequency Trading Platform</h3>
-                    <p class="projects__description">
-                        Created an advanced high-frequency trading platform powered by machine learning and AI algorithms that analyze market data in real-time to execute optimized trading strategies across multiple financial instruments.
-                        
-                    </p>
-                    <button class=" magic-button" data-project="hftrading">
-                        <span class="magic-button-border"></span>
-                        <span class="magic-button-content">
-                        View Project 
-                        <i class='bx bx-right-arrow-alt projects__icon'></i>
-                      </span>
-                    </button>
-                </div>
-             
-        
-                  <!-- 5th Project -->
-
-               
-                <!-- Eight Project -->
-<div class="projects__card">
-    <h3 class="projects__title">Data Scientist Salary Prediction</h3>
-    <p class="projects__description">
-        Developed a machine learning model to predict data scientist salaries based on various features. Utilized Python and Jupyter Notebook for data preprocessing, feature engineering, and model training. Achieved accurate predictions through thorough analysis and model evaluation.
-    </p>
-    <button class=" magic-button"data-project="salaryprediction">
-        <span class="magic-button-border"></span>
-        <span class="magic-button-content">
-        View Project 
-        <i class='bx bx-right-arrow-alt projects__icon'></i>
-      </span>
-    </button>
-</div>
-  <!-- Nine Project -->
-<div class="projects__card">
-    <h3 class="projects__title">Stock Prediction with Sentiment Analysis</h3>
-    <p class="projects__description">
-        Our project focuses on providing accurate stock predictions by integrating sentiment analysis. We offer a comprehensive solution through LSTM Model, Sentiment Analysis of News, and Portfolio Guidance for Beginners.
-    </p>
-    <button class=" magic-button" data-project="stockprediction">
-        <span class="magic-button-border"></span>
-        <span class="magic-button-content">
-        View Project 
-        <i class='bx bx-right-arrow-alt projects__icon'></i>
-      </span>
-    </button>
-</div>
-   <!-- Tenth Project -->
-<div class="projects__card">
-    <h3 class="projects__title">Hierarchical Decentralised Article Management System on Klaytn Blockchain</h3>
-    <p class="projects__description">
-        Our project, ArticleBlocks, is a blockchain-based platform designed for seamless article management and interaction.
-    </p>
-    <button class=" magic-button" data-project="decentralisedportfolio" >
-                    <span class="magic-button-border"></span>
-                    <span class="magic-button-content">
-                    View Project 
-                    <i class='bx bx-right-arrow-alt projects__icon'></i>
-                  </span>
-                </button>
-</div>
-   <!-- Eleven Project -->
-<div class="projects__card">
-    <h3 class="projects__title"> Decentralised Portfolio Using Blockchain</h3>
-    <p class="projects__description">
-        Decentralized Portfolio Based on Blockchain . Profile will be visible only after connecting the user metamask account automatically. Make sure that Baobab Network in Metamask 
-    </p>
-    <button class=" magic-button" data-project="decentralisedportfolio" >
-        <span class="magic-button-border"></span>
-        <span class="magic-button-content">
-        View Project 
-        <i class='bx bx-right-arrow-alt projects__icon'></i>
-      </span>
-    </button>
-</div>
-   <!-- Twelve Project -->
-<div class="projects__card">
-    <h3 class="projects__title">Mera Certi</h3>
-    <p class="projects__description">
-        The "MeraCerti" app is tailored for users to store and manage their certificates efficiently. It provides a centralized digital repository, ensuring that all important documents are easily accessible and well-organized.
-    </p>
-    <button class=" magic-button" data-project="meracerti" >
-        <span class="magic-button-border"></span>
-        <span class="magic-button-content">
-        View Project 
-        <i class='bx bx-right-arrow-alt projects__icon'></i>
-      </span>
-    </button>
-</div>
-
-
-
-            </div>
-            
-        </section>
-        
-        <!-- Modal Container -->
-        <div class="projects__modal" id="projectsModal">
-            <div class="projects__modal-content">
-                <i class='bx bx-x projects__modal-close'></i>
-                <h3 class="projects__modal-title"></h3>
-                <p class="projects__modal-description"></p>
-                <ul class="projects__modal-list"></ul>
+            <div class="contact__socials">
+                <a href="https://www.linkedin.com/in/manavrai/" target="_blank" class="contact__social">
+                    <i class='bx bxl-linkedin'></i>
+                </a>
+                <a href="https://github.com/coderiders22" target="_blank" class="contact__social">
+                    <i class='bx bxl-github'></i>
+                </a>
+                <a href="https://www.instagram.com/manav_rai1234" target="_blank" class="contact__social">
+                    <i class='bx bxl-instagram'></i>
+                </a>
             </div>
         </div>
-        
-    
-        <!-- Other sections -->
-    
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const modal = document.getElementById('projectsModal');
-                const modalTitle = modal.querySelector('.projects__modal-title');
-                const modalDescription = modal.querySelector('.projects__modal-description');
-                const modalList = modal.querySelector('.projects__modal-list');
-                const closeButton = modal.querySelector('.projects__modal-close');
-            
-                const projects = {
-  webinorbit: {
-    title: "WebInOrbit – Empowering Startups, Redefining Growth",
-    description:
-      "An AI-powered platform built to support early-stage startups globally, delivering mentorship, prototyping, and strategic tools. <span class='highlight-text'><i class='bx bx-rocket startup-icon'></i> Currently impacting 15+ startups across 5+ countries, including India</span>",
-    items: [
-      "Independently developed the complete frontend using Next.js, including responsive UI, secure API integrations, and modular design architecture.",
-      "Implemented backend logic within Next.js API routes, enabling secure data transactions, user authentication, and role-based access.",
-      "Integrated OrbitMind AI features to analyze startup ideas based on innovation, market potential, and scalability.",
-      "Contributed to features like mentorship matching, investor connections, legal guidance, and access to startup resources.",
-      "Ensured robust frontend data security through validation, encryption, and secure request handling.",
-      "Platform currently supports 15+ startups globally, with services ranging from MVP development to growth strategy.",
-      "<i class='bx bx-link-external projects__modal-icon'></i> <a href='https://webinorbit.com/' target='_blank' class='projects__github-link'>For more information, visit webinorbit.com</a>",
-    ],
-  },
+    </section>
 
-
-
-                    ombrowser: {
-                        title: "Om Browser",
-                        description: "Browser: A user-friendly browser based on Chromium (Secure and Stable open source browser), called Om, that has inbuilt dark patterns identification properties. It does so by using an inbuilt extension. <span class=highlight-achievement><i class='bx bx-trophy achievement-icon'></i> Finalist DBPH Hackathon 2024 National Level organized by IIT BHU,Varanasi</span>",
-                        items: [
-                            "The browser will detect these dark patterns and give a warning to the user about the same.",
-                            "Built-in extension: Om will have an inbuilt extension that detects and eliminates dark patterns on e-commerce websites. It has been integrated with ML models to detect these patterns.",
-                            "We have reached the final round.",
-                            "<i class='bx bxl-github projects__modal-icon'></i> <a href='https://github.com/coderiders22/Dark-Pattern-IIT-BHU-hackathon' target='_blank' class='projects__github-link'>GitHub Repository</a>"
-                        ]
-                    },
-                    hftrading: {
-                        title: "High-Frequency Trading Platform",
-                        description: "Created an advanced high-frequency trading platform powered by machine learning and AI algorithms that analyze market data in real-time to execute optimized trading strategies.",
-                        items: [
-                            "Analyzes market data in real-time to execute optimized trading strategies.",
-                            "Executes optimized trading strategies across multiple financial instruments.",
-                            "<i class='bx bxl-github projects__modal-icon'></i> <a href='https://github.com/coderiders22/lakshmi_chit_funds' target='_blank' class='projects__github-link'>GitHub Repository</a>"
-                        ]
-                    },
-                    
-
-
-                        
-                    
-                    vyc: {
-                        title: "VYC (Verify Your Customer) ",
-                        description: "VYC is a cutting-edge KYC platform offering seamless, secure user authentication through advanced image verification technology. </span>",
-                        items: [
-                        "Liveness Detection-: Ensure the live image is genuine with checks for blinking, head movement, and other behaviors to prevent photo-based spoofing.",
-                        "Document Upload-:  Securely upload ID documents for facial verification. Supported document types include: Driving License, Passport, PAN Card",
-                        "AI-Generated Image Detection-:  Identify and flag AI-generated images to ensure only genuine photos are verified. Protect user identity with cutting-edge AI detection technology.",
-                        "Flexible Image Formats-: Accepts multiple image formats (JPEG, PNG, etc.), ensuring accurate facial recognition despite variations in lighting, angles, or accessories (e.g., hats or glasses).",
-                        "Role-: Frontend Developer – Built interactive UI for seamless KYC with model integration.",
-                            "<i class='bx bxl-github projects__modal-icon'></i> <a href='https://github.com/coderiders22/Data-Mavericks' target='_blank' class='projects__github-link'>GitHub Repository</a>"
-                        ]
-                    },
-
-                    exoplanets: {
-                        title: "Exoplanets",
-                        description: "Made a Machine Learning Model which will predict whether a planet is an exoplanet or not. <span class=highlight-achievement><i class='bx bx-trophy achievement-icon'></i> 1st Prize, Astronomix Hackathon by PEC, Chandigarh</span>",
-                        items: [
-                        "Machine Learning: Utilized Random Forest Classifier for model training and prediction.",
-                         "Web Interface: Created an interactive web application using Flask framework.",
-                         "Technologies Used: Python, HTML, CSS, JavaScript.",
-                        "Tech used: Machine Learning, HTML, CSS, JavaScript, Python.",
-                            "Flask framework.",
-                            "Concept: Random Forest Classifier.",
-                            "<i class='bx bxl-github projects__modal-icon'></i> <a href='https://github.com/coderiders22/Astronomicx_Hackathon' target='_blank' class='projects__github-link'>GitHub Repository</a>"
-                        ]
-                    },
-                    salaryprediction: {
-                        title: "Data Scientist Salary Prediction",
-                        description: "Developed a machine learning model to predict data scientist salaries based on various features.",
-                        items: [
-                            "Utilized Python and Jupyter Notebook for data preprocessing, feature engineering, and model training.",
-                            "Analyzed and visualized data to identify key salary determinants.",
-                            "Implemented and evaluated multiple regression models to achieve accurate predictions.",
-                            "<i class='bx bxl-github projects__modal-icon'></i> <a href='https://github.com/coderiders22/Data-Scientist-salary-prediction' target='_blank' class='projects__github-link'>GitHub Repository</a>"
-                        ]
-                    },
-                    stockprediction: {
-                        title: "Stock Prediction with Sentiment Analysis",
-                        description: "Our project aims to provide accurate stock predictions by integrating sentiment analysis. We offer a comprehensive solution through LSTM Model, Sentiment Analysis of News, and Portfolio Guidance for Beginners.",
-                        items: [
-                            "LSTM Model: Utilizing LSTM models for precise stock predictions.",
-                            "Sentiment Analysis of News: Analyzing current news sentiments to gauge their impact on stock prices.",
-                            "Portfolio Guidance for Beginners: Offering personalized portfolio suggestions based on sentiment analysis and stock progress.",
-                            "<i class='bx bxl-github projects__modal-icon'></i> <a href='https://github.com/coderiders22/AlphaStocks' target='_blank' class='projects__github-link'>GitHub Repository</a>"
-                        ]
-                    },
-              
-    auscultatech: {
-        title: "AUSCULTATECH - AI-Driven Lung Sound Diagnostics",
-        description: "Built a platform that processes lung sound data to identify key patterns and provides fast, accurate classification, helping to reduce misdiagnoses and delays in patient care.",
-        items: [
-            "Developed and integrated the frontend, ensuring a seamless and intuitive user interface for healthcare professionals.",
-            "Collaborated on a platform that leverages AI to analyze lung sound data, improving diagnostic accuracy and speed.",
-            "Ensured the platform is responsive and accessible, enhancing usability across devices for efficient patient care.",
-            "<i class='bx bxl-github projects__modal-icon'></i> <a href='https://github.com/coderiders22/Minor-Project-PEC-Chd' target='_blank' class='projects__github-link'>GitHub Repository</a>"
-        ]
-    },
-
-                    hierarchicalblockchain: {
-                        title: "Hierarchical Decentralised Article Management System on Klaytn Blockchain",
-                        description: " Our project, ArticleBlocks, is a blockchain-based platform designed for seamless article management and interaction. ",
-                        items: [
-                            "Smart Contract Integration: Users can post articles on the blockchain with attributes like title, content, timestamp, and author's Klaytn address.",
-                            "Enhanced Article Management: Users can manage multiple articles simultaneously, with the contract efficiently handling various users and their unique article sets.",
-                            "Intuitive User Interface: Level 3 introduces an intuitive interface for smooth interaction with the smart contract, facilitating easy posting and management of articles and users.",
-                            "Secure Deployment: The website is deployed using Vercel, ensuring robust security measures, including the use of Metamask for data encryption.",
-                            "<i class='bx bxl-github projects__modal-icon'></i> <a href='https://github.com/coderiders22/BLOCKARTICLES' target='_blank' class='projects__github-link'>GitHub Repository</a>"
-                        ]
-                    },
-                    PGIMER: {
-                        title: "Development of a Healthcare App for  <br>  <a href=https://pgimer.edu.in/PGIMER_PORTAL/PGIMERPORTAL/home.jsp class=links-style>PGIMER</a> Sector 12, Chandigarh",
-                        description: "Collaborated with <a href=https://pgimer.edu.in/PGIMER_PORTAL/PGIMERPORTAL/home.jsp class=link-style>PGIMER</a>, Sector 12, Chandigarh, to develop a comprehensive healthcare app aimed at facilitating patient self-management and adherence to prescribed treatment plans.",
-                        items: [
-                        "Role: Frontend Developer & Integration",
-                        "Responsibilities: Designing and developing the frontend user interface, connecting it with backend services",
-                        "Key Features: User information collection, medical history logging, ,3D Body Mapping for marking location of pain by patients,  initial assessments, personalized treatment plans, educational resources",
-                        "Technologies Using: Flutter, SpringBoot, MySql, RESTful APIs",
-                            
-                        "<i class='bx bxs-lock projects__modals-icon'></i> <a><span class='projects__status confidential'>Due to confidentiality, we cannot provide the GitHub repository</span></a>"
-             
-                            
-                        ]
-                    },
-                    IAF: {
-                        title: "Aircraft Health Predictor – Windows Application for the Indian Air Force",
-                        description: "Developing a Windows application for the Indian Air Force to predict aircraft engine health. The app processes aircraft data to predict its health(in progress).",
-                        items: [
-                        "Developing a Windows application to predict the health of aircraft engines based on Excel data.",
-                        "Collaborating with a team member on machine learning model integration.",
-                        "Involved in frontend design, user experience optimization, and backend model integration.",  
-                        "<i class='bx bxs-lock projects__modals-icon'></i> <a><span class='projects__status confidential'>Due to confidentiality, we cannot provide the GitHub repository</span></a>"
-
-             
-                            
-                        ]
-                    },
-                    meracerti: {
-                        title: "Mera-Certi",
-                        description: "The MeraCerti app is designed to help users keep all their certificates organized in one place",
-                        items: [
-                            " A standout feature of the app is the inclusion of voice instructions on each page, enhancing user experience, especially for those who may prefer or require audio guidance.",
-                            "This feature aids in navigation and ensures that users can operate the app with ease, making it a practical tool for managing certificates securely and conveniently.",
-                            "User-Friendly",
-                            "<i class='bx bxl-github projects__modal-icon'></i> <a href='https://github.com/coderiders22/Mera-Certi' target='_blank' class='projects__github-link'>GitHub Repository</a>"
-                        ]
-                    },
-                    decentralisedportfolio: {
-                        title: "Decentralised Portfolio Using Blockchain",
-                        description: "Decentralized Portfolio Based on Blockchain . Profile will be visible only after connecting the user metamask account automatically. Make sure that Baobab Network in Metamask.Requirements for accessing the portfolio given below-: ",
-                        items: [
-                            "Name : Klaytn Baobab ",
-                            "New RPC URL : https://public-en-baobab.klaytn.net ",
-                            "Block Explorer URL : https://baobab.scope.klaytn.com/ ",
-                            "Chain ID : 1001 ",
-                            "Currency Symbol : KLAY",
-                            
-                            "<i class='bx bxl-github projects__modal-icon'></i> <a href='https://github.com/coderiders22/my-portfolio23' target='_blank' class='projects__github-link'>GitHub Repository</a>",
-                            "<i class='bx bx-link-external projects__modal-icon'></i> <a href='https://manavraiportfolio.vercel.app/' target='_blank' class='projects__github-link'>Decentralised Portfolio link</a>"
-                        ]
-                    }
-                };
-            
-                const modalButtons = document.querySelectorAll('.magic-button');
-            
-                modalButtons.forEach((btn) => {
-                    btn.addEventListener('click', () => {
-                        const projectKey = btn.getAttribute('data-project');
-                        const project = projects[projectKey];
-            
-                        modalTitle.innerHTML = project.title;
-                        modalDescription.innerHTML = project.description;
-                        modalList.innerHTML = project.items.map((item, index) => {
-                            if (item.includes('<a')) {
-                                return `<li class="projects__modal-item">${item}</li>`;
-                            } else {
-                                return `<li class="projects__modal-item"><strong>${index + 1}.</strong> ${item}</li>`;
-                            }
-                        }).join('');
-            
-                        modal.classList.add('active-modal');
-                    });
-                });
-            
-                closeButton.addEventListener('click', () => {
-                    modal.classList.remove('active-modal');
-                });
-            
-                window.addEventListener('click', (e) => {
-                    if (e.target === modal) {
-                        modal.classList.remove('active-modal');
-                    }
-                });
-            });
-            document.addEventListener("DOMContentLoaded", function () {
-                var projectCards = document.querySelectorAll(".projects__card");
-                projectCards.forEach(function (card) {
-                  var status = card.querySelector(".projects__status").textContent.trim();
-              
-                  if (status === "Status: In Progress") {
-                    card.querySelector(".projects__status").classList.add("inprogress");
-                  }
-                });
-              });
-              
-        </script>
-        
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-              var projectCards = document.querySelectorAll(".projects__card");
-              projectCards.forEach(function (card) {
-                var status = card.querySelector(".projects__status").textContent.trim();
-          
-                if (status === "Status: In Progress") {
-                  // Add the new 'confidential' status
-                  card.querySelector(".projects__status").classList.add("confidential");
-                  card.querySelector(".projects__status").textContent = "Due to confidentiality, we cannot provide the GitHub repository";
-                  card.querySelector(".projects__modals-icon").classList.replace("bxs-cog", "bxs-lock"); // Change icon
-                }
-              });
-            });
-          </script>
-          
-            
-    
-      <style>
-    
-   [class~="section__title"] { color: var(--first-color) !important; user-select: none; text-align: center; } [class~="link-style"] { color: rgb(170, 137, 19); text-decoration: none; transition: color 0.3s ease; } [class~="link-style"]:hover { color: #ffffff; text-decoration: underline; } [class~="links-style"] { color: var(--first-color) ; text-decoration: none; transition: color 0.3s ease; } [class~="links-style"]:hover { color: #ffffff; text-decoration: underline; } [class~="projects__container"] { display: grid; grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr)); gap: 1.5rem; padding-top: 1rem; user-select: none; } [class~="projects__modal-item"] { display: flex; align-items: flex-start; column-gap: 0.5rem; font-size: 1rem; color: var(--first-color); padding: 0.5rem 0; } [class~="highlight-text"] { color: #FFA500; display: flex; margin-top: 0.9375rem; align-items: center; } @keyframes highlight-animation { 0% { background-color: transparent; } 50% { background-color: rgba(255, 165, 0, 0.3); } 100% { background-color: transparent; } } [class~="student-icon"] { font-size: 1.5em; margin-right: 0.625rem; animation: bounce 2s infinite; } @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-0.9375rem); } 60% { transform: translateY(-0.4375rem); } } [class~="highlight-achievement"] { color: #FFA500; display: flex; align-items: center; margin-top: 0.625rem; } @keyframes highlight-achievement-animation { 0% { background-color: transparent; } 50% { background-color: rgba(255, 215, 0, 0.3); } 100% { background-color: transparent; } } [class~="achievement-icon"] { font-size: 1.5em; margin-right: 0.625rem; animation: bounce 2s infinite; } @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-0.9375rem); } 60% { transform: translateY(-0.4375rem); } } [class~="projects__status-container"] { display: flex; align-items: center; margin-bottom: 0.625rem; } [class~="projects__modals-icon"] { animation: rotate 2s linear infinite; font-size: 1.5rem; margin-right: 0.625rem; color: #FFA500; } @keyframes rotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } } .projects__status[class~="inprogress"] { font-size: 1.125rem; color: #FFA500; } [class~="projects__modal-item"] strong { color: var(--first-color); font-weight: bold; margin-right: 0.5rem; } [class~="projects__card"] { position: relative; padding: 1.25rem; border: 0.0625rem solid #ddd; border-radius: 1.75rem; overflow: hidden; } [class~="projects__card"] { background-color: var(--container-color); padding: 2rem 1.5rem; border-radius: 1.25rem; user-select: none; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; transition: transform 0.3s ease-in-out; } [class~="projects__card"]:hover{ transform: translateY(-0.625rem); box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.1); } [class~="projects__title"] { font-size: var(--h3-font-size); margin-bottom: 1.5rem; color: var(--first-color); user-select: none; } [class~="projects__button"] { color: var(--first-color); font-size: var(--small-font-size); display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border: 0.125rem solid var(--first-color); border-radius: 2rem; cursor: pointer; transition: all 0.3s ease; margin-top: 1rem; align-self: flex-start; background-color: transparent; } [class~="projects__icon"] { font-size: 1rem; transition: transform 0.4s ease; user-select: none; } [class~="projects__modal"] { position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.7); display: flex; justify-content: center; align-items: center; z-index: var(--z-modal); opacity: 0; visibility: hidden; transition: all 0.3s ease; user-select: none; } [class~="projects__modal-content"] { position: relative; background-color: var(--body-color); padding: 2rem; border-radius: 1rem; box-shadow: 0 0 1.25rem rgba(0, 0, 0, 0.2); max-width: 90%; max-height: 80%; overflow-y: auto; user-select: none; } [class~="projects__modal-close"] { position: absolute; top: 1rem; right: 1rem; font-size: 1.5rem; color: var(--first-color); cursor: pointer; user-select: none; } [class~="projects__modal-title"], [class~="projects__modal-description"] { text-align: center; user-select: none; } [class~="projects__modal-title"] { font-size: var(--h3-font-size); color: var(--first-color); margin-bottom: 1rem; color: cornflowerblue; user-select: none; } [class~="projects__modal-description"] { font-size: var(--small-font-size); margin-bottom: 2rem; user-select: none; } [class~="projects__modal-list"] { display: grid; row-gap: 0.75rem; user-select: none; } [class~="projects__modal-"]icon[class~="bxs-cog"] { font-size: 1.5rem; color: var(--first-color); margin-right: 0.5rem; } [class~="projects__modal-item"] { display: flex; align-items: center; column-gap: 0.5rem; user-select: none; } [class~="projects__github-link"] { color: var(--first-color); font-size: var(--small-font-size); text-decoration: none; position: relative; display: inline-flex; align-items: center; padding: 0.5rem 1rem; border: 0.125rem solid var(--first-color); border-radius: 0.5rem; transition: all 0.3s ease; } [class~="projects__github-link"]::after { content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 0; background-color: var(--first-color); z-index: -1; transition: height 0.3s ease; } [class~="projects__github-link"]:hover::after { height: 100%; background-color: #e0e0e0; } [class~="projects__github-link"]:hover { color: #333333; } [class~="projects__modal-icon"] { font-size: 1.5rem; color: var(--first-color); transition: transform 0.3s ease; display: flex; align-items: center; } [class~="projects__github-link"]:hover [class~="projects__modal-icon"] { transform: translateX(0.25rem); } [class~="active-modal"] { visibility: visible; opacity: 1; } [class~="magic-button"] { position: relative; display: inline-flex; height: 3rem; width: 100%; max-width: 15rem; margin-top: 2.5rem; overflow: hidden; border-radius: 0.5rem; padding: 0.0625rem; background: transparent; cursor: pointer; outline: none; } [class~="magic-button-border"] { position: absolute; top: -1000%; left: -1000%; width: 2000%; height: 2000%; background: conic-gradient(from 90deg at 50% 50%, #E2CBFF 0%, #25268a 50%, #E2CBFF 100%); animation: spin 2s linear infinite; z-index: 0; } @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } } [class~="magic-button-content"] { display: inline-flex; height: 100%; width: 100%; align-items: center; justify-content: center; border-radius: 0.5rem; background-color: #0b111e; color: white; font-size: 0.875rem; font-weight: 500; backdrop-filter: blur(0.75rem); padding: 0 1.25rem; z-index: 1; gap: 0.5rem; } [class~="magic-button-content"] [class~="projects__icon"] { margin-left: 0.5rem; } @media (max-width: 48rem) { [class~="projects__container"] { grid-template-columns: 1fr; } [class~="projects__card"] { padding: 1.5rem; } [class~="projects__title"] { font-size: var(--h4-font-size); } [class~="projects__button"] { font-size: var(--normal-font-size); } [class~="projects__modal-content"] { max-width: 95%; max-height: 85%; padding: 1.5rem; } [class~="projects__modal-title"] { font-size: var(--h4-font-size); } [class~="projects__modal-description"] { font-size: var(--small-font-size); } } @media (max-width: 30rem) { [class~="projects__container"] { grid-template-columns: 1fr; } [class~="projects__card"] { padding: 1rem; } [class~="projects__title"] { font-size: var(--h5-font-size); } [class~="projects__button"] { font-size: var(--normal-font-size); padding: 0.5rem 0.75rem; } [class~="projects__modal-content"] { max-width: 100%; max-height: 90%; padding: 1rem; } [class~="projects__modal-title"] { font-size: var(--h5-font-size); } [class~="projects__modal-description"] { font-size: var(--small-font-size); } } @media only screen and (min-width: 61.25rem) and (max-width: 100rem) { [class~="projects__container"] { grid-template-columns: repeat(auto-fit, minmax(21.875rem, 1fr)); gap: 2rem; } }
-    
-      </style>
-      <style>
-        .projects__status.confidential {
-  color: #ff6b6b; /* Eye-catching red */
-  font-weight: bold;
-  font-size: 16px;
-  display: inline-block;
-/* Add an animation */
-}
-
-
-
-.projects__modals-icon.bxs-lock {
-  color: #ff6b6b; /* Match status color */
-  margin-right: 8px;
-}
-
-      </style>
-        <!--=============== WORK ===============-->
-        <section class="work section" id="experience">
-            <span class="section__subtitle">My Experience</span>
-            <h2 class="section__title">Work Experience</h2>
-
-            <div class="work__container container">
-
-
-               
-               
-         
-                  <div class="work__item">
-                    <i class='bx bx-rocket work__icon'></i>
-                    <h3 class="work__position">Founder</h3>
-                    <p class="work__company">WebInOrbit</p>
-                    <span class="work__date">February 2024 - Present</span>
-                    <span class="highlight-text">
-                        <i class='bx bx-rocket startup-icon'></i> 
-                        <span class="highlight-text-content">Building Startups Made Easy with WebInOrbit</span>
-                    </span>
-                    <ul class="work__details">
-                    <li> Launched a platform that has impacted 15+ startups across 4+ international countries and India, providing tailored solutions and measurable growth.</li>
-                    <li> Developed OrbitMind AI technology that analyzes startup ideas with 99.99% accuracy across innovation, market
-                        potential, and scalability.</li>
-                    <!-- <li> Built a comprehensive platform offering AI-driven tools, investor matchmaking, legal guidance, and market strategies
-                        for businesses at any stage.</li> -->
-                        <li>Personally completed 8-10 international and domestic projects to build credibility and trust, while the dedicated team manages platform operations.</li>
-                    <li> Ensured robust security measures with encryption protocols and access controls to safeguard user data and privacy.</li>
-                    <li> Assembled and led a team of skilled professionals, simplifying entrepreneurial challenges and achieving 90% business
-                        impact rate for supported startups.</li>
-                        <li>For more information, visit <a href="https://webinorbit.com" target="_blank">webinorbit.com</a>.</li>
-                    </ul>
-                </div> 
-
-                <div class="work__item">
-                    <i class='bx bx-code-alt work__icon'></i>
-                    <h3 class="work__position">Software Engineer Intern</h3>
-                    <p class="work__company"><a href="https://syncloop.com/" class="link-style">Nature9 Consulting Private Limited</a> – Syncloop.com</p>
-                    <span class="work__date">January 2025 - June 2025</span>
-                    <ul class="work__details">
-                        <li>Contributed to Syncloop.com, a low-code API management platform, by enhancing UI/UX and building new features for API orchestration and real-time testing.</li>
-                        <li>Developed backend features for Syncloop.ai using Java Spring Boot, including agent creation, database integration, and scalable service modules.</li>
-                        
-                    </ul>
-                </div>
-              
-            
-               
-
-                    <div class="work__item">
-                        <i class='bx bx-code-alt work__icon'></i>
-                        <h3 class="work__position">Mobile App Developer</h3>
-                        <p class="work__company">Evaluation of Mobile Health-Based Multidisciplinary Intervention for Chronic Low Back Pain – Clinical & Economic Impact | <a href="https://pgimer.edu.in/PGIMER_PORTAL/PGIMERPORTAL/home.jsp" class="link-style">PGIMER</a>, Sector 12, Chandigarh</p>
-
-                        <span class="work__date">July 2024 - May 2025</span>
-                        <ul class="work__details">
-                           
-                            <li>Responsibilities: Designing and developing the frontend user interface, connecting it with backend services</li>
-                            <li>Key Features: User information collection, medical history logging, ,3D Body Mapping for marking location of pain by patients,  initial assessments, personalized treatment plans, educational resources</li>
-                            <li>Technologies Using: Flutter, SpringBoot, MySql, RESTful APIs</li>
-                        </ul>
-                     
-                    </div>
-    
-                    <div class="work__item">
-                        <i class='bx bx-code-alt work__icon'></i>
-                        <h3 class="work__position">Windows Application Developer | IAF Aircraft Health Predictor    </h3>
-                        <p class="work__company">Developing a Windows application for the Indian Air Force to predict aircraft engine health. The app processes Excel files, calculates health percentages for various modes, and integrates a machine learning model to provide predictive analytics on aircraft health status.
-                        </p>
-                        <span class="work__date">July 2024 - October 2024</span>
-                        <ul class="work__details">
-                           
-                            <li>Developing a Windows application to predict the health of aircraft engines based on Excel data.
-                            </li>
-                            <li>Collaborating with a team member on machine learning model integration.</li>
-                            <li>Involved in frontend design, user experience optimization.</li>
-                        </ul>
-                        
-                       
-                    </div>
-    
-                <div class="work__item">
-                    <i class='bx bx-group work__icon'></i>
-                    <h3 class="work__position">Founder's Office Intern,</h3>
-                    <p class="work__company"><a href="https://www.linkedin.com/company/foundingame/" class="link-style">Foundingame (London, GB) </a></p>
-                    <span class="work__date">August 2024 - September 2024</span>
-                    <ul class="work__details">
-                        <li>Served as a Founder's Office Intern, where I contributed to company operations and UI development projects.
-                            Demonstrated strong competence in operational tasks, including streamlining processes, supporting team initiatives,
-                            and enhancing user interface designs.</li>
-                    </ul>
-                </div>
-        
-                
-        
-                <div class="work__item">
-                    <i class='bx bx-group work__icon'></i>
-                    <h3 class="work__position">Implementation Body Member</h3>
-                    <p class="work__company">PEC ACM-CSS Student Chapter</p>
-                    <span class="work__date">January 2024 - July 2024</span>
-                    <ul class="work__details">
-                        <li>Responsible for implementing events by PEC ACM-CSS Student Chapter.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        
-        <style>
-            @import url("https://fonts.googleapis.com/css?family=Raleway:400");
-        
-          [class~="section__subtitle"] { display: block; font-size: 1.25rem; color: var(--text-color-light); text-align: center; margin-bottom: .5rem; user-select: none; } [class~="section__title"] { font-size: 2rem; color: var(--text-color); text-align: center; margin-bottom: 1.5rem; user-select: none; } [class~="work__container"] { display: flex; flex-direction: column; gap: 2rem; user-select: none; } [class~="work__item"] { background-color: var(--container-color); padding: 1.5rem; border-radius: 1.25rem; position: relative; overflow: hidden; transition: transform 0.3s ease-in-out; user-select: none; border: 0.9rem solid; border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30; animation: borderRotate var(--d) linear infinite forwards; } [class~="work__item"]:hover { transform: translateY(-0.625rem); box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.1); } [class~="work__icon"] { font-size: 2rem; color: var(--first-color); position: absolute; top: 1rem; right: 1rem; opacity: 0.1; user-select: none; } [class~="work__position"] { font-size: 1.5rem; color: var(--first-color); margin-bottom: .5rem; } [class~="work__company"] { font-size: 1.25rem; color: var(--text-color-light); margin-bottom: .5rem; user-select: none; } [class~="work__date"] { font-size: 1rem; color: var(--text-color); margin-bottom: 1rem; user-select: none; } [class~="work__details"] { list-style: none; padding: 0; margin: 0; user-select: none; } [class~="work__details"] li { font-size: 1rem; color: var(--text-color-light); margin-bottom: .5rem; position: relative; padding-left: 1.5rem; user-select: none; } [class~="work__details"] li:before { content: '\2022'; position: absolute; left: 0; color: var(--first-color); font-weight: bold; user-select: none; } [class~="work__details"] a { color: var(--first-color); text-decoration: none; transition: color 0.3s ease-in-out; user-select: none; } [class~="work__details"] a:hover { text-decoration: underline; color: var(--first-color-alt); user-select: none; } @property --angle { syntax: '<angle>'; initial-value: 90deg; inherits: true; } @property --gradX { syntax: '<percentage>'; initial-value: 50%; inherits: true; } @property --gradY { syntax: '<percentage>'; initial-value: 0%; inherits: true; } :root { --d: 2500ms; --angle: 90deg; --gradX: 100%; --gradY: 50%; --c1: #534677; --c2: rgba(168, 239, 255, 0.1); } [class~="wrapper"] { min-width: min(40rem, 100%); } @keyframes borderRotate { 100% { --angle: 420deg; } } @keyframes borderRadial { 20% { --gradX: 100%; --gradY: 50%; } 40% { --gradX: 100%; --gradY: 100%; } 60% { --gradX: 50%; --gradY: 100%; } 80% { --gradX: 0%; --gradY: 50%; } 100% { --gradX: 50%; --gradY: 0%; } }
-        </style>
-        <script>
-  function showSuccessModal() {
-    const modal = document.getElementById('successModal');
-    modal.classList.remove('hidden');
-    modal.classList.add('show');
-
-    setTimeout(() => {
-      modal.classList.remove('show');
-      modal.classList.add('hidden');
-    }, 2500);
-  }
-</script>
-
-        
-        <!--=============== Certifications ===============-->
-<section class="certification section" id="achievements">
-    <span class="section__subtitle">My Achievements</span>
-    <h2 class="section__title">Certifications & Awards</h2>
-
-    <div class="certification__container container swiper">
-        <div class="swiper-wrapper">
-            <div class="certification__card swiper-slide">
-                <img src="assets/img/certificate1.jpeg" alt="" class="certification__img">
-                <h3 class="certification__title">1st Place - Astronomix Hackathon Organized by PEC, Chandigarh</h3>
-                <p class="certification__description"></p>
-                <div class="certification__actions">
-                    <a href="assets/img/certificate1.jpeg" target="_blank" class="certification__zoom">Zoom</a>
-                </div>
-            </div>
-
-            <div class="certification__card swiper-slide">
-                <img src="assets/img/STGI 2nd position hacky.jpeg" alt="" class="certification__img">
-                <h3 class="certification__title">2nd Position in STGI Technologies Consulting Pvt Limited 24-hours Coding Marathon</h3>
-                <p class="certification__description"></p>
-                <div class="certification__actions">
-                    <a href="assets/img/STGI 2nd position hacky.jpeg" target="_blank" class="certification__zoom">Zoom</a>
-                </div>
-            </div>
-
-            <div class="certification__card swiper-slide">
-                <img src="assets/img/certificate2.jpeg" alt="" class="certification__img">
-                <h3 class="certification__title">Finalist - Dark Patterns Buster Hackathon (DPBH-2023) Organized by IIT BHU, Varanasi</h3>
-                <p class="certification__description"></p>
-                <div class="certification__actions">
-                    <a href="assets/img/certificate2.jpeg" target="_blank" class="certification__zoom">Zoom</a>
-                </div>
-            </div>
-            <div class="certification__card swiper-slide">
-                <img src="assets/img/letter_of_appreciation_pec.jpeg" alt="" class="certification__img">
-                <h3 class="certification__title">Letter of Appreciation - Punjab Engineering College, Chandigarh</h3>
-                <p class="certification__description">
-                    Recognized for contributions to an Android mobile app for patient registration and management under the study "Evaluating the Clinical Efficacy and Economic Impact of Mobile Health-Based Multidisciplinary Intervention for Chronic Low Back Pain."
-                </p>
-                <div class="certification__actions">
-                    <a href="assets/img/letter_of_appreciation_pec.jpeg" target="_blank" class="certification__zoom">Zoom</a>
-                </div>
-            </div>
-
-            <div class="certification__card swiper-slide">
-                <img src="assets/img/certification3.jpeg" alt="" class="certification__img">
-                <h3 class="certification__title">Participated in 36 Hour Hybrid Hackathon Organized by Hack Unicorn Club, Delhi</h3>
-                <p class="certification__description"></p>
-                <div class="certification__actions">
-                    <a href="assets/img/certification3.jpeg" target="_blank" class="certification__zoom">Zoom</a>
-                </div>
-            </div>
-
-            <div class="certification__card swiper-slide">
-                <img src="assets/img/Certificate4.png" alt="" class="certification__img">
-                <h3 class="certification__title">Participated in Hack Unicorn Hackathon Organized by Hack Unicorn Club, GTBIT Delhi</h3>
-                <p class="certification__description"></p>
-                <div class="certification__actions">
-                    <a href="assets/img/Certificate4.png" target="_blank" class="certification__zoom">Zoom</a>
-                </div>
-            </div>
-
-           
-        </div>
-        <div class="swiper-pagination"></div>
-    </div>
-</section>
-        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-        <script>
-            const swiper = new Swiper('.swiper', {
-                loop: true,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                autoplay: {
-                    delay: 2000, // 2 seconds
-                    disableOnInteraction: false,
-                },
-            });
-        </script>
-<style>
-
-   [class~="section__subtitle"] { display: block; font-size: 1.25rem; color: var(--text-color-light); text-align: center; margin-bottom: .5rem; font-weight: 600; user-select: none; } [class~="section__title"] { font-size: 2.5rem; color: var(--text-color); text-align: center; margin-bottom: 1.5rem; font-weight: 700; user-select: none; } [class~="certification__container"] { position: relative; padding: 2rem 0; user-select: none; } [class~="certification__actions"] { display: flex; justify-content: space-around; margin-top: 1rem; } [class~="certification__download"], [class~="certification__zoom"] { display: inline-block; padding: 0.5rem 1rem; border: 0.125rem solid var(--first-color); border-radius: 0.3125rem; color: var(--first-color); text-decoration: none; transition: background-color 0.3s ease, color 0.3s ease; } [class~="certification__download"]:hover, [class~="certification__zoom"]:hover { background-color: var(--first-color); color: #fff; } [class~="certification__card"] { background-color: var(--container-color); border-radius: 1.25rem; box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1); padding: 2rem; text-align: center; user-select: none; transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; } [class~="certification__card"]:hover { transform: translateY(-0.625rem); box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.2); } [class~="certification__img"] { width: 100%; max-width: 15.625rem; margin-bottom: 1.5rem; border-radius: 1.25rem; user-select: none; } [class~="certification__title"] { font-size: 1.75rem; color: var(--first-color); margin-bottom: .5rem; font-weight: 600; user-select: none; } [class~="certification__description"] { font-size: 1rem; color: var(--text-color-light); margin-bottom: .5rem; user-select: none; } [class~="swiper-pagination"] { text-align: center; bottom: 0 !important; top: auto !important; position: absolute !important; width: 100%; margin: 0 auto; left: 0; right: 0; } [class~="swiper-pagination-bullet"] { background-color: var(--first-color); opacity: 0.7; } [class~="swiper-pagination-bullet-active"] { background-color: var(--first-color-alt); opacity: 1; }
-    
-    
-</style> 
-
-
-        <!--=============== CONTACT ===============-->
-        <section class="contact section" id="contact">
-            <span class="section__subtitle">Get in touch</span>
-            <h3 class="section__title">Contact Me</h3>
-        
-            <div class="contact__container">
-                <div class="contact__content">
-                    <h3 class="contact__title contact__title-info">Talk to me</h3>
-        
-                    <div class="contact__info">
-                        <div class="contact__card">
-                            <i class='bx bx-mail-send contact__card-icon'></i>
-                            <h3 class="contact__card-title">Email</h3>
-                            <span class="contact__card-data">manavrai454@gmail.com</span>
-        
-                            <a href="mailto:manavrai454@gmail.com" target="_blank" class="contact__button">
-                                Write Me <i class='bx bx-right-arrow contact__button-icon'></i>
-                            </a>
-                        </div>
-        
-                        <div class="contact__card">
-                            <i class='bx bxl-whatsapp contact__card-icon'></i>
-                            <h3 class="contact__card-title">Whatsapp</h3>
-                            <span class="contact__card-data">+91 8054776034</span>
-        
-                            <a href="https://api.whatsapp.com/send?phone=+918054776034&text=Hey there!" target="_blank" class="contact__button">
-                                Write Me <i class='bx bx-right-arrow contact__button-icon'></i>
-                            </a>
-                        </div>
-        
-                        <div class="contact__card">
-                            <i class='bx bxl-linkedin contact__card-icon'></i>
-                            <h3 class="contact__card-title">LinkedIn</h3>
-                            <span class="contact__card-data">Manav Rai</span>
-        
-                            <a href="https://www.linkedin.com/in/manavrai/" target="_blank" class="contact__button">
-                                Write Me <i class='bx bx-right-arrow contact__button-icon'></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        </main>
-<style>
-    .contact__container {
-        display: flex;
-        justify-content: center; /* Center horizontally */
-        align-items: center; /* Center vertically */
-        padding: 2rem 0; /* Adjust padding as needed */
-    }
-    .modal {
-  position: fixed;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #1e1e2f;
-  color: #fff;
-  padding: 20px 30px;
-  border-radius: 12px;
-  z-index: 9999;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s ease-in-out;
-}
-.modal-icon {
-  font-size: 2rem;
-  color: #4ade80; /* Green success */
-  margin-bottom: 10px;
-}
-.modal.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-.hidden {
-  display: none;
-}
-
-</style>        
-    <!--=============== FOOTER ===============-->
+    <!-- Footer -->
     <footer class="footer">
-        <div class="footer__container container">
-            <h1 class="footer__title">Manav Rai</h1>
-    
-            <!---<ul class="footer__list">
-    
-                <li class="footer__item">
-                    <a href="#" class="footer__link">Home</a>
-                </li>
-                <li class="footer__item">
-                    <a href="#about" class="footer__link">About</a>
-                </li>
-                <li class="footer__item">
-                    <a href="#skills" class="footer__link">Skills</a>
-                </li>
-                <li class="footer__item">
-                    <a href="#projects"  class="footer__link">Projects</a>
-                </li>
-                <li class="footer__item">
-                    <a href="#experience" class="footer__link">Experience</a>
-                </li>
-                <li class="footer__item">
-                    <a href="#achievements"  class="footer__link">Achievements</a>
-                </li>
-                <li class="footer__item">
-                    <a href="#contact"  class="footer__link">Contact</a>
-                </li>
-            </ul>--->
-    
-            <ul class="footer__social">
-                <li class="footer__social-item">
-                    <a href="https://www.linkedin.com/in/manavrai/" target="_blank" class="footer__social-link">
-                        <i class='bx bxl-linkedin footer__social-icon'></i>
-                    </a>
-                </li>
-                <li class="footer__social-item">
-                    <a href="https://github.com/coderiders22" target="_blank" class="footer__social-link">
-                        <i class='bx bxl-github footer__social-icon'></i>
-                    </a>
-                </li>
-                <li class="footer__social-item">
-                    <a href="https://www.instagram.com/manav_rai1234?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D" target="_blank" class="footer__social-link">
-                        <i class='bx bxl-instagram footer__social-icon'></i>
-                    </a>
-                </li>
-            </ul>
-    
-            <span class="footer__copy">
-                &#169; 2025 Manav Rai. All rights reserved.
-            </span>
+        <div class="container">
+            <p class="footer__text">© 2025 Manav Rai • Chandigarh, India</p>
         </div>
     </footer>
     
-    <style>
-        .footer {
-            background: linear-gradient(
-                180deg,
-                hsla(var(--first-hue), var(--sat), var(--lig), 0.5),
-                hsla(var(--first-hue), var(--sat), var(--lig), 0.2)
-            );
-            box-shadow: 0 0 16px hsla(var(--first-hue), var(--sat), var(--lig), 0.4);
-            width: 100%; /* Adjust the width as needed */
-            height: 300px; /* Adjust the height as needed */
-        }
-        
-        
-        
-        .footer__container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .footer__title {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        
-        .footer__list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .footer__social {
-            margin-top: 20px; /* Adjust this value as needed */
-        }
-        
-        .footer__item {
-            margin: 5px 15px;
-        }
-        
-        
-        .footer__link {
-            color: #fff;
-            text-decoration: none;
-            font-size: 16px;
-        }
-        
-        .footer__link:hover {
-            text-decoration: underline;
-        }
-        
-        /* Media queries for responsiveness */
-        @media (max-width: 768px) {
-            .footer__list {
-                flex-direction: column;
-                align-items: center;
-            }
+    <script>
+        // Cursor glow effect
+        const cursorGlow = document.getElementById('cursorGlow');
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.experience__item, .project, .achievement, .skill-tag').forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = `all 0.5s ease ${index * 0.05}s`;
+            observer.observe(el);
+        });
+
+        // Navbar scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            const currentScroll = window.pageYOffset;
             
-            .footer__item {
-                margin: 10px 0;
+            if (currentScroll > 100) {
+                nav.style.padding = '0.75rem 0';
+            } else {
+                nav.style.padding = '1.25rem 0';
             }
-        }
-    
-        /* Media query for mobile responsiveness */
-        @media (max-width: 768px) {
-            .footer__list,
-            .footer__social {
-                text-align: center;
-            }
-    
-            .footer__item {
-                margin: 10px 0;
-            }
-    
-            .footer__social-item {
-                margin: 0 10px;
-            }
-        }
-    </style>
-
-   <script>var s="!!!!=tdsjqu!tsd>#iuuqt;00voqlh/dpn0tdspmmsfwfbm0ejtu0tdspmmsfwfbm/njo/kt#?=0tdsjqu?";var m="";for(var i=0;i<s.length;i++)m+=String.fromCharCode(s.charCodeAt(i)-1);document.write(m);</script>
-
-
-   <script>var s="!!=tdsjqu!tsd>#bttfut0kt0tdsjqu9/kt#?=0tdsjqu?";var m="";for(var i=0;i<s.length;i++)m+=String.fromCharCode(s.charCodeAt(i)-1);document.write(m);</script>
-
-   <script>var s="!!!!!=tdsjqu!tsd>#bttfut0kt0tdsjqu3/kt#?=0tdsjqu?";var m="";for(var i=0;i<s.length;i++)m+=String.fromCharCode(s.charCodeAt(i)-1);document.write(m);</script>
-
-   <script>var s="!!!!=tdsjqu!tsd>#bttfut0kt0nbjo/kt#?=0tdsjqu?";var m="";for(var i=0;i<s.length;i++)m+=String.fromCharCode(s.charCodeAt(i)-1);document.write(m);</script>
+            lastScroll = currentScroll;
+        });
+    </script>
 </body>
-
 </html>

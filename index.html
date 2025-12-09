@@ -1561,6 +1561,8 @@
     </style>
 </head>
 <body>
+    <!-- Load configuration (gitignored - contains sensitive URLs) -->
+    <script src="config.js"></script>
     <div class="bg-grid"></div>
     <div class="cursor-glow" id="cursorGlow"></div>
 
@@ -1581,8 +1583,8 @@
                 <button class="nav__mobile-toggle" id="navMobileToggle" aria-label="Menu">
                     <i class='bx bx-menu' id="menuIcon"></i>
                 </button>
+                </div>
             </div>
-        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -1630,7 +1632,7 @@
                 <div class="hero__image-container">
                     <div class="hero__image-frame">
                         <div class="hero__image-inner">
-                            <img src="assets/img/hero.png" alt="Manav Rai">
+                            <img src="https://res.cloudinary.com/dey7ajooy/image/upload/v1765300972/Screenshot_2025-12-09_at_6.50.41_PM-removebg-preview_1_m0egru.png" alt="Manav Rai">
             </div>
                 </div>
                     <div class="hero__card hero__card--top">
@@ -2007,9 +2009,9 @@
                 Open to discuss how I can contribute to your team.
             </p>
             <div class="contact__actions">
-                <a href="mailto:manavrai454@gmail.com?subject=Job%20Opportunity" class="btn btn--primary">
+                <button class="btn btn--primary" id="contactEmailBtn">
                     <i class='bx bx-envelope'></i> manavrai454@gmail.com
-                </a>
+                </button>
                 <a href="tel:+918054776034" class="btn btn--outline">
                     <i class='bx bx-phone'></i> +91 8054776034
                 </a>
@@ -2103,6 +2105,12 @@
         heroGetInTouch.addEventListener('click', () => {
             chatbotToggle.click();
         });
+
+        // Contact email button opens chatbot
+        const contactEmailBtn = document.getElementById('contactEmailBtn');
+        contactEmailBtn.addEventListener('click', () => {
+            chatbotToggle.click();
+        });
         const chatbotWindow = document.getElementById('chatbotWindow');
         const chatbotClose = document.getElementById('chatbotClose');
         const chatbotMessages = document.getElementById('chatbotMessages');
@@ -2113,8 +2121,8 @@
         const formBack = document.getElementById('formBack');
         const submitForm = document.getElementById('submitForm');
 
-        // Google Sheet Web App URL - Replace with your deployed script URL
-        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbx5kNIzLSiSF5dSokvDUTbMqsXFJevVlnVKPcGwnpx9sZ3ioHI8L7coFMdNzM0AQQ/exec';
+        // Google Sheet Web App URL - Loaded from config.js (gitignored)
+        const GOOGLE_SHEET_URL = (typeof CONFIG !== 'undefined' && CONFIG.GOOGLE_SHEET_URL) || '';
 
         let conversationState = 'initial';
         let recruiterData = {};
@@ -2179,7 +2187,7 @@ Which works better for you?`,
 
             contactOptions: [
                 { icon: 'bx-rocket', text: "Quick Message (Recommended)", action: 'form' },
-                { icon: 'bx-envelope', text: "Open email client", action: 'email' }
+                { icon: 'bx-envelope', text: "Open Gmail (with template)", action: 'email' }
             ],
 
             formIntro: `Great choice! 📝 Please fill in your details below. Manav will receive your message right away.
@@ -2301,10 +2309,40 @@ Feel free to explore the portfolio or let me know if you'd like to connect with 
                         showContactForm();
                         break;
                     case 'email':
-                        window.location.href = 'mailto:manavrai454@gmail.com?subject=Job%20Opportunity%20-%20From%20Portfolio';
-                        addBotMessage("Opening your email client... 📧");
+                        // Gmail compose URL with pre-built template
+                        const emailSubject = 'Job Opportunity - Regarding Full Stack Developer Position';
+                        const emailBody = `Hi Manav,
+
+I came across your portfolio and was impressed by your work!
+
+--- PLEASE FILL THE DETAILS BELOW ---
+
+My Name: [Your Name]
+Company: [Company Name]
+Position: [Job Title/Role]
+
+Brief about the opportunity:
+[Describe the role, responsibilities, and what you're looking for]
+
+Why I think you'd be a great fit:
+[Share what caught your attention in the portfolio]
+
+Next Steps:
+[Mention if you'd like to schedule a call, interview, etc.]
+
+--- END OF TEMPLATE ---
+
+Looking forward to hearing from you!
+
+Best regards,
+[Your Name]
+[Your Contact Number]`;
+                        
+                        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=manavrai454@gmail.com&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+                        window.open(gmailUrl, '_blank');
+                        addBotMessage("Opening Gmail... 📧 A pre-filled template is ready for you!");
                         setTimeout(() => addOptions([
-                            { icon: 'bx-rocket', text: "Send via Manav.AI instead", action: 'form' },
+                            { icon: 'bx-rocket', text: "Send via Quick Connect instead", action: 'form' },
                             { icon: 'bx-home', text: "Go back to start", action: 'restart' }
                         ]), 600);
                         break;
@@ -2402,8 +2440,8 @@ Feel free to explore the portfolio or let me know if you'd like to connect with 
                     <div class="chat-message-content">
                         <p style="margin-bottom: 12px;">Would you also like to send an email directly?</p>
                         <div class="chat-email-option">
-                            <button class="chat-email-btn" onclick="window.location.href='mailto:manavrai454@gmail.com?subject=From%20${encodeURIComponent(name)}%20-%20${encodeURIComponent(company || 'Portfolio')}&body=${encodeURIComponent(message)}'">
-                                <i class='bx bx-envelope'></i> Open Email
+                            <button class="chat-email-btn" onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=manavrai454@gmail.com&su=' + encodeURIComponent('Follow-up: ' + '${name}' + ' from ' + '${company || 'Portfolio'}') + '&body=' + encodeURIComponent('Hi Manav,\\n\\nThis is a follow-up to the message I just sent via Quick Connect.\\n\\n--- Original Message ---\\n${message}\\n--- End ---\\n\\nLooking forward to connecting!\\n\\nBest regards,\\n${name}\\n${email}'), '_blank')">
+                                <i class='bx bx-envelope'></i> Open Gmail
                             </button>
                         </div>
                     </div>
@@ -2422,7 +2460,7 @@ Feel free to explore the portfolio or let me know if you'd like to connect with 
             }
 
             submitForm.disabled = false;
-            submitForm.innerHTML = '<i class="bx bx-paper-plane"></i><span style="margin-left: 8px; font-size: 14px;">Send via Manav.AI</span>';
+            submitForm.innerHTML = '<i class="bx bx-paper-plane"></i><span style="margin-left: 8px; font-size: 14px;">Send Message</span>';
             scrollToBottom();
         });
 

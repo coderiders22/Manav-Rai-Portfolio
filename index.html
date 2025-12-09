@@ -35,6 +35,583 @@
             --glow-primary: 0 0 60px rgba(99, 102, 241, 0.3);
         }
 
+        /* ==================== QUICK CONNECT CHATBOT ==================== */
+        .chatbot-wrapper {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .chatbot-label {
+            background: linear-gradient(135deg, rgba(12, 15, 20, 0.95) 0%, rgba(18, 22, 29, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 10px 16px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            animation: labelSlide 0.5s ease, labelGlow 2s ease-in-out infinite;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .chatbot-label span {
+            color: var(--text-white);
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .chatbot-label i {
+            color: var(--accent-primary);
+            font-size: 18px;
+            animation: arrowBounce 1s ease-in-out infinite;
+        }
+
+        @keyframes labelSlide {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes labelGlow {
+            0%, 100% { border-color: rgba(99, 102, 241, 0.3); }
+            50% { border-color: rgba(99, 102, 241, 0.6); }
+        }
+
+        @keyframes arrowBounce {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(4px); }
+        }
+
+        .chatbot-toggle {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4), 0 0 0 0 rgba(99, 102, 241, 0.4);
+            transition: all 0.3s ease;
+            animation: chatbotPulse 2s infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes chatbotPulse {
+            0%, 100% { box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4), 0 0 0 0 rgba(99, 102, 241, 0.4); }
+            50% { box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4), 0 0 0 15px rgba(99, 102, 241, 0); }
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            animation: none;
+        }
+
+        .chatbot-toggle i {
+            font-size: 28px;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .chatbot-toggle.active i {
+            transform: rotate(180deg);
+        }
+
+        .chatbot-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent-warm);
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: badgeBounce 1s ease infinite;
+            border: 2px solid var(--bg-dark);
+        }
+
+        @keyframes badgeBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        .chatbot-window {
+            position: fixed;
+            bottom: 115px;
+            right: 30px;
+            width: 400px;
+            max-width: calc(100vw - 40px);
+            height: 580px;
+            max-height: calc(100vh - 150px);
+            background: var(--bg-card);
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5), 0 0 100px rgba(99, 102, 241, 0.1);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .chatbot-window.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-card) 100%);
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .chatbot-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .chatbot-avatar::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            width: 12px;
+            height: 12px;
+            background: #22c55e;
+            border-radius: 50%;
+            border: 2px solid var(--bg-card);
+        }
+
+        .chatbot-avatar span {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 600;
+            font-style: italic;
+            color: white;
+        }
+
+        .chatbot-info h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-white);
+            margin-bottom: 2px;
+        }
+
+        .chatbot-info p {
+            font-size: 12px;
+            color: var(--text-gray);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .chatbot-info p i {
+            color: #22c55e;
+            font-size: 8px;
+        }
+
+        .chatbot-close {
+            margin-left: auto;
+            background: rgba(255, 255, 255, 0.05);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .chatbot-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .chatbot-close i {
+            font-size: 20px;
+            color: var(--text-gray);
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .chatbot-messages::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .chatbot-messages::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .chatbot-messages::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        .chat-message {
+            display: flex;
+            gap: 12px;
+            animation: messageSlide 0.4s ease;
+        }
+
+        @keyframes messageSlide {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chat-message.user {
+            flex-direction: row-reverse;
+        }
+
+        .chat-message-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .chat-message-avatar span {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-weight: 600;
+            font-style: italic;
+            color: white;
+        }
+
+        .chat-message.user .chat-message-avatar {
+            background: var(--accent-secondary);
+        }
+
+        .chat-message.user .chat-message-avatar span {
+            font-family: 'DM Sans', sans-serif;
+            font-style: normal;
+        }
+
+        .chat-message-content {
+            max-width: 75%;
+            padding: 14px 18px;
+            border-radius: 20px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .chat-message.bot .chat-message-content {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-color);
+            border-bottom-left-radius: 6px;
+            color: var(--text-white);
+        }
+
+        .chat-message.user .chat-message-content {
+            background: var(--gradient-primary);
+            border-bottom-right-radius: 6px;
+            color: white;
+        }
+
+        .chat-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .chat-option-btn {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 12px 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 13px;
+            color: var(--text-white);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chat-option-btn:hover {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: var(--accent-primary);
+            transform: translateX(5px);
+        }
+
+        .chat-option-btn i {
+            font-size: 18px;
+            color: var(--accent-primary);
+        }
+
+        .chat-typing {
+            display: flex;
+            gap: 4px;
+            padding: 8px 0;
+        }
+
+        .chat-typing span {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            animation: typingBounce 1.4s infinite ease-in-out;
+        }
+
+        .chat-typing span:nth-child(1) { animation-delay: 0s; }
+        .chat-typing span:nth-child(2) { animation-delay: 0.2s; }
+        .chat-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typingBounce {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-8px); }
+        }
+
+        .chatbot-input-area {
+            padding: 16px 20px;
+            border-top: 1px solid var(--border-color);
+            background: var(--bg-elevated);
+        }
+
+        .chatbot-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chatbot-form-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chatbot-input {
+            flex: 1;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 14px 16px;
+            color: var(--text-white);
+            font-size: 14px;
+            font-family: 'DM Sans', sans-serif;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .chatbot-input:focus {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .chatbot-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .chatbot-textarea {
+            resize: none;
+            min-height: 80px;
+        }
+
+        .chatbot-send {
+            background: var(--gradient-primary);
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .chatbot-send:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        .chatbot-send:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .chatbot-send i {
+            font-size: 20px;
+            color: white;
+        }
+
+        .chat-form-container {
+            display: none;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chat-form-container.active {
+            display: flex;
+        }
+
+        .chat-form-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .chat-form-header span {
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        .chat-form-back {
+            background: none;
+            border: none;
+            color: var(--accent-primary);
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .chat-form-back:hover {
+            text-decoration: underline;
+        }
+
+        .chat-quick-input {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-quick-input.hidden {
+            display: none;
+        }
+
+        .chat-success {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .chat-success i {
+            font-size: 48px;
+            color: #22c55e;
+            margin-bottom: 15px;
+        }
+
+        .chat-success h4 {
+            font-size: 18px;
+            color: var(--text-white);
+            margin-bottom: 8px;
+        }
+
+        .chat-success p {
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        .chat-email-option {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+
+        .chat-email-btn {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid var(--accent-primary);
+            padding: 10px 20px;
+            border-radius: 10px;
+            color: var(--accent-primary);
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chat-email-btn:hover {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .chat-highlight {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .chatbot-label span {
+                font-size: 13px;
+            }
+            .chatbot-label {
+                padding: 8px 14px;
+            }
+            .chatbot-toggle {
+                width: 58px;
+                height: 58px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .chatbot-wrapper {
+                right: 15px;
+                bottom: 20px;
+            }
+            .chatbot-window {
+                right: 10px;
+                bottom: 100px;
+                width: calc(100vw - 20px);
+                height: calc(100vh - 130px);
+                border-radius: 20px;
+            }
+            .chatbot-toggle {
+                width: 54px;
+                height: 54px;
+            }
+            .chatbot-label {
+                padding: 8px 12px;
+            }
+            .chatbot-label span {
+                font-size: 12px;
+            }
+        }
+
+
         * {
             margin: 0;
             padding: 0;
@@ -123,6 +700,109 @@
             display: flex;
             gap: 3rem;
             list-style: none;
+        }
+
+        /* Nav right section - CV button + hamburger */
+        .nav__right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Mobile Menu Button - Hidden on desktop */
+        .nav__mobile-toggle {
+            display: none !important;
+            background: none;
+            border: none;
+            color: var(--text-white);
+            font-size: 26px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 101;
+        }
+
+        /* Desktop: show nav links */
+        @media (min-width: 769px) {
+            .nav__links {
+                display: flex !important;
+            }
+            .nav__mobile-toggle {
+                display: none !important;
+            }
+        }
+
+        /* Mobile: hamburger menu */
+        @media (max-width: 768px) {
+            .nav__mobile-toggle {
+                display: flex !important;
+            }
+            .nav__links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(5, 7, 10, 0.98);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 20px 2rem;
+                border-bottom: 1px solid var(--border-color);
+                gap: 0;
+            }
+            .nav__links.active {
+                display: flex !important;
+            }
+            .nav__links li {
+                padding: 14px 0;
+                border-bottom: 1px solid var(--border-color);
+            }
+            .nav__links li:last-child {
+                border-bottom: none;
+            }
+            .nav__links a {
+                font-size: 1rem;
+            }
+            /* Mobile: Show CV button next to hamburger */
+            .nav__cta {
+                display: inline-flex !important;
+                padding: 8px 14px;
+                font-size: 0.8rem;
+                margin-right: 10px;
+            }
+        }
+
+        /* Fast animations - no delay */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Remove bullet points - use arrows */
+        .experience__description {
+            list-style: none !important;
+            padding-left: 0 !important;
+            margin: 0.5rem 0 0 0;
+        }
+        .experience__description li {
+            padding: 6px 0;
+            padding-left: 22px;
+            position: relative;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .experience__description li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+            font-weight: 600;
         }
 
         .nav__links a {
@@ -746,7 +1426,7 @@
             border-radius: 50%;
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            display: flex;
+        display: flex;
             align-items: center;
             justify-content: center;
             color: var(--text-gray);
@@ -766,7 +1446,7 @@
         .footer {
             padding: 2rem 0;
             border-top: 1px solid var(--border-color);
-            text-align: center;
+  text-align: center;
         }
 
         .footer__text {
@@ -814,10 +1494,6 @@
                 display: none;
             }
 
-            .nav__links {
-                display: none;
-            }
-
             .experience__item {
                 grid-template-columns: 1fr;
                 gap: 0.5rem;
@@ -850,16 +1526,39 @@
                 gap: 1.5rem;
                 align-items: center;
             }
-
+            
             .metric {
                 text-align: center;
             }
-
+    
             .achievements__grid {
                 grid-template-columns: 1fr;
             }
         }
-      </style>
+
+        /* FINAL OVERRIDE: Desktop navigation - must be at end */
+        @media screen and (min-width: 769px) {
+            .nav__mobile-toggle {
+                display: none !important;
+                visibility: hidden !important;
+                width: 0 !important;
+                height: 0 !important;
+                overflow: hidden !important;
+            }
+            .nav__links {
+                display: flex !important;
+                position: static !important;
+                background: transparent !important;
+                flex-direction: row !important;
+                gap: 3rem !important;
+                padding: 0 !important;
+                border: none !important;
+            }
+            .nav__cta {
+                display: inline-flex !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="bg-grid"></div>
@@ -869,16 +1568,21 @@
     <nav class="nav">
         <div class="container">
             <a href="#" class="nav__logo">Manav<span>.</span></a>
-            <ul class="nav__links">
-                <li><a href="#about">About</a></li>
+            <ul class="nav__links" id="navLinks">
+                <li><a href="#hero">Home</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#achievements">Achievements</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
-                    </ul>
-            <a href="assets/pdf/MANAV RAI Resume.pdf" class="nav__cta" download>Download CV</a>
-                </div> 
+            </ul>
+            <div class="nav__right">
+                <a href="assets/pdf/MANAV RAI Resume.pdf" class="nav__cta" download>Download CV</a>
+                <button class="nav__mobile-toggle" id="navMobileToggle" aria-label="Menu">
+                    <i class='bx bx-menu' id="menuIcon"></i>
+                </button>
+            </div>
+        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -903,36 +1607,36 @@
                     <div class="metric">
                         <div class="metric__value">15+</div>
                         <div class="metric__label">Projects Built</div>
-                    </div>
+            </div>
                     <div class="metric">
                         <div class="metric__value">100+</div>
                         <div class="metric__label">Patients Impacted</div>
-                    </div>
+                </div>
                     <div class="metric">
                         <div class="metric__value">3</div>
                         <div class="metric__label">Hackathon Honors</div>
-                    </div>
+            </div>
                 </div>
                 <div class="hero__actions">
-                    <a href="mailto:manavrai454@gmail.com?subject=Job%20Opportunity" class="btn btn--primary">
-                        <i class='bx bx-envelope'></i> Get In Touch
-                    </a>
+                    <button class="btn btn--primary" id="heroGetInTouch">
+                        <i class='bx bx-message-rounded-dots'></i> Get In Touch
+                    </button>
                     <a href="#projects" class="btn btn--outline">
                         Explore Work <i class='bx bx-right-arrow-alt'></i>
                     </a>
-                </div>
             </div>
+                </div>
             <div class="hero__visual">
                 <div class="hero__image-container">
                     <div class="hero__image-frame">
                         <div class="hero__image-inner">
                             <img src="assets/img/hero.png" alt="Manav Rai">
-                        </div>
-                    </div>
+            </div>
+                </div>
                     <div class="hero__card hero__card--top">
                         <div class="hero__card-label">Recent Role</div>
                         <div class="hero__card-value">SDE Intern @ Syncloop</div>
-                    </div>
+            </div>
                     <div class="hero__card hero__card--bottom">
                         <div class="hero__card-label">Education</div>
                         <div class="hero__card-value">B.Tech @ PEC CHD</div>
@@ -948,7 +1652,7 @@
             <div class="section__header">
                 <span class="section__label">Professional Journey</span>
                 <h2 class="section__title">Work Experience</h2>
-            </div>
+        </div>
             <div class="experience__timeline">
                 <div class="experience__item">
                     <div class="experience__date">Jan 2025 - Jun 2025</div>
@@ -958,7 +1662,7 @@
                         <ul class="experience__description">
                             <li>Designed 3+ use cases and built key tools (flowchart builder, VS Code extension, Chathire.ai, product demo)</li>
                             <li>Built Spring Boot microservices for AI agent/team creation on Syncloop.ai, enabling SEO, access control, and workflow automation</li>
-                        </ul>
+                    </ul>
                     </div>
                 </div>
                 <div class="experience__item">
@@ -994,8 +1698,8 @@
                     </div>
                 </div>
                 </div>
-            </div>
-        </section>
+    </div>
+</section>
         
     <!-- Projects Section -->
     <section class="section" id="projects">
@@ -1140,9 +1844,9 @@
                 </div>
                     <a href="https://github.com/coderiders22/lakshmi_chit_funds" target="_blank" class="project__link">
                         View GitHub <i class='bx bx-right-arrow-alt'></i>
-                    </a>
-            </div>
-
+                            </a>
+                        </div>
+        
                 <!-- Stock Prediction -->
                 <div class="project">
                     <h3 class="project__title">Stock Prediction with Sentiment</h3>
@@ -1169,12 +1873,12 @@
                         <span>Python</span>
                         <span>Regression</span>
                         <span>Jupyter</span>
-        </div>
+                </div>
                     <a href="https://github.com/coderiders22/Data-Scientist-salary-prediction" target="_blank" class="project__link">
                         View GitHub <i class='bx bx-right-arrow-alt'></i>
-                    </a>
-    </div>
-
+                            </a>
+                        </div>
+        
                 <!-- Blockchain Article -->
                 <div class="project">
                     <h3 class="project__title">Decentralized Article Management</h3>
@@ -1185,12 +1889,12 @@
                         <span>Blockchain</span>
                         <span>Klaytn</span>
                         <span>Smart Contracts</span>
-                    </div>
+                </div>
                     <a href="https://github.com/coderiders22/BLOCKARTICLES" target="_blank" class="project__link">
                         View GitHub <i class='bx bx-right-arrow-alt'></i>
                             </a>
-                        </div>
-        
+            </div>
+
                 <!-- Mera Certi -->
                 <div class="project">
                     <h3 class="project__title">Mera Certi - Certificate Manager</h3>
@@ -1216,7 +1920,7 @@
             <div class="section__header">
                 <span class="section__label">Recognition</span>
                 <h2 class="section__title">Key Achievements</h2>
-            </div>
+        </div>
             <div class="achievements__grid">
                 <div class="achievement">
                     <div class="achievement__icon">🥇</div>
@@ -1237,10 +1941,10 @@
                     <div class="achievement__icon">📜</div>
                     <h3 class="achievement__title">Letter of Appreciation</h3>
                     <p class="achievement__subtitle">PEC for PGIMER Android Work</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
     <!-- Skills Section -->
     <section class="section" id="skills">
@@ -1294,7 +1998,7 @@
         </section>
 
     <!-- Contact Section -->
-    <section class="contact section" id="contact">
+        <section class="contact section" id="contact">
         <div class="container">
             <span class="section__label">Get In Touch</span>
             <h2 class="contact__title">Let's Work Together</h2>
@@ -1331,6 +2035,440 @@
         </div>
     </footer>
     
+    <!-- Quick Connect Assistant -->
+    <div class="chatbot-wrapper">
+        <div class="chatbot-label">
+            <span>Hire Me</span>
+            <i class='bx bx-right-arrow-alt'></i>
+        </div>
+        <button class="chatbot-toggle" id="chatbotToggle" aria-label="Quick Connect">
+            <span class="chatbot-badge">💬</span>
+            <i class='bx bx-message-rounded-dots'></i>
+        </button>
+    </div>
+
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chatbot-header">
+            <div class="chatbot-avatar">
+                <span>M</span>
+            </div>
+            <div class="chatbot-info">
+                <h4>Quick Connect</h4>
+                <p><i class='bx bxs-circle'></i> Available • Instant Response</p>
+            </div>
+            <button class="chatbot-close" id="chatbotClose">
+                <i class='bx bx-x'></i>
+            </button>
+                        </div>
+        
+        <div class="chatbot-messages" id="chatbotMessages">
+            <!-- Messages will be added here dynamically -->
+        </div>
+
+        <div class="chatbot-input-area">
+            <div class="chat-quick-input" id="quickInput">
+                <input type="text" class="chatbot-input" id="userInput" placeholder="Type your message...">
+                <button class="chatbot-send" id="sendBtn">
+                    <i class='bx bx-send'></i>
+                </button>
+                        </div>
+
+            <div class="chat-form-container" id="contactForm">
+                <div class="chat-form-header">
+                    <span>📝 Share your details</span>
+                    <button class="chat-form-back" id="formBack">
+                        <i class='bx bx-arrow-back'></i> Back
+                    </button>
+                    </div>
+                <input type="text" class="chatbot-input" id="recruiterName" placeholder="Your Name *">
+                <input type="email" class="chatbot-input" id="recruiterEmail" placeholder="Email Address *">
+                <input type="text" class="chatbot-input" id="recruiterCompany" placeholder="Company Name">
+                <textarea class="chatbot-input chatbot-textarea" id="recruiterMessage" placeholder="Your Message to Manav *"></textarea>
+                <div class="chatbot-form-row">
+                    <button class="chatbot-send" id="submitForm" style="flex:1; width: auto; border-radius: 12px;">
+                        <i class='bx bx-paper-plane'></i>
+                        <span style="margin-left: 8px; font-size: 14px;">Send Message</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // ==================== QUICK CONNECT CHATBOT ====================
+        const chatbotToggle = document.getElementById('chatbotToggle');
+        const heroGetInTouch = document.getElementById('heroGetInTouch');
+
+        // Hero "Get In Touch" button opens chatbot
+        heroGetInTouch.addEventListener('click', () => {
+            chatbotToggle.click();
+        });
+        const chatbotWindow = document.getElementById('chatbotWindow');
+        const chatbotClose = document.getElementById('chatbotClose');
+        const chatbotMessages = document.getElementById('chatbotMessages');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const quickInput = document.getElementById('quickInput');
+        const contactForm = document.getElementById('contactForm');
+        const formBack = document.getElementById('formBack');
+        const submitForm = document.getElementById('submitForm');
+
+        // Google Sheet Web App URL - Replace with your deployed script URL
+        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbx5kNIzLSiSF5dSokvDUTbMqsXFJevVlnVKPcGwnpx9sZ3ioHI8L7coFMdNzM0AQQ/exec';
+
+        let conversationState = 'initial';
+        let recruiterData = {};
+
+        // Bot responses
+        const botResponses = {
+            welcome: `Hey there! 👋 Welcome to <span class="chat-highlight">Quick Connect</span>.
+
+I'm here to help you learn about Manav's work and connect you with him directly!
+
+What brings you here today?`,
+            
+            options: [
+                { icon: 'bx-briefcase', text: "I'm looking to hire Manav", action: 'hire' },
+                { icon: 'bx-folder-open', text: "Tell me about his projects", action: 'projects' },
+                { icon: 'bx-code-alt', text: "What are his skills?", action: 'skills' },
+                { icon: 'bx-envelope', text: "I want to contact him", action: 'contact' }
+            ],
+
+            hire: `That's exciting! 🎉 Manav would love to hear from you.
+
+He's currently seeking <span class="chat-highlight">Full Stack Development</span> opportunities and has experience building production-grade apps for enterprises like PGIMER and Indian Air Force.
+
+How would you like to proceed?`,
+
+            hireOptions: [
+                { icon: 'bx-message-rounded-dots', text: "Send message here", action: 'form' },
+                { icon: 'bx-envelope', text: "Compose email directly", action: 'email' }
+            ],
+
+            projects: `Manav has worked on some impressive projects! Here are the highlights:
+
+🏥 <span class="chat-highlight">Healthcare App (PGIMER)</span> - Flutter app used by 100+ patients
+
+🚀 <span class="chat-highlight">WebInOrbit</span> - Full-stack startup platform for 15+ businesses
+
+🔐 <span class="chat-highlight">VYC Platform</span> - Won 2nd prize at 24-hour hackathon
+
+🌐 <span class="chat-highlight">Om Browser</span> - National Level Finalist at IIT BHU
+
+Want to explore more or connect with Manav?`,
+
+            skills: `Manav is a versatile Full Stack Developer! His tech stack includes:
+
+💻 <span class="chat-highlight">Languages:</span> Java, Python, JavaScript, Dart
+
+⚡ <span class="chat-highlight">Frameworks:</span> Spring Boot, Next.js, React, Flutter
+
+🗄️ <span class="chat-highlight">Databases:</span> PostgreSQL, MySQL
+
+🤖 <span class="chat-highlight">AI Tools:</span> OpenAI API, GitHub Copilot
+
+He's also skilled in building scalable microservices and mobile apps!`,
+
+            contact: `Perfect! You can reach Manav in two ways:
+
+1️⃣ <span class="chat-highlight">Quick Message</span> - Share your details here and Manav will be notified immediately
+
+2️⃣ <span class="chat-highlight">Direct Email</span> - Compose an email to manavrai454@gmail.com
+
+Which works better for you?`,
+
+            contactOptions: [
+                { icon: 'bx-rocket', text: "Quick Message (Recommended)", action: 'form' },
+                { icon: 'bx-envelope', text: "Open email client", action: 'email' }
+            ],
+
+            formIntro: `Great choice! 📝 Please fill in your details below. Manav will receive your message right away.
+
+<span style="font-size: 12px; color: var(--text-muted);">Your information is securely stored and only shared with Manav.</span>`,
+
+            success: `<div class="chat-success">
+                <i class='bx bx-check-circle'></i>
+                <h4>Message Sent Successfully! 🎉</h4>
+                <p>Manav will receive your message and get back to you within 24 hours.</p>
+            </div>`,
+
+            fallback: `I understand! Is there anything else I can help you with?
+
+Feel free to explore the portfolio or let me know if you'd like to connect with Manav.`
+        };
+
+        // Toggle chatbot
+        chatbotToggle.addEventListener('click', () => {
+            chatbotWindow.classList.add('active');
+            chatbotToggle.classList.add('active');
+            if (chatbotMessages.children.length === 0) {
+                setTimeout(() => showWelcome(), 500);
+            }
+        });
+
+        chatbotClose.addEventListener('click', () => {
+            chatbotWindow.classList.remove('active');
+            chatbotToggle.classList.remove('active');
+        });
+
+        // Show welcome message
+        function showWelcome() {
+            showTyping();
+            setTimeout(() => {
+                removeTyping();
+                addBotMessage(botResponses.welcome);
+                setTimeout(() => addOptions(botResponses.options), 800);
+            }, 1500);
+        }
+
+        // Add bot message
+        function addBotMessage(text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-message bot';
+            messageDiv.innerHTML = `
+                <div class="chat-message-avatar"><span>M</span></div>
+                <div class="chat-message-content">${text}</div>
+            `;
+            chatbotMessages.appendChild(messageDiv);
+            scrollToBottom();
+        }
+
+        // Add user message
+        function addUserMessage(text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-message user';
+            messageDiv.innerHTML = `
+                <div class="chat-message-avatar"><span>You</span></div>
+                <div class="chat-message-content">${text}</div>
+            `;
+            chatbotMessages.appendChild(messageDiv);
+            scrollToBottom();
+        }
+
+        // Add options
+        function addOptions(options) {
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'chat-message bot';
+            let optionsHTML = '<div class="chat-message-avatar"><span>M</span></div><div class="chat-message-content"><div class="chat-options">';
+            options.forEach(opt => {
+                optionsHTML += `<button class="chat-option-btn" data-action="${opt.action}">
+                    <i class='bx ${opt.icon}'></i> ${opt.text}
+                </button>`;
+            });
+            optionsHTML += '</div></div>';
+            optionsDiv.innerHTML = optionsHTML;
+            chatbotMessages.appendChild(optionsDiv);
+            scrollToBottom();
+
+            // Add click handlers
+            optionsDiv.querySelectorAll('.chat-option-btn').forEach(btn => {
+                btn.addEventListener('click', () => handleOptionClick(btn.dataset.action, btn.textContent.trim()));
+            });
+        }
+
+        // Handle option clicks
+        function handleOptionClick(action, text) {
+            addUserMessage(text);
+            showTyping();
+
+            setTimeout(() => {
+                removeTyping();
+                switch(action) {
+                    case 'hire':
+                        addBotMessage(botResponses.hire);
+                        setTimeout(() => addOptions(botResponses.hireOptions), 600);
+                        break;
+                    case 'projects':
+                        addBotMessage(botResponses.projects);
+                        setTimeout(() => addOptions([
+                            { icon: 'bx-briefcase', text: "I want to hire Manav", action: 'hire' },
+                            { icon: 'bx-home', text: "Go back to start", action: 'restart' }
+                        ]), 600);
+                        break;
+                    case 'skills':
+                        addBotMessage(botResponses.skills);
+                        setTimeout(() => addOptions([
+                            { icon: 'bx-briefcase', text: "I want to hire Manav", action: 'hire' },
+                            { icon: 'bx-home', text: "Go back to start", action: 'restart' }
+                        ]), 600);
+                        break;
+                    case 'contact':
+                        addBotMessage(botResponses.contact);
+                        setTimeout(() => addOptions(botResponses.contactOptions), 600);
+                        break;
+                    case 'form':
+                        addBotMessage(botResponses.formIntro);
+                        showContactForm();
+                        break;
+                    case 'email':
+                        window.location.href = 'mailto:manavrai454@gmail.com?subject=Job%20Opportunity%20-%20From%20Portfolio';
+                        addBotMessage("Opening your email client... 📧");
+                        setTimeout(() => addOptions([
+                            { icon: 'bx-rocket', text: "Send via Manav.AI instead", action: 'form' },
+                            { icon: 'bx-home', text: "Go back to start", action: 'restart' }
+                        ]), 600);
+                        break;
+                    case 'restart':
+                        addBotMessage("Sure! How can I help you? 😊");
+                        setTimeout(() => addOptions(botResponses.options), 600);
+                        break;
+                }
+            }, 1200);
+        }
+
+        // Show typing indicator
+        function showTyping() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'chat-message bot';
+            typingDiv.id = 'typingIndicator';
+            typingDiv.innerHTML = `
+                <div class="chat-message-avatar"><span>M</span></div>
+                <div class="chat-message-content">
+                    <div class="chat-typing">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+            `;
+            chatbotMessages.appendChild(typingDiv);
+            scrollToBottom();
+        }
+
+        // Remove typing indicator
+        function removeTyping() {
+            const typing = document.getElementById('typingIndicator');
+            if (typing) typing.remove();
+        }
+
+        // Show contact form
+        function showContactForm() {
+            quickInput.classList.add('hidden');
+            contactForm.classList.add('active');
+        }
+
+        // Hide contact form
+        function hideContactForm() {
+            quickInput.classList.remove('hidden');
+            contactForm.classList.remove('active');
+        }
+
+        // Form back button
+        formBack.addEventListener('click', () => {
+            hideContactForm();
+            addBotMessage("No problem! What else can I help you with?");
+            setTimeout(() => addOptions(botResponses.options), 600);
+        });
+
+        // Submit form
+        submitForm.addEventListener('click', async () => {
+            const name = document.getElementById('recruiterName').value.trim();
+            const email = document.getElementById('recruiterEmail').value.trim();
+            const company = document.getElementById('recruiterCompany').value.trim();
+            const message = document.getElementById('recruiterMessage').value.trim();
+
+            if (!name || !email || !message) {
+                alert('Please fill in all required fields (Name, Email, Message)');
+                return;
+            }
+
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+
+            submitForm.disabled = true;
+            submitForm.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i><span style="margin-left: 8px;">Sending...</span>';
+
+            recruiterData = { name, email, company, message, timestamp: new Date().toISOString() };
+
+            try {
+                // Send to Google Sheet
+                await fetch(GOOGLE_SHEET_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(recruiterData)
+                });
+
+                hideContactForm();
+                addBotMessage(botResponses.success);
+
+                // Add email option
+                const emailOptDiv = document.createElement('div');
+                emailOptDiv.className = 'chat-message bot';
+                emailOptDiv.innerHTML = `
+                    <div class="chat-message-avatar"><span>M</span></div>
+                    <div class="chat-message-content">
+                        <p style="margin-bottom: 12px;">Would you also like to send an email directly?</p>
+                        <div class="chat-email-option">
+                            <button class="chat-email-btn" onclick="window.location.href='mailto:manavrai454@gmail.com?subject=From%20${encodeURIComponent(name)}%20-%20${encodeURIComponent(company || 'Portfolio')}&body=${encodeURIComponent(message)}'">
+                                <i class='bx bx-envelope'></i> Open Email
+                            </button>
+                        </div>
+                    </div>
+                `;
+                chatbotMessages.appendChild(emailOptDiv);
+
+                // Clear form
+                document.getElementById('recruiterName').value = '';
+                document.getElementById('recruiterEmail').value = '';
+                document.getElementById('recruiterCompany').value = '';
+                document.getElementById('recruiterMessage').value = '';
+
+            } catch (error) {
+                console.error('Error:', error);
+                addBotMessage("Oops! Something went wrong. Please try emailing directly at manavrai454@gmail.com");
+            }
+
+            submitForm.disabled = false;
+            submitForm.innerHTML = '<i class="bx bx-paper-plane"></i><span style="margin-left: 8px; font-size: 14px;">Send via Manav.AI</span>';
+            scrollToBottom();
+        });
+
+        // Quick text input handler
+        sendBtn.addEventListener('click', handleUserInput);
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleUserInput();
+        });
+
+        function handleUserInput() {
+            const text = userInput.value.trim();
+            if (!text) return;
+
+            addUserMessage(text);
+            userInput.value = '';
+            showTyping();
+
+            setTimeout(() => {
+                removeTyping();
+                // Simple keyword matching
+                const lowerText = text.toLowerCase();
+                if (lowerText.includes('hire') || lowerText.includes('job') || lowerText.includes('work')) {
+                    addBotMessage(botResponses.hire);
+                    setTimeout(() => addOptions(botResponses.hireOptions), 600);
+                } else if (lowerText.includes('project') || lowerText.includes('work')) {
+                    addBotMessage(botResponses.projects);
+                } else if (lowerText.includes('skill') || lowerText.includes('tech') || lowerText.includes('stack')) {
+                    addBotMessage(botResponses.skills);
+                } else if (lowerText.includes('contact') || lowerText.includes('email') || lowerText.includes('reach')) {
+                    addBotMessage(botResponses.contact);
+                    setTimeout(() => addOptions(botResponses.contactOptions), 600);
+                } else if (lowerText.includes('hello') || lowerText.includes('hi') || lowerText.includes('hey')) {
+                    addBotMessage("Hello! 👋 Great to have you here! How can I assist you today?");
+                    setTimeout(() => addOptions(botResponses.options), 600);
+                } else {
+                    addBotMessage(botResponses.fallback);
+                    setTimeout(() => addOptions(botResponses.options), 600);
+                }
+            }, 1200);
+        }
+
+        function scrollToBottom() {
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+    </script>
+
     <script>
         // Cursor glow effect
         const cursorGlow = document.getElementById('cursorGlow');
@@ -1339,25 +2477,22 @@
             cursorGlow.style.top = e.clientY + 'px';
         });
 
-        // Scroll animations
+        // Fast scroll animations (no delay)
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: '0px 0px -20px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('visible');
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.experience__item, .project, .achievement, .skill-tag').forEach((el, index) => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = `all 0.5s ease ${index * 0.05}s`;
+        document.querySelectorAll('.experience__item, .project__card, .achievement').forEach((el) => {
+            el.classList.add('animate-on-scroll');
             observer.observe(el);
         });
 
@@ -1373,6 +2508,31 @@
                 nav.style.padding = '1.25rem 0';
             }
             lastScroll = currentScroll;
+        });
+
+        // Mobile menu toggle
+        const navMobileToggle = document.getElementById('navMobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        const menuIcon = document.getElementById('menuIcon');
+
+        navMobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            if (navLinks.classList.contains('active')) {
+                menuIcon.classList.remove('bx-menu');
+                menuIcon.classList.add('bx-x');
+            } else {
+                menuIcon.classList.remove('bx-x');
+                menuIcon.classList.add('bx-menu');
+            }
+        });
+
+        // Close menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuIcon.classList.remove('bx-x');
+                menuIcon.classList.add('bx-menu');
+            });
         });
     </script>
 </body>

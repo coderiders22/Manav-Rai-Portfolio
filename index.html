@@ -2121,8 +2121,11 @@
         const formBack = document.getElementById('formBack');
         const submitForm = document.getElementById('submitForm');
 
-        // Google Sheet Web App URL - Loaded from config.js (gitignored)
-        const GOOGLE_SHEET_URL = (typeof CONFIG !== 'undefined' && CONFIG.GOOGLE_SHEET_URL) || '';
+        // Google Sheet Web App URL
+        // For local development: uses config.js (gitignored)
+        // For production (Netlify): set GOOGLE_SHEET_URL in Build & Deploy > Environment Variables
+        const GOOGLE_SHEET_URL = (typeof CONFIG !== 'undefined' && CONFIG.GOOGLE_SHEET_URL) 
+            || 'https://script.google.com/macros/s/AKfycbx5kNIzLSiSF5dSokvDUTbMqsXFJevVlnVKPcGwnpx9sZ3ioHI8L7coFMdNzM0AQQ/exec';
 
         let conversationState = 'initial';
         let recruiterData = {};

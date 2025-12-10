@@ -171,12 +171,12 @@
 
         .chatbot-window {
             position: fixed;
-            bottom: 115px;
-            right: 30px;
-            width: 400px;
+            bottom: 100px;
+            right: 20px;
+            width: 380px;
             max-width: calc(100vw - 40px);
-            height: 580px;
-            max-height: calc(100vh - 150px);
+            height: 550px;
+            max-height: calc(100vh - 120px);
             background: var(--bg-card);
             border-radius: 24px;
             border: 1px solid var(--border-color);
@@ -607,6 +607,13 @@
                 width: 58px;
                 height: 58px;
             }
+            .chatbot-window {
+                right: 15px;
+                bottom: 90px;
+                width: calc(100vw - 30px);
+                height: calc(100vh - 110px);
+                max-height: calc(100vh - 110px);
+            }
         }
 
         @media (max-width: 480px) {
@@ -615,11 +622,20 @@
                 bottom: 20px;
             }
             .chatbot-window {
-                right: 10px;
-                bottom: 100px;
-                width: calc(100vw - 20px);
-                height: calc(100vh - 130px);
-                border-radius: 20px;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100vw;
+                max-width: 100vw;
+                height: 100vh;
+                max-height: 100vh;
+                border-radius: 0;
+                z-index: 9999;
+            }
+            .chatbot-window.active {
+                transform: translateY(0) scale(1);
             }
             .chatbot-toggle {
                 width: 54px;
@@ -630,6 +646,21 @@
             }
             .chatbot-label span {
                 font-size: 12px;
+            }
+            .chatbot-header {
+                padding: 15px;
+            }
+            .chatbot-messages {
+                padding: 15px;
+                flex: 1;
+                overflow-y: auto;
+            }
+            .chat-input-area {
+                padding: 12px;
+            }
+            .chat-form-container {
+                padding: 15px;
+                overflow-y: auto;
             }
         }
 
@@ -788,6 +819,7 @@
             /* Mobile: Show CV dropdown next to hamburger */
             .cv-dropdown {
                 margin-right: 10px;
+                position: relative;
             }
             .nav__cta {
                 display: inline-flex !important;
@@ -795,12 +827,14 @@
                 padding: 8px 14px;
             }
             .cv-dropdown__menu {
-                right: auto;
-                left: 50%;
-                transform: translateX(-50%) translateY(-10px);
+                right: 0;
+                left: auto;
+                min-width: 150px;
+                transform: translateY(-10px);
             }
-            .cv-dropdown:hover .cv-dropdown__menu {
-                transform: translateX(-50%) translateY(0);
+            .cv-dropdown:hover .cv-dropdown__menu,
+            .cv-dropdown.active .cv-dropdown__menu {
+                transform: translateY(0);
             }
         }
 
@@ -2240,9 +2274,8 @@
         const formBack = document.getElementById('formBack');
         const submitForm = document.getElementById('submitForm');
 
-        // Form submission endpoint
-        // Uses Netlify Function to keep Google Sheet URL secret
-        const FORM_SUBMIT_URL = '/.netlify/functions/submit-form';
+        // Google Sheet URL - Set this in Netlify Environment Variables as GOOGLE_SHEET_URL
+        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbx5kNIzLSiSF5dSokvDUTbMqsXFJevVlnVKPcGwnpx9sZ3ioHI8L7coFMdNzM0AQQ/exec';
 
         let conversationState = 'initial';
         let recruiterData = {};
@@ -2541,9 +2574,10 @@ Best regards,
             recruiterData = { name, email, company, message, timestamp: new Date().toISOString() };
 
             try {
-                // Send to Netlify Function (which forwards to Google Sheet)
-                await fetch(FORM_SUBMIT_URL, {
+                // Send to Google Sheet
+                await fetch(GOOGLE_SHEET_URL, {
                     method: 'POST',
+                    mode: 'no-cors',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(recruiterData)
                 });
@@ -2695,18 +2729,37 @@ Best regards,
         // CV Dropdown click toggle (for mobile/touch devices)
         const cvDropdownBtn = document.querySelector('.cv-dropdown__btn');
         const cvDropdown = document.querySelector('.cv-dropdown');
+        const cvDropdownMenu = document.querySelector('.cv-dropdown__menu');
         
         if (cvDropdownBtn && cvDropdown) {
+            // Toggle on button click
             cvDropdownBtn.addEventListener('click', (e) => {
+                e.preventDefault();
                 e.stopPropagation();
                 cvDropdown.classList.toggle('active');
             });
+            
+            // Close when clicking menu items
+            if (cvDropdownMenu) {
+                cvDropdownMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        setTimeout(() => {
+                            cvDropdown.classList.remove('active');
+                        }, 100);
+                    });
+                });
+            }
             
             // Close dropdown when clicking outside
             document.addEventListener('click', (e) => {
                 if (!cvDropdown.contains(e.target)) {
                     cvDropdown.classList.remove('active');
                 }
+            });
+            
+            // Close on scroll
+            window.addEventListener('scroll', () => {
+                cvDropdown.classList.remove('active');
             });
         }
     </script>

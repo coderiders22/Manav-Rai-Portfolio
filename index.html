@@ -832,7 +832,6 @@
                 min-width: 150px;
                 transform: translateY(-10px);
             }
-            .cv-dropdown:hover .cv-dropdown__menu,
             .cv-dropdown.active .cv-dropdown__menu {
                 transform: translateY(0);
             }
@@ -919,9 +918,9 @@
         /* CV Dropdown */
         .cv-dropdown {
             position: relative;
-            display: inline-block;
-        }
-
+                                display: inline-block;
+                            }
+                        
         .cv-dropdown__btn {
             display: flex;
             align-items: center;
@@ -933,10 +932,6 @@
         .cv-dropdown__btn i {
             font-size: 1.1rem;
             transition: transform 0.3s ease;
-        }
-
-        .cv-dropdown:hover .cv-dropdown__btn i {
-            transform: rotate(180deg);
         }
 
         .cv-dropdown__menu {
@@ -955,12 +950,7 @@
             transition: all 0.3s ease;
             z-index: 1000;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .cv-dropdown:hover .cv-dropdown__menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
+            pointer-events: none;
         }
 
         .cv-dropdown__menu a {
@@ -990,6 +980,7 @@
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
+            pointer-events: auto;
         }
 
         .cv-dropdown.active .cv-dropdown__btn i {
@@ -1721,7 +1712,7 @@
                 <li><a href="#achievements">Achievements</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
-            </ul>
+                    </ul>
             <div class="nav__right">
                 <div class="cv-dropdown">
                     <button class="nav__cta cv-dropdown__btn">
@@ -1734,7 +1725,7 @@
                         <a href="assets/pdf/MANAV RAI Resume.pdf" download>
                             <i class='bx bx-download'></i> Download CV
                         </a>
-                    </div>
+                </div>
                 </div>
                 <button class="nav__mobile-toggle" id="navMobileToggle" aria-label="Menu">
                     <i class='bx bx-menu' id="menuIcon"></i>
@@ -1856,8 +1847,8 @@
                     </div>
                 </div>
                 </div>
-    </div>
-</section>
+            </div>
+        </section>
         
     <!-- Projects Section -->
     <section class="section" id="projects">
@@ -2003,7 +1994,7 @@
                     <a href="https://github.com/coderiders22/lakshmi_chit_funds" target="_blank" class="project__link">
                         View GitHub <i class='bx bx-right-arrow-alt'></i>
                             </a>
-                        </div>
+            </div>
         
                 <!-- Stock Prediction -->
                 <div class="project">
@@ -2035,8 +2026,8 @@
                     <a href="https://github.com/coderiders22/Data-Scientist-salary-prediction" target="_blank" class="project__link">
                         View GitHub <i class='bx bx-right-arrow-alt'></i>
                             </a>
-                        </div>
-        
+            </div>
+
                 <!-- Blockchain Article -->
                 <div class="project">
                     <h3 class="project__title">Decentralized Article Management</h3>
@@ -2101,8 +2092,8 @@
                     <p class="achievement__subtitle">PEC for PGIMER Android Work</p>
                     </div>
                 </div>
-            </div>
-        </section>
+    </div>
+</section>
 
     <!-- Skills Section -->
     <section class="section" id="skills">
@@ -2227,14 +2218,14 @@
                     <i class='bx bx-send'></i>
                 </button>
                         </div>
-
+        
             <div class="chat-form-container" id="contactForm">
                 <div class="chat-form-header">
                     <span>📝 Share your details</span>
                     <button class="chat-form-back" id="formBack">
                         <i class='bx bx-arrow-back'></i> Back
                     </button>
-                    </div>
+                        </div>
                 <input type="text" class="chatbot-input" id="recruiterName" placeholder="Your Name *">
                 <input type="email" class="chatbot-input" id="recruiterEmail" placeholder="Email Address *">
                 <input type="text" class="chatbot-input" id="recruiterCompany" placeholder="Company Name">
@@ -2244,9 +2235,9 @@
                         <i class='bx bx-paper-plane'></i>
                         <span style="margin-left: 8px; font-size: 14px;">Send Message</span>
                     </button>
+                    </div>
                 </div>
             </div>
-        </div>
     </div>
     
     <script>

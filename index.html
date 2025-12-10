@@ -1673,8 +1673,6 @@
     </style>
 </head>
 <body>
-    <!-- Load configuration (gitignored - contains sensitive URLs) -->
-    <script src="config.js"></script>
     <div class="bg-grid"></div>
     <div class="cursor-glow" id="cursorGlow"></div>
 
@@ -2242,11 +2240,9 @@
         const formBack = document.getElementById('formBack');
         const submitForm = document.getElementById('submitForm');
 
-        // Google Sheet Web App URL
-        // For local development: uses config.js (gitignored)
-        // For production (Netlify): set GOOGLE_SHEET_URL in Build & Deploy > Environment Variables
-        const GOOGLE_SHEET_URL = (typeof CONFIG !== 'undefined' && CONFIG.GOOGLE_SHEET_URL) 
-            || 'https://script.google.com/macros/s/AKfycbx5kNIzLSiSF5dSokvDUTbMqsXFJevVlnVKPcGwnpx9sZ3ioHI8L7coFMdNzM0AQQ/exec';
+        // Form submission endpoint
+        // Uses Netlify Function to keep Google Sheet URL secret
+        const FORM_SUBMIT_URL = '/.netlify/functions/submit-form';
 
         let conversationState = 'initial';
         let recruiterData = {};
@@ -2545,10 +2541,9 @@ Best regards,
             recruiterData = { name, email, company, message, timestamp: new Date().toISOString() };
 
             try {
-                // Send to Google Sheet
-                await fetch(GOOGLE_SHEET_URL, {
+                // Send to Netlify Function (which forwards to Google Sheet)
+                await fetch(FORM_SUBMIT_URL, {
                     method: 'POST',
-                    mode: 'no-cors',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(recruiterData)
                 });

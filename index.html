@@ -785,12 +785,22 @@
             .nav__links a {
                 font-size: 1rem;
             }
-            /* Mobile: Show CV button next to hamburger */
+            /* Mobile: Show CV dropdown next to hamburger */
+            .cv-dropdown {
+                margin-right: 10px;
+            }
             .nav__cta {
                 display: inline-flex !important;
-                padding: 8px 14px;
                 font-size: 0.8rem;
-                margin-right: 10px;
+                padding: 8px 14px;
+            }
+            .cv-dropdown__menu {
+                right: auto;
+                left: 50%;
+                transform: translateX(-50%) translateY(-10px);
+            }
+            .cv-dropdown:hover .cv-dropdown__menu {
+                transform: translateX(-50%) translateY(0);
             }
         }
 
@@ -870,6 +880,86 @@
         .nav__cta:hover {
             transform: translateY(-2px);
             box-shadow: 0 0 80px rgba(99, 102, 241, 0.5);
+        }
+
+        /* CV Dropdown */
+        .cv-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .cv-dropdown__btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cv-dropdown__btn i {
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cv-dropdown:hover .cv-dropdown__btn i {
+            transform: rotate(180deg);
+        }
+
+        .cv-dropdown__menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: rgba(15, 15, 20, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 8px;
+            min-width: 160px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .cv-dropdown:hover .cv-dropdown__menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .cv-dropdown__menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .cv-dropdown__menu a:hover {
+            background: rgba(99, 102, 241, 0.15);
+            color: var(--text-white);
+        }
+
+        .cv-dropdown__menu a i {
+            font-size: 1.1rem;
+            color: var(--accent-primary);
+        }
+
+        /* CV Dropdown active state for click */
+        .cv-dropdown.active .cv-dropdown__menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .cv-dropdown.active .cv-dropdown__btn i {
+            transform: rotate(180deg);
         }
 
         /* Hero Section */
@@ -1601,7 +1691,19 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="nav__right">
-                <a href="assets/pdf/MANAV RAI Resume.pdf" class="nav__cta" download>Download CV</a>
+                <div class="cv-dropdown">
+                    <button class="nav__cta cv-dropdown__btn">
+                        Resume <i class='bx bx-chevron-down'></i>
+                    </button>
+                    <div class="cv-dropdown__menu">
+                        <a href="assets/pdf/MANAV RAI Resume.pdf" target="_blank">
+                            <i class='bx bx-show'></i> View CV
+                        </a>
+                        <a href="assets/pdf/MANAV RAI Resume.pdf" download>
+                            <i class='bx bx-download'></i> Download CV
+                        </a>
+                    </div>
+                </div>
                 <button class="nav__mobile-toggle" id="navMobileToggle" aria-label="Menu">
                     <i class='bx bx-menu' id="menuIcon"></i>
                 </button>
@@ -2044,9 +2146,6 @@
                 </a>
                 <a href="https://github.com/coderiders22" target="_blank" class="contact__social">
                     <i class='bx bxl-github'></i>
-                </a>
-                <a href="https://www.instagram.com/manav_rai1234" target="_blank" class="contact__social">
-                    <i class='bx bxl-instagram'></i>
                 </a>
             </div>
         </div>
@@ -2597,6 +2696,24 @@ Best regards,
                 menuIcon.classList.add('bx-menu');
             });
         });
+
+        // CV Dropdown click toggle (for mobile/touch devices)
+        const cvDropdownBtn = document.querySelector('.cv-dropdown__btn');
+        const cvDropdown = document.querySelector('.cv-dropdown');
+        
+        if (cvDropdownBtn && cvDropdown) {
+            cvDropdownBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                cvDropdown.classList.toggle('active');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!cvDropdown.contains(e.target)) {
+                    cvDropdown.classList.remove('active');
+                }
+            });
+        }
     </script>
 </body>
 </html>

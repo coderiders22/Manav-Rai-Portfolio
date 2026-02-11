@@ -1,44 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manav Rai | Full Stack Developer</title>
-    
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Full Stack Developer specializing in web & mobile applications. Built solutions for PGIMER, Indian Air Force & international clients. B.Tech CSE at Punjab Engineering College.">
-    <meta name="keywords" content="Manav Rai, Full Stack Developer, Software Engineer, React, Spring Boot, Flutter, Portfolio">
+    <meta name="description"
+        content="Full Stack Developer specializing in web & mobile applications. Built solutions for PGIMER, Indian Air Force & international clients. B.Tech CSE at Punjab Engineering College.">
+    <meta name="keywords"
+        content="Manav Rai, Full Stack Developer, Software Engineer, React, Spring Boot, Flutter, Portfolio">
     <meta name="author" content="Manav Rai">
-    
+
     <!-- Open Graph / Facebook / LinkedIn -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://manavrai.netlify.app/">
     <meta property="og:title" content="Manav Rai | Full Stack Developer">
-    <meta property="og:description" content="Full Stack Developer building production-grade web & mobile applications. Check out my projects, experience & achievements.">
+    <meta property="og:description"
+        content="Full Stack Developer building production-grade web & mobile applications. Check out my projects, experience & achievements.">
     <meta property="og:image" content="https://manavrai.netlify.app/assets/img/og-preview.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Manav Rai - Full Stack Developer Portfolio">
-    
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://manavrai.netlify.app/">
     <meta name="twitter:title" content="Manav Rai | Full Stack Developer">
-    <meta name="twitter:description" content="Full Stack Developer building production-grade web & mobile applications. Check out my projects, experience & achievements.">
+    <meta name="twitter:description"
+        content="Full Stack Developer building production-grade web & mobile applications. Check out my projects, experience & achievements.">
     <meta name="twitter:image" content="https://manavrai.netlify.app/assets/img/og-preview.png">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
     <link rel="apple-touch-icon" href="assets/img/favicon.svg">
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    
+
     <style>
         :root {
             --bg-dark: #05070a;
@@ -96,18 +103,39 @@
         }
 
         @keyframes labelSlide {
-            from { opacity: 0; transform: translateX(20px); }
-            to { opacity: 1; transform: translateX(0); }
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         @keyframes labelGlow {
-            0%, 100% { border-color: rgba(99, 102, 241, 0.3); }
-            50% { border-color: rgba(99, 102, 241, 0.6); }
+
+            0%,
+            100% {
+                border-color: rgba(99, 102, 241, 0.3);
+            }
+
+            50% {
+                border-color: rgba(99, 102, 241, 0.6);
+            }
         }
 
         @keyframes arrowBounce {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(4px); }
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(4px);
+            }
         }
 
         .chatbot-toggle {
@@ -127,8 +155,15 @@
         }
 
         @keyframes chatbotPulse {
-            0%, 100% { box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4), 0 0 0 0 rgba(99, 102, 241, 0.4); }
-            50% { box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4), 0 0 0 15px rgba(99, 102, 241, 0); }
+
+            0%,
+            100% {
+                box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4), 0 0 0 0 rgba(99, 102, 241, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4), 0 0 0 15px rgba(99, 102, 241, 0);
+            }
         }
 
         .chatbot-toggle:hover {
@@ -165,8 +200,15 @@
         }
 
         @keyframes badgeBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-3px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-3px);
+            }
         }
 
         .chatbot-window {
@@ -310,8 +352,15 @@
         }
 
         @keyframes messageSlide {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .chat-message.user {
@@ -414,13 +463,29 @@
             animation: typingBounce 1.4s infinite ease-in-out;
         }
 
-        .chat-typing span:nth-child(1) { animation-delay: 0s; }
-        .chat-typing span:nth-child(2) { animation-delay: 0.2s; }
-        .chat-typing span:nth-child(3) { animation-delay: 0.4s; }
+        .chat-typing span:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .chat-typing span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .chat-typing span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
 
         @keyframes typingBounce {
-            0%, 60%, 100% { transform: translateY(0); }
-            30% { transform: translateY(-8px); }
+
+            0%,
+            60%,
+            100% {
+                transform: translateY(0);
+            }
+
+            30% {
+                transform: translateY(-8px);
+            }
         }
 
         .chatbot-input-area {
@@ -605,13 +670,16 @@
             .chatbot-label span {
                 font-size: 13px;
             }
+
             .chatbot-label {
                 padding: 8px 14px;
             }
+
             .chatbot-toggle {
                 width: 56px;
                 height: 56px;
             }
+
             .chatbot-window {
                 right: 15px;
                 bottom: 85px;
@@ -627,6 +695,7 @@
                 right: 10px;
                 bottom: 15px;
             }
+
             .chatbot-window {
                 position: fixed;
                 bottom: 80px;
@@ -639,66 +708,83 @@
                 border-radius: 16px;
                 z-index: 9999;
             }
+
             .chatbot-toggle {
                 width: 50px;
                 height: 50px;
             }
+
             .chatbot-toggle i {
                 font-size: 24px;
             }
+
             .chatbot-label {
                 padding: 6px 10px;
                 right: 60px;
                 bottom: 18px;
             }
+
             .chatbot-label span {
                 font-size: 11px;
             }
+
             .chatbot-header {
                 padding: 12px;
             }
+
             .chatbot-avatar {
                 width: 40px;
                 height: 40px;
             }
+
             .chatbot-avatar span {
                 font-size: 16px;
             }
+
             .chatbot-info h4 {
                 font-size: 14px;
             }
+
             .chatbot-info p {
                 font-size: 11px;
             }
+
             .chatbot-close {
                 width: 32px;
                 height: 32px;
             }
+
             .chatbot-messages {
                 padding: 12px;
                 flex: 1;
                 overflow-y: auto;
             }
+
             .chat-message {
                 max-width: 90%;
                 padding: 10px 12px;
                 font-size: 13px;
             }
+
             .chat-input-area {
                 padding: 10px;
             }
+
             .chatbot-input {
                 padding: 10px 12px;
                 font-size: 14px;
             }
+
             .chatbot-send {
                 width: 40px;
                 height: 40px;
             }
+
             .chat-form-container {
                 padding: 12px;
                 overflow-y: auto;
             }
+
             .chatbot-textarea {
                 min-height: 60px;
             }
@@ -749,7 +835,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
             background-size: 60px 60px;
@@ -819,6 +905,7 @@
             .nav__links {
                 display: flex !important;
             }
+
             .nav__mobile-toggle {
                 display: none !important;
             }
@@ -829,6 +916,7 @@
             .nav__mobile-toggle {
                 display: flex !important;
             }
+
             .nav__links {
                 display: none;
                 position: absolute;
@@ -843,35 +931,43 @@
                 border-bottom: 1px solid var(--border-color);
                 gap: 0;
             }
+
             .nav__links.active {
                 display: flex !important;
             }
+
             .nav__links li {
                 padding: 14px 0;
                 border-bottom: 1px solid var(--border-color);
             }
+
             .nav__links li:last-child {
                 border-bottom: none;
             }
+
             .nav__links a {
                 font-size: 1rem;
             }
+
             /* Mobile: Show CV dropdown next to hamburger */
             .cv-dropdown {
                 margin-right: 10px;
                 position: relative;
             }
+
             .nav__cta {
                 display: inline-flex !important;
                 font-size: 0.8rem;
                 padding: 8px 14px;
             }
+
             .cv-dropdown__menu {
                 right: 0;
                 left: auto;
                 min-width: 150px;
                 transform: translateY(-10px);
             }
+
             .cv-dropdown.active .cv-dropdown__menu {
                 transform: translateY(0);
             }
@@ -883,6 +979,7 @@
             transform: translateY(15px);
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
+
         .animate-on-scroll.visible {
             opacity: 1;
             transform: translateY(0);
@@ -894,6 +991,7 @@
             padding-left: 0 !important;
             margin: 0.5rem 0 0 0;
         }
+
         .experience__description li {
             padding: 6px 0;
             padding-left: 22px;
@@ -902,6 +1000,7 @@
             font-size: 0.95rem;
             line-height: 1.6;
         }
+
         .experience__description li::before {
             content: '→';
             position: absolute;
@@ -958,9 +1057,9 @@
         /* CV Dropdown */
         .cv-dropdown {
             position: relative;
-                                display: inline-block;
-                            }
-                        
+            display: inline-block;
+        }
+
         .cv-dropdown__btn {
             display: flex;
             align-items: center;
@@ -1070,8 +1169,17 @@
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
-            50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+
+            0%,
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+            }
+
+            50% {
+                opacity: 0.8;
+                box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+            }
         }
 
         .hero__greeting {
@@ -1217,7 +1325,9 @@
         }
 
         @keyframes spin {
-            100% { transform: rotate(360deg); }
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         .hero__image-inner {
@@ -1603,7 +1713,7 @@
             border-radius: 50%;
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-        display: flex;
+            display: flex;
             align-items: center;
             justify-content: center;
             color: var(--text-gray);
@@ -1623,7 +1733,7 @@
         .footer {
             padding: 2rem 0;
             border-top: 1px solid var(--border-color);
-  text-align: center;
+            text-align: center;
         }
 
         .footer__text {
@@ -1636,7 +1746,7 @@
             .projects__grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .project--featured {
                 grid-column: span 2;
             }
@@ -1703,11 +1813,11 @@
                 gap: 1.5rem;
                 align-items: center;
             }
-            
+
             .metric {
                 text-align: center;
             }
-    
+
             .achievements__grid {
                 grid-template-columns: 1fr;
             }
@@ -1722,6 +1832,7 @@
                 height: 0 !important;
                 overflow: hidden !important;
             }
+
             .nav__links {
                 display: flex !important;
                 position: static !important;
@@ -1731,12 +1842,14 @@
                 padding: 0 !important;
                 border: none !important;
             }
+
             .nav__cta {
                 display: inline-flex !important;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="bg-grid"></div>
     <div class="cursor-glow" id="cursorGlow"></div>
@@ -1752,7 +1865,7 @@
                 <li><a href="#achievements">Achievements</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
-                    </ul>
+            </ul>
             <div class="nav__right">
                 <div class="cv-dropdown">
                     <button class="nav__cta cv-dropdown__btn">
@@ -1765,13 +1878,13 @@
                         <a href="assets/pdf/MANAV RAI Resume.pdf" download>
                             <i class='bx bx-download'></i> Download CV
                         </a>
-                </div>
+                    </div>
                 </div>
                 <button class="nav__mobile-toggle" id="navMobileToggle" aria-label="Menu">
                     <i class='bx bx-menu' id="menuIcon"></i>
                 </button>
-                </div>
             </div>
+        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -1788,23 +1901,25 @@
                     <span class="hero__title-highlight">Full Stack Developer</span>
                 </h1>
                 <p class="hero__description">
-                    Building <strong>production-grade web & mobile applications</strong> with expertise in Full Stack Development. 
-                    Delivered solutions for <strong>PGIMER</strong>, <strong>Indian Air Force</strong>, and <strong>international clients across 5+ countries</strong>. 
+                    Building <strong>production-grade web & mobile applications</strong> with expertise in Full Stack
+                    Development.
+                    Delivered solutions for <strong>PGIMER</strong>, <strong>Indian Air Force</strong>, and
+                    <strong>international clients across 5+ countries</strong>.
                     B.Tech CSE (Data Science) at Punjab Engineering College, Chandigarh.
                 </p>
                 <div class="hero__metrics">
                     <div class="metric">
                         <div class="metric__value">15+</div>
                         <div class="metric__label">Projects Built</div>
-            </div>
+                    </div>
                     <div class="metric">
                         <div class="metric__value">100+</div>
                         <div class="metric__label">Patients Impacted</div>
-                </div>
+                    </div>
                     <div class="metric">
                         <div class="metric__value">3</div>
                         <div class="metric__label">Hackathon Honors</div>
-            </div>
+                    </div>
                 </div>
                 <div class="hero__actions">
                     <button class="btn btn--primary" id="heroGetInTouch">
@@ -1813,19 +1928,20 @@
                     <a href="#projects" class="btn btn--outline">
                         Explore Work <i class='bx bx-right-arrow-alt'></i>
                     </a>
-            </div>
                 </div>
+            </div>
             <div class="hero__visual">
                 <div class="hero__image-container">
                     <div class="hero__image-frame">
                         <div class="hero__image-inner">
-                            <img src="https://res.cloudinary.com/dey7ajooy/image/upload/v1765300972/Screenshot_2025-12-09_at_6.50.41_PM-removebg-preview_1_m0egru.png" alt="Manav Rai">
-            </div>
-                </div>
+                            <img src="https://res.cloudinary.com/dey7ajooy/image/upload/v1765300972/Screenshot_2025-12-09_at_6.50.41_PM-removebg-preview_1_m0egru.png"
+                                alt="Manav Rai">
+                        </div>
+                    </div>
                     <div class="hero__card hero__card--top">
                         <div class="hero__card-label">Recent Role</div>
                         <div class="hero__card-value">SDE Intern @ Syncloop</div>
-            </div>
+                    </div>
                     <div class="hero__card hero__card--bottom">
                         <div class="hero__card-label">Education</div>
                         <div class="hero__card-value">B.Tech @ PEC CHD</div>
@@ -1841,27 +1957,32 @@
             <div class="section__header">
                 <span class="section__label">Professional Journey</span>
                 <h2 class="section__title">Work Experience</h2>
-        </div>
+            </div>
             <div class="experience__timeline">
                 <div class="experience__item">
                     <div class="experience__date">Jan 2025 - Jun 2025</div>
                     <div class="experience__content">
-                        <h3>Software Developer Intern | <a href="https://syncloop.com" target="_blank">Syncloop.com</a></h3>
+                        <h3>Software Developer Intern | <a href="https://syncloop.com" target="_blank">Syncloop.com</a>
+                        </h3>
                         <p class="experience__company">Nature9 Consulting Private Limited</p>
                         <ul class="experience__description">
-                            <li>Designed 3+ use cases and built key tools (flowchart builder, VS Code extension, Chathire.ai, product demo)</li>
-                            <li>Built Spring Boot microservices for AI agent/team creation on Syncloop.ai, enabling SEO, access control, and workflow automation</li>
-                    </ul>
+                            <li>Designed 3+ use cases and built key tools (flowchart builder, VS Code extension,
+                                Chathire.ai, product demo)</li>
+                            <li>Built Spring Boot microservices for AI agent/team creation on Syncloop.ai, enabling SEO,
+                                access control, and workflow automation</li>
+                        </ul>
                     </div>
                 </div>
                 <div class="experience__item">
                     <div class="experience__date">Oct 2024 - Jan 2025</div>
                     <div class="experience__content">
                         <h3>Mobile App Developer</h3>
-                        <p class="experience__company">PGIMER (Postgraduate Institute of Medical Education & Research), Chandigarh</p>
+                        <p class="experience__company">PGIMER (Postgraduate Institute of Medical Education & Research),
+                            Chandigarh</p>
                         <ul class="experience__description">
                             <li>Launched Flutter Healthcare app used by 100+ patients, improving tracking by 35%</li>
-                            <li>Built medical history & assessment modules with smooth data flow and secure API integration</li>
+                            <li>Built medical history & assessment modules with smooth data flow and secure API
+                                integration</li>
                         </ul>
                     </div>
                 </div>
@@ -1871,9 +1992,10 @@
                         <h3>Founder's Office Intern</h3>
                         <p class="experience__company">Foundingame (London, GB)</p>
                         <ul class="experience__description">
-                            <li>Contributed to operations and UI development by streamlining processes and enhancing user interface designs</li>
-                    </ul>
-                </div>
+                            <li>Contributed to operations and UI development by streamlining processes and enhancing
+                                user interface designs</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="experience__item">
                     <div class="experience__date">Oct 2023 - Feb 2024</div>
@@ -1881,15 +2003,16 @@
                         <h3>Windows Application Developer</h3>
                         <p class="experience__company">Indian Air Force | Aircraft Health Predictor</p>
                         <ul class="experience__description">
-                            <li>Created a Windows application to predict aircraft engine health, improving diagnostics speed by 40%</li>
+                            <li>Created a Windows application to predict aircraft engine health, improving diagnostics
+                                speed by 40%</li>
                             <li>Processed aircraft data using ML models for predictive analytics</li>
-                    </ul>
+                        </ul>
                     </div>
                 </div>
-                </div>
             </div>
-        </section>
-        
+        </div>
+    </section>
+
     <!-- Projects Section -->
     <section class="section" id="projects">
         <div class="container">
@@ -1900,12 +2023,16 @@
             <div class="projects__grid">
                 <!-- Featured Project -->
                 <div class="project project--featured">
-                    <span class="project__badge project__badge--gold"><i class='bx bx-award'></i> Letter of Appreciation</span>
-                    <h3 class="project__title">Healthcare App – PGIMER (Postgraduate Institute of Medical Education & Research), Chandigarh</h3>
+                    <span class="project__badge project__badge--gold"><i class='bx bx-award'></i> Letter of
+                        Appreciation</span>
+                    <h3 class="project__title">Healthcare App – PGIMER (Postgraduate Institute of Medical Education &
+                        Research), Chandigarh</h3>
                     <p class="project__description">
-                        Built a Flutter-based healthcare app for patient self-management in collaboration with medical professionals. 
-                        Features 3D Body Mapping for pain location, medical history modules, and secure API integration. 
-                        Adopted by 100+ patients. <strong>Honored with Letter of Appreciation from PEC, Chandigarh for designing and developing this app.</strong>
+                        Built a Flutter-based healthcare app for patient self-management in collaboration with medical
+                        professionals.
+                        Features 3D Body Mapping for pain location, medical history modules, and secure API integration.
+                        Adopted by 100+ patients. <strong>Honored with Letter of Appreciation from PEC, Chandigarh for
+                            designing and developing this app.</strong>
                     </p>
                     <div class="project__tech">
                         <span>Flutter</span>
@@ -1920,10 +2047,12 @@
 
                 <!-- WebInOrbit -->
                 <div class="project">
-                    <span class="project__badge project__badge--finalist"><i class='bx bx-rocket'></i> Personal Project</span>
+                    <span class="project__badge project__badge--finalist"><i class='bx bx-rocket'></i> Personal
+                        Project</span>
                     <h3 class="project__title">WebInOrbit – Full-Stack Platform (Personal Project)</h3>
                     <p class="project__description">
-                        Full-stack startup platform with Next.js frontend and Spring Boot APIs. Used by 15+ startups across India and international regions. Features AI-assisted tools and secure data handling.
+                        Full-stack startup platform with Next.js frontend and Spring Boot APIs. Used by 15+ startups
+                        across India and international regions. Features AI-assisted tools and secure data handling.
                     </p>
                     <div class="project__tech">
                         <span>Next.js</span>
@@ -1940,7 +2069,8 @@
                     <span class="project__badge project__badge--silver"><i class='bx bx-trophy'></i> 2nd Place</span>
                     <h3 class="project__title">VYC (Verify Your Customer)</h3>
                     <p class="project__description">
-                        Interactive KYC platform with advanced image verification, liveness detection, and AI-generated image detection. Won 2nd at STGI 24-Hour Coding Marathon.
+                        Interactive KYC platform with advanced image verification, liveness detection, and AI-generated
+                        image detection. Won 2nd at STGI 24-Hour Coding Marathon.
                     </p>
                     <div class="project__tech">
                         <span>React</span>
@@ -1954,141 +2084,156 @@
 
                 <!-- Om Browser -->
                 <div class="project">
-                    <span class="project__badge project__badge--finalist"><i class='bx bx-trophy'></i> National Level Finalist</span>
+                    <span class="project__badge project__badge--finalist"><i class='bx bx-trophy'></i> National Level
+                        Finalist</span>
                     <h3 class="project__title">Om Browser - Dark Pattern Detection</h3>
                     <p class="project__description">
-                        Chromium-based secure browser with ML-powered extension to identify and eliminate dark patterns on e-commerce websites. <strong>National Level Finalist</strong> at DPBH Hackathon 2024, IIT BHU Varanasi.
+                        Chromium-based secure browser with ML-powered extension to identify and eliminate dark patterns
+                        on e-commerce websites. <strong>National Level Finalist</strong> at DPBH Hackathon 2024, IIT BHU
+                        Varanasi.
                     </p>
                     <div class="project__tech">
                         <span>Chromium</span>
                         <span>ML</span>
                         <span>JavaScript</span>
-                </div>
-                    <a href="https://github.com/coderiders22/Dark-Pattern-IIT-BHU-hackathon" target="_blank" class="project__link">
+                    </div>
+                    <a href="https://github.com/coderiders22/Dark-Pattern-IIT-BHU-hackathon" target="_blank"
+                        class="project__link">
                         View GitHub <i class='bx bx-right-arrow-alt'></i>
                     </a>
-            </div>
+                </div>
 
                 <!-- Exoplanets -->
                 <div class="project">
                     <span class="project__badge project__badge--gold"><i class='bx bx-trophy'></i> 1st Place</span>
                     <h3 class="project__title">Exoplanet Detection ML Model</h3>
                     <p class="project__description">
-                        Machine learning model detecting exoplanets through stellar light flux analysis using Random Forest Classifier. Won 1st Prize at Astronomix Hackathon, PEC Chandigarh.
+                        Machine learning model detecting exoplanets through stellar light flux analysis using Random
+                        Forest Classifier. Won 1st Prize at Astronomix Hackathon, PEC Chandigarh.
                     </p>
                     <div class="project__tech">
                         <span>Python</span>
                         <span>Random Forest</span>
                         <span>Flask</span>
-                </div>
-                    <a href="https://github.com/coderiders22/Astronomicx_Hackathon" target="_blank" class="project__link">
+                    </div>
+                    <a href="https://github.com/coderiders22/Astronomicx_Hackathon" target="_blank"
+                        class="project__link">
                         View GitHub <i class='bx bx-right-arrow-alt'></i>
                     </a>
-            </div>
+                </div>
 
                 <!-- IAF Project -->
                 <div class="project">
                     <span class="project__badge project__badge--enterprise"><i class='bx bx-shield'></i> Defense</span>
                     <h3 class="project__title">IAF Aircraft Health Predictor</h3>
                     <p class="project__description">
-                        Windows application for Indian Air Force to predict aircraft engine health using ML. Processes Excel data for predictive analytics, improving diagnostics speed by 40%.
+                        Windows application for Indian Air Force to predict aircraft engine health using ML. Processes
+                        Excel data for predictive analytics, improving diagnostics speed by 40%.
                     </p>
                     <div class="project__tech">
                         <span>Python</span>
                         <span>ML</span>
                         <span>Windows App</span>
-                </div>
+                    </div>
                     <span class="project__link project__link--disabled">
                         <i class='bx bx-lock-alt'></i> Confidential
                     </span>
-            </div>
+                </div>
 
                 <!-- AUSCULTATECH -->
                 <div class="project">
                     <span class="project__badge project__badge--gold"><i class='bx bx-star'></i> A+ Grade</span>
                     <h3 class="project__title">AUSCULTATECH - Lung Diagnostics</h3>
                     <p class="project__description">
-                        AI-driven platform for lung sound diagnostics that identifies key patterns, providing fast and accurate classification to reduce misdiagnoses.
+                        AI-driven platform for lung sound diagnostics that identifies key patterns, providing fast and
+                        accurate classification to reduce misdiagnoses.
                     </p>
                     <div class="project__tech">
                         <span>React</span>
                         <span>AI/ML</span>
                         <span>Python</span>
-                </div>
-                    <a href="https://github.com/coderiders22/Minor-Project-PEC-Chd" target="_blank" class="project__link">
+                    </div>
+                    <a href="https://github.com/coderiders22/Minor-Project-PEC-Chd" target="_blank"
+                        class="project__link">
                         View GitHub <i class='bx bx-right-arrow-alt'></i>
                     </a>
-            </div>
+                </div>
 
                 <!-- High Frequency Trading -->
                 <div class="project">
                     <h3 class="project__title">High-Frequency Trading Platform</h3>
                     <p class="project__description">
-                        Advanced trading platform powered by ML/AI algorithms analyzing market data in real-time to execute optimized trading strategies.
+                        Advanced trading platform powered by ML/AI algorithms analyzing market data in real-time to
+                        execute optimized trading strategies.
                     </p>
                     <div class="project__tech">
                         <span>Python</span>
                         <span>ML</span>
                         <span>Trading APIs</span>
-                </div>
+                    </div>
                     <a href="https://github.com/coderiders22/lakshmi_chit_funds" target="_blank" class="project__link">
                         View GitHub <i class='bx bx-right-arrow-alt'></i>
-                            </a>
-            </div>
-        
+                    </a>
+                </div>
+
                 <!-- Stock Prediction -->
                 <div class="project">
                     <h3 class="project__title">Stock Prediction with Sentiment</h3>
                     <p class="project__description">
-                        Stock predictions using LSTM models integrated with news sentiment analysis. Includes portfolio guidance for beginners.
+                        Stock predictions using LSTM models integrated with news sentiment analysis. Includes portfolio
+                        guidance for beginners.
                     </p>
                     <div class="project__tech">
                         <span>LSTM</span>
                         <span>NLP</span>
                         <span>Python</span>
-                </div>
+                    </div>
                     <a href="https://github.com/coderiders22/AlphaStocks" target="_blank" class="project__link">
                         View GitHub <i class='bx bx-right-arrow-alt'></i>
                     </a>
-            </div>
+                </div>
 
                 <!-- Salary Prediction -->
                 <div class="project">
                     <h3 class="project__title">Data Scientist Salary Prediction</h3>
                     <p class="project__description">
-                        ML model to predict data scientist salaries using regression models. Features comprehensive data preprocessing and feature engineering.
+                        ML model to predict data scientist salaries using regression models. Features comprehensive data
+                        preprocessing and feature engineering.
                     </p>
                     <div class="project__tech">
                         <span>Python</span>
                         <span>Regression</span>
                         <span>Jupyter</span>
-                </div>
-                    <a href="https://github.com/coderiders22/Data-Scientist-salary-prediction" target="_blank" class="project__link">
+                    </div>
+                    <a href="https://github.com/coderiders22/Data-Scientist-salary-prediction" target="_blank"
+                        class="project__link">
                         View GitHub <i class='bx bx-right-arrow-alt'></i>
-                            </a>
-            </div>
+                    </a>
+                </div>
 
                 <!-- Blockchain Article -->
                 <div class="project">
                     <h3 class="project__title">Decentralized Article Management</h3>
                     <p class="project__description">
-                        Blockchain-based platform on Klaytn for seamless article management with smart contract integration and Metamask security.
+                        Blockchain-based platform on Klaytn for seamless article management with smart contract
+                        integration and Metamask security.
                     </p>
                     <div class="project__tech">
                         <span>Blockchain</span>
                         <span>Klaytn</span>
                         <span>Smart Contracts</span>
-                </div>
+                    </div>
                     <a href="https://github.com/coderiders22/BLOCKARTICLES" target="_blank" class="project__link">
                         View GitHub <i class='bx bx-right-arrow-alt'></i>
-                            </a>
-            </div>
+                    </a>
+                </div>
 
                 <!-- Mera Certi -->
                 <div class="project">
                     <h3 class="project__title">Mera Certi - Certificate Manager</h3>
                     <p class="project__description">
-                        Mobile app for storing and managing certificates efficiently with voice instructions for enhanced accessibility.
+                        Mobile app for storing and managing certificates efficiently with voice instructions for
+                        enhanced accessibility.
                     </p>
                     <div class="project__tech">
                         <span>Flutter</span>
@@ -2097,8 +2242,8 @@
                     </div>
                     <a href="https://github.com/coderiders22/Mera-Certi" target="_blank" class="project__link">
                         View GitHub <i class='bx bx-right-arrow-alt'></i>
-                            </a>
-                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -2109,7 +2254,7 @@
             <div class="section__header">
                 <span class="section__label">Recognition</span>
                 <h2 class="section__title">Key Achievements</h2>
-        </div>
+            </div>
             <div class="achievements__grid">
                 <div class="achievement">
                     <div class="achievement__icon">🥇</div>
@@ -2130,10 +2275,10 @@
                     <div class="achievement__icon">📜</div>
                     <h3 class="achievement__title">Letter of Appreciation</h3>
                     <p class="achievement__subtitle">PEC for PGIMER Android Work</p>
-                    </div>
                 </div>
-    </div>
-</section>
+            </div>
+        </div>
+    </section>
 
     <!-- Skills Section -->
     <section class="section" id="skills">
@@ -2141,7 +2286,7 @@
             <div class="section__header">
                 <span class="section__label">Expertise</span>
                 <h2 class="section__title">Skills & Technologies</h2>
-                        </div>
+            </div>
             <div class="skills__container">
                 <div class="skills__category">
                     <h3>Languages</h3>
@@ -2189,16 +2334,25 @@
                         <span class="skill-tag">Team Collaboration</span>
                     </div>
                 </div>
+                <div class="skills__category">
+                    <h3>AI & Next-Gen Tools</h3>
+                    <div class="skills__list">
+                        <span class="skill-tag">Gemini API</span>
+                        <span class="skill-tag">GitHub Copilot</span>
+                        <span class="skill-tag">OpenAI API</span>
+                        <span class="skill-tag">Prompt Engineering</span>
+                    </div>
+                </div>
             </div>
-        </section>
+    </section>
 
     <!-- Contact Section -->
-        <section class="contact section" id="contact">
+    <section class="contact section" id="contact">
         <div class="container">
             <span class="section__label">Get In Touch</span>
             <h2 class="contact__title">Let's Work Together</h2>
             <p class="contact__description">
-                Currently seeking full-time Software Development opportunities. 
+                Currently seeking full-time Software Development opportunities.
                 Open to discuss how I can contribute to your team.
             </p>
             <div class="contact__actions">
@@ -2226,7 +2380,7 @@
             <p class="footer__text">© 2025 Manav Rai • Chandigarh, India</p>
         </div>
     </footer>
-    
+
     <!-- Quick Connect Assistant -->
     <div class="chatbot-wrapper">
         <div class="chatbot-label">
@@ -2251,8 +2405,8 @@
             <button class="chatbot-close" id="chatbotClose">
                 <i class='bx bx-x'></i>
             </button>
-                        </div>
-        
+        </div>
+
         <div class="chatbot-messages" id="chatbotMessages">
             <!-- Messages will be added here dynamically -->
         </div>
@@ -2263,29 +2417,30 @@
                 <button class="chatbot-send" id="sendBtn">
                     <i class='bx bx-send'></i>
                 </button>
-                        </div>
-        
+            </div>
+
             <div class="chat-form-container" id="contactForm">
                 <div class="chat-form-header">
                     <span>📝 Share your details</span>
                     <button class="chat-form-back" id="formBack">
                         <i class='bx bx-arrow-back'></i> Back
                     </button>
-                        </div>
+                </div>
                 <input type="text" class="chatbot-input" id="recruiterName" placeholder="Your Name *">
                 <input type="email" class="chatbot-input" id="recruiterEmail" placeholder="Email Address *">
                 <input type="text" class="chatbot-input" id="recruiterCompany" placeholder="Company Name">
-                <textarea class="chatbot-input chatbot-textarea" id="recruiterMessage" placeholder="Your Message to Manav *"></textarea>
+                <textarea class="chatbot-input chatbot-textarea" id="recruiterMessage"
+                    placeholder="Your Message to Manav *"></textarea>
                 <div class="chatbot-form-row">
                     <button class="chatbot-send" id="submitForm" style="flex:1; width: auto; border-radius: 12px;">
                         <i class='bx bx-paper-plane'></i>
                         <span style="margin-left: 8px; font-size: 14px;">Send Message</span>
                     </button>
-                    </div>
                 </div>
             </div>
+        </div>
     </div>
-    
+
     <script>
         // ==================== QUICK CONNECT CHATBOT ====================
         const chatbotToggle = document.getElementById('chatbotToggle');
@@ -2311,7 +2466,7 @@
         const formBack = document.getElementById('formBack');
         const submitForm = document.getElementById('submitForm');
 
-      
+
         const FORM_ENDPOINT = '/.netlify/functions/submit-form';
 
         let conversationState = 'initial';
@@ -2324,7 +2479,7 @@
 I'm here to help you learn about Manav's work and connect you with him directly!
 
 What brings you here today?`,
-            
+
             options: [
                 { icon: 'bx-briefcase', text: "I'm looking to hire Manav", action: 'hire' },
                 { icon: 'bx-folder-open', text: "Tell me about his projects", action: 'projects' },
@@ -2365,7 +2520,10 @@ Want to explore more or connect with Manav?`,
 
 🌐 <span class="chat-highlight">Web & App:</span> Full Stack Development, Auth & Authorization, Performance Optimization
 
-📋 <span class="chat-highlight">Workflow:</span> Agile Execution, Technical Documentation, Team Collaboration`,
+📋 <span class="chat-highlight">Workflow:</span> Agile Execution, Technical Documentation, Team Collaboration
+
+🤖 <span class="chat-highlight">AI & Next-Gen Tools:</span> Gemini API, GitHub Copilot, OpenAI API, Prompt Engineering`,
+
 
             contact: `Perfect! You can reach Manav in two ways:
 
@@ -2471,7 +2629,7 @@ Feel free to explore the portfolio or let me know if you'd like to connect with 
 
             setTimeout(() => {
                 removeTyping();
-                switch(action) {
+                switch (action) {
                     case 'hire':
                         addBotMessage(botResponses.hire);
                         setTimeout(() => addOptions(botResponses.hireOptions), 600);
@@ -2527,7 +2685,7 @@ Looking forward to hearing from you!
 Best regards,
 [Your Name]
 [Your Contact Number]`;
-                        
+
                         const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=manavrai454@gmail.com&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
                         window.open(gmailUrl, '_blank');
                         addBotMessage("Opening Gmail... 📧 A pre-filled template is ready for you!");
@@ -2728,7 +2886,7 @@ Best regards,
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('.nav');
             const currentScroll = window.pageYOffset;
-            
+
             if (currentScroll > 100) {
                 nav.style.padding = '0.75rem 0';
             } else {
@@ -2766,7 +2924,7 @@ Best regards,
         const cvDropdownBtn = document.querySelector('.cv-dropdown__btn');
         const cvDropdown = document.querySelector('.cv-dropdown');
         const cvDropdownMenu = document.querySelector('.cv-dropdown__menu');
-        
+
         if (cvDropdownBtn && cvDropdown) {
             // Toggle on button click
             cvDropdownBtn.addEventListener('click', (e) => {
@@ -2774,7 +2932,7 @@ Best regards,
                 e.stopPropagation();
                 cvDropdown.classList.toggle('active');
             });
-            
+
             // Close when clicking menu items
             if (cvDropdownMenu) {
                 cvDropdownMenu.querySelectorAll('a').forEach(link => {
@@ -2785,14 +2943,14 @@ Best regards,
                     });
                 });
             }
-            
+
             // Close dropdown when clicking outside
             document.addEventListener('click', (e) => {
                 if (!cvDropdown.contains(e.target)) {
                     cvDropdown.classList.remove('active');
                 }
             });
-            
+
             // Close on scroll
             window.addEventListener('scroll', () => {
                 cvDropdown.classList.remove('active');
@@ -2800,4 +2958,5 @@ Best regards,
         }
     </script>
 </body>
+
 </html>

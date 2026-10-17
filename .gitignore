@@ -1,6 +1,19 @@
 # Dependencies
 node_modules/
 
+# Next.js
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+
+# Deploy
+.netlify/
+.vercel/
+
+# Env (secrets live in Netlify environment variables)
+.env*.local
+
 # OS files
 .DS_Store
 Thumbs.db
@@ -11,4 +24,3 @@ Thumbs.db
 
 # Logs
 *.log
-

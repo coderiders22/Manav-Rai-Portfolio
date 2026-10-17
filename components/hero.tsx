@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowRight, Briefcase, Download, GraduationCap, Mail, MapPin } from "lucide-react";
+import { Briefcase, Download, GraduationCap, Mail, MapPin } from "lucide-react";
 import { education, profile } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { GitHubIcon, LinkedInIcon } from "./icons";
@@ -18,18 +18,7 @@ export function Hero() {
       <div className="container-x grid items-center gap-14 lg:grid-cols-[1.2fr_0.8fr] lg:gap-10">
         <div>
           <Reveal>
-            <a
-              href="#contact"
-              className="group inline-flex items-center gap-2.5 rounded-full border border-line bg-surface/70 py-1 pl-2 pr-3 text-xs font-medium text-muted backdrop-blur transition-colors hover:border-line-strong hover:text-fg"
-            >
-              <span className="relative flex size-2 rounded-full bg-success animate-pulse-dot" />
-              {profile.availability}
-              <ArrowRight className="size-3 transition-transform group-hover:translate-x-0.5" />
-            </a>
-          </Reveal>
-
-          <Reveal delay={0.05}>
-            <p className="mt-8 text-base font-medium text-muted sm:text-lg">
+            <p className="text-base font-medium text-muted sm:text-lg">
               Hi, I&apos;m <span className="text-fg">{profile.name}</span>, an AI engineer specialising in GenAI &amp; full-stack
               development.
             </p>

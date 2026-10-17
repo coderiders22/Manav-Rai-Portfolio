@@ -62,7 +62,7 @@ export function CommandMenu() {
       { id: "projects", label: "Projects", group: "Navigate", icon: FolderOpen, keywords: "work portfolio case studies", run: () => goTo("projects") },
       { id: "skills", label: "Skills", group: "Navigate", icon: Code, keywords: "stack tech toolkit", run: () => goTo("skills") },
       { id: "achievements", label: "Achievements & education", group: "Navigate", icon: Award, keywords: "awards hackathon degree", run: () => goTo("achievements") },
-      { id: "contact", label: "Contact", group: "Navigate", icon: Mail, keywords: "hire reach message", run: () => goTo("contact") },
+      { id: "contact", label: "Contact", group: "Navigate", icon: Mail, keywords: "reach message talk", run: () => goTo("contact") },
       {
         id: "download",
         label: "Download résumé",
@@ -93,7 +93,7 @@ export function CommandMenu() {
         },
       },
       { id: "email", label: "Send an email", group: "Actions", icon: Mail, keywords: "mail contact", run: () => (window.location.href = `mailto:${profile.email}`) },
-      { id: "chat", label: "Open Quick Connect", group: "Actions", icon: MessageCircle, keywords: "chat hire message", run: openQuickConnect },
+      { id: "chat", label: "Open Quick Connect", group: "Actions", icon: MessageCircle, keywords: "chat message talk", run: openQuickConnect },
       {
         id: "theme",
         label: resolvedTheme === "dark" ? "Switch to light theme" : "Switch to dark theme",

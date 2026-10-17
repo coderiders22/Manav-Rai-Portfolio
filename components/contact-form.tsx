@@ -108,7 +108,7 @@ export function ContactForm({
           required
           maxLength={4000}
           rows={compact ? 3 : 5}
-          placeholder="Tell me about the role or project…"
+          placeholder="What would you like to talk about?"
           className={cn(fieldClass, "resize-none py-3 leading-relaxed")}
         />
       </Field>

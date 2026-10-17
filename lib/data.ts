@@ -3,7 +3,7 @@
 
 export const profile = {
   name: "Manav Rai",
-  role: "SDE-1",
+  role: "SDE-I",
   company: "Gemini Solutions",
   headline: "AI Engineer, GenAI & Full Stack",
   summary:
@@ -16,7 +16,6 @@ export const profile = {
   resume: "/Manav_Rai_Resume.pdf",
   resumeDownloadName: "Manav_Rai_Resume.pdf",
   site: "https://manavrai.netlify.app",
-  availability: "Open to AI Engineer & SDE roles",
   socials: {
     github: "https://github.com/coderiders22",
     githubHandle: "coderiders22",
@@ -34,7 +33,7 @@ export const navLinks = [
 ] as const;
 
 export const stats = [
-  { value: 5, suffix: "", label: "Professional roles", detail: "Enterprise, healthcare, defense" },
+  { value: 5, suffix: "", label: "Organisations", detail: "Enterprise, healthcare, defense" },
   { value: 15, suffix: "+", label: "Projects shipped", detail: "Production & hackathon builds" },
   { value: 100, suffix: "+", label: "Patients served", detail: "By my PGIMER Flutter app" },
   { value: 4, suffix: "", label: "Awards & honors", detail: "Incl. 1st place & national finalist" },
@@ -76,6 +75,7 @@ export type Experience = {
   org?: string;
   role: string;
   period: string;
+  type?: string;
   location?: string;
   current?: boolean;
   points: string[];
@@ -86,14 +86,35 @@ export const experience: Experience[] = [
   {
     company: "Gemini Solutions",
     companyUrl: "https://www.geminisolutions.com/",
-    role: "SDE-1 · GenAI",
-    period: "Mar 2026 - Present",
+    role: "SDE-I · GenAI",
+    period: "Sep 2026 - Present",
+    type: "Full-time",
+    location: "Gurugram, India",
     current: true,
     points: [
-      "Built a multi-agent **Agentic SDLC platform** (LangGraph, FastAPI, AWS Bedrock) automating **BRD-to-production**: code generation, self-healing QA, automated Jenkins/EC2 deployment, AI log RCA, secure auth, RBAC and usage limits. Now expanding to Figma and mobile apps.",
-      "Built an **AI-driven API contract testing pipeline** on Azure OpenAI (LLM-based test generation, review and human-approval workflow on Jenkins) with automated baseline management and confidence-based reasoning.",
+      "Built **Agentic SDLC**, an AI platform that turns a requirements doc into a live web app. **POC in 1 day vs 2 weeks (90% faster)**, by 1 person instead of a team.",
+      "AI agents design, code, test and auto-deploy, with human approval at each step.",
+      "Deploy & Maintain: standalone deploys, plus AI bug fixes and features on live apps.",
+      "Monitoring with live logs, AI root-cause analysis and cost tracking.",
+      "Now extending it to Figma-to-app and mobile.",
     ],
     stack: ["LangGraph", "FastAPI", "AWS Bedrock", "Docker", "Jenkins", "EC2"],
+  },
+  {
+    company: "Gemini Solutions",
+    companyUrl: "https://www.geminisolutions.com/",
+    role: "Software Developer Intern",
+    period: "Mar 2026 - Sep 2026",
+    type: "Internship",
+    location: "Gurugram, India",
+    points: [
+      "Built an **AI API contract testing pipeline** that runs automatically on every code push.",
+      "AI reviews API contracts for security and design issues, then generates tests only for changed endpoints.",
+      "Confident tests auto-approve, uncertain ones go to human review, and approved tests join the baseline.",
+      "Runs tests on the live API, blocks breaking changes and explains failures with suggested fixes.",
+      "Started building the Agentic SDLC platform, then converted to full-time SDE-I.",
+    ],
+    stack: ["Python", "Azure OpenAI", "Jenkins", "OpenAPI"],
   },
   {
     company: "Syncloop.ai",

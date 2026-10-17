@@ -8,12 +8,12 @@ import { OPEN_QUICK_CONNECT } from "@/lib/events";
 import { cn } from "@/lib/utils";
 import { ContactForm, type ContactPayload } from "./contact-form";
 
-type Action = "hire" | "projects" | "skills" | "contact" | "form" | "email" | "restart" | "followup";
+type Action = "about" | "projects" | "skills" | "contact" | "form" | "email" | "restart" | "followup";
 type Option = { action: Action; label: string; icon: typeof Mail };
 type Message = { id: number; from: "bot" | "user"; content: ReactNode; options?: Option[] };
 
 const mainOptions: Option[] = [
-  { action: "hire", label: "I'm looking to hire Manav", icon: Briefcase },
+  { action: "about", label: "Tell me about Manav", icon: Briefcase },
   { action: "projects", label: "Tell me about his projects", icon: FolderOpen },
   { action: "skills", label: "What's his tech stack?", icon: Code },
   { action: "contact", label: "I want to contact him", icon: Mail },
@@ -23,7 +23,7 @@ const reachOptions: Option[] = [
   { action: "email", label: "Open Gmail with a template", icon: Mail },
 ];
 const backOptions: Option[] = [
-  { action: "hire", label: "I want to hire Manav", icon: Briefcase },
+  { action: "contact", label: "Get in touch", icon: Mail },
   { action: "restart", label: "Back to start", icon: House },
 ];
 
@@ -33,38 +33,33 @@ function gmailUrl(subject: string, body: string) {
 
 const emailTemplate = `Hi Manav,
 
-I came across your portfolio and would like to discuss an opportunity.
+I came across your portfolio and would like to connect.
 
 My name: [Your name]
 Company: [Company]
-Role: [Job title]
 
-About the opportunity:
-[Role, responsibilities and what you're looking for]
-
-Next steps:
-[Call / interview availability]
+What I'd like to discuss:
+[A few lines about it]
 
 Best regards,
-[Your name]
-[Your phone]`;
+[Your name]`;
 
 const B = ({ children }: { children: ReactNode }) => <strong className="font-medium text-fg">{children}</strong>;
 
-const replies: Record<"welcome" | "hire" | "projects" | "skills" | "contact" | "form", ReactNode> = {
+const replies: Record<"welcome" | "about" | "projects" | "skills" | "contact" | "form", ReactNode> = {
   welcome: (
     <>
       Hey there 👋 Welcome to <B>Quick Connect</B>. I can tell you about Manav&apos;s work or put you in touch with him directly.
       What brings you here?
     </>
   ),
-  hire: (
+  about: (
     <>
-      Great to hear! Manav is a <B>GenAI &amp; full-stack engineer</B>, currently {profile.role} at {profile.company}, building
+      Manav is a <B>GenAI &amp; full-stack engineer</B>, currently {profile.role} at {profile.company}, building
       multi-agent platforms with LangGraph, FastAPI and AWS Bedrock. Before that: Syncloop.ai, PGIMER and the Indian Air Force.
       <br />
       <br />
-      How would you like to reach him?
+      Want to get in touch with him?
     </>
   ),
   projects: (
@@ -166,8 +161,8 @@ export function QuickConnect() {
     if (label) push({ from: "user", content: label });
 
     switch (action) {
-      case "hire":
-        return botSay(replies.hire, reachOptions);
+      case "about":
+        return botSay(replies.about, reachOptions);
       case "projects":
         return botSay(replies.projects, backOptions);
       case "skills":
@@ -178,7 +173,7 @@ export function QuickConnect() {
         botSay(replies.form);
         return setShowForm(true);
       case "email":
-        window.open(gmailUrl("Opportunity for Manav Rai", emailTemplate), "_blank", "noopener");
+        window.open(gmailUrl("Hello from your portfolio", emailTemplate), "_blank", "noopener");
         return botSay("Opening Gmail with a ready-to-fill template 📧", [
           { action: "form", label: "Message here instead", icon: Rocket },
           { action: "restart", label: "Back to start", icon: House },
@@ -207,10 +202,10 @@ export function QuickConnect() {
     if (!text) return;
     setInput("");
     const t = text.toLowerCase();
-    if (/(hire|job|role|opening|position|recruit)/.test(t)) return handle("hire", text);
+    if (/(about|who|background|experience)/.test(t)) return handle("about", text);
     if (/project|built|portfolio/.test(t)) return handle("projects", text);
     if (/(skill|tech|stack|language)/.test(t)) return handle("skills", text);
-    if (/(contact|email|reach|call|phone)/.test(t)) return handle("contact", text);
+    if (/(contact|email|reach|call|phone|hire|job|role|recruit)/.test(t)) return handle("contact", text);
     push({ from: "user", content: text });
     if (/^(hi|hello|hey)\b/.test(t)) return botSay("Hello! 👋 Great to have you here. What can I help with?", mainOptions);
     botSay("I'm a simple assistant, but I can point you in the right direction. Pick an option below.", mainOptions);
@@ -334,7 +329,7 @@ export function QuickConnect() {
                   <input
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    placeholder="Ask about roles, projects, skills…"
+                    placeholder="Ask about his work, projects or skills…"
                     aria-label="Message"
                     className="h-10 flex-1 rounded-full border border-line bg-bg-soft px-4 text-sm text-fg placeholder:text-subtle outline-none focus:border-accent"
                   />
@@ -359,7 +354,7 @@ export function QuickConnect() {
         className="fixed bottom-4 right-4 z-[60] flex h-14 items-center gap-2.5 rounded-full border border-line-strong bg-fg pl-4 pr-5 text-sm font-medium text-bg shadow-2xl transition-transform hover:scale-[1.03] active:scale-[0.98] sm:bottom-6 sm:right-6"
       >
         {open ? <X className="size-5" /> : <MessageCircle className="size-5" />}
-        <span className="hidden sm:inline">{open ? "Close" : "Hire me"}</span>
+        <span className="hidden sm:inline">{open ? "Close" : "Let's talk"}</span>
         {!open && <span className="size-2 rounded-full bg-success animate-pulse-dot" />}
       </motion.button>
     </>

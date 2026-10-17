@@ -30,8 +30,8 @@ export default async function OpenGraphImage() {
       >
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "64px 0 64px 72px", width: 760 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 22, color: "#a1a1aa" }}>
-            <div style={{ width: 12, height: 12, borderRadius: 999, background: "#4ade80" }} />
-            <div style={{ display: "flex" }}>{profile.availability}</div>
+            <div style={{ width: 12, height: 12, borderRadius: 999, background: "#8b93ff" }} />
+            <div style={{ display: "flex" }}>{profile.location}</div>
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ fontSize: 84, fontWeight: 700, letterSpacing: -3, lineHeight: 1 }}>{profile.name}</div>

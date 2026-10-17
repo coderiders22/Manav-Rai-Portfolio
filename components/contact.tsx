@@ -35,8 +35,8 @@ export function Contact() {
                 Let&apos;s build something <Serif>worth shipping.</Serif>
               </h2>
               <p className="mt-5 max-w-md text-pretty text-base leading-relaxed text-muted">
-                I&apos;m open to full-time <span className="text-fg">SDE and GenAI engineering roles</span>. Recruiters and hiring
-                managers, drop a note here or email me and I&apos;ll get back to you within 24 hours.
+                Have a project, an idea or a question? Drop a note here or email me, and I&apos;ll get back to you within 24
+                hours.
               </p>
 
               <ul className="mt-8 divide-y divide-line overflow-hidden rounded-2xl border border-line bg-bg-soft/80">
@@ -74,7 +74,7 @@ export function Contact() {
 
             <div className="rounded-2xl border border-line bg-surface/70 p-5 backdrop-blur sm:p-7">
               <h3 className="text-lg font-semibold tracking-tight text-fg">Send a message</h3>
-              <p className="mb-6 mt-1 text-sm text-muted">A role, a project, or just a hello. All welcome.</p>
+              <p className="mb-6 mt-1 text-sm text-muted">A project, a question, or just a hello. All welcome.</p>
               <ContactForm />
             </div>
           </div>

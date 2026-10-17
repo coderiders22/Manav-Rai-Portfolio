@@ -13,7 +13,7 @@ export function Experience() {
           eyebrow="Experience"
           title={
             <>
-              Five roles, one habit: <Serif>ship real software.</Serif>
+              Five teams, one habit: <Serif>ship real software.</Serif>
             </>
           }
           description="From enterprise GenAI platforms to a patient-facing healthcare app and a defense diagnostics tool."
@@ -34,6 +34,7 @@ export function Experience() {
 
               <Reveal className="pl-7 md:pl-0">
                 <p className="font-mono text-xs uppercase tracking-wider text-subtle">{job.period}</p>
+                {job.type && <p className="mt-1 text-xs text-subtle">{job.type}</p>}
                 {job.current && (
                   <span className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-success/30 bg-success/10 px-2 py-0.5 text-[11px] font-medium text-success">
                     Current role

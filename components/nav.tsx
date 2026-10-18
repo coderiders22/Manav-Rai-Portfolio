@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useScroll, useSpring } from "motion/react";
-import { Command, Download, Menu, X } from "lucide-react";
+import { ChevronDown, Command, Download, Eye, FileText, Menu, X } from "lucide-react";
 import { navLinks, profile } from "@/lib/data";
 import { openCommandMenu } from "@/lib/events";
 import { cn } from "@/lib/utils";
@@ -40,6 +40,73 @@ function useActiveSection(ids: readonly string[]) {
 }
 
 const sectionIds = navLinks.map((l) => l.id);
+
+const menuItemClass =
+  "flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-fg transition-colors hover:bg-surface-2 focus-visible:bg-surface-2";
+
+function ResumeMenu() {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onPointer = (e: PointerEvent) => {
+      if (!ref.current?.contains(e.target as Node)) setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("pointerdown", onPointer);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onPointer);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  return (
+    <div ref={ref} className="relative hidden sm:block">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-haspopup="menu"
+        aria-expanded={open}
+        className={cn(buttonStyles.base, buttonStyles.primary, "h-9 px-4")}
+      >
+        <FileText className="size-3.5" />
+        Resume
+        <ChevronDown className={cn("size-3.5 transition-transform", open && "rotate-180")} />
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            role="menu"
+            initial={{ opacity: 0, y: -4, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -4, scale: 0.98 }}
+            transition={{ duration: 0.15 }}
+            className="absolute right-0 top-full mt-2 w-48 origin-top-right rounded-xl border border-line-strong bg-surface p-1 shadow-card"
+          >
+            <a role="menuitem" href={profile.resume} target="_blank" rel="noopener" onClick={() => setOpen(false)} className={menuItemClass}>
+              <Eye className="size-4 text-subtle" />
+              View resume
+            </a>
+            <a
+              role="menuitem"
+              href={profile.resume}
+              download={profile.resumeDownloadName}
+              onClick={() => setOpen(false)}
+              className={menuItemClass}
+            >
+              <Download className="size-4 text-subtle" />
+              Download PDF
+            </a>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -115,14 +182,7 @@ export function Nav() {
               </kbd>
             </button>
             <ThemeToggle />
-            <a
-              href={profile.resume}
-              download={profile.resumeDownloadName}
-              className={cn(buttonStyles.base, buttonStyles.primary, "hidden h-9 px-4 sm:inline-flex")}
-            >
-              <Download className="size-3.5" />
-              Résumé
-            </a>
+            <ResumeMenu />
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
@@ -162,7 +222,7 @@ export function Nav() {
               ))}
               <li className="mt-2 grid grid-cols-2 gap-2">
                 <a href={profile.resume} target="_blank" rel="noopener" className={cn(buttonStyles.base, buttonStyles.secondary)}>
-                  View résumé
+                  View resume
                 </a>
                 <a href={profile.resume} download={profile.resumeDownloadName} className={cn(buttonStyles.base, buttonStyles.primary)}>
                   <Download className="size-4" /> Download

@@ -37,7 +37,7 @@ export function Hero() {
           <Reveal delay={0.2} className="mt-9 flex flex-wrap items-center gap-3">
             <a href={profile.resume} download={profile.resumeDownloadName} className={cn(buttonStyles.base, buttonStyles.primary, "h-11 px-6")}>
               <Download className="size-4" />
-              Download résumé
+              Download resume
             </a>
             <a href="#contact" className={cn(buttonStyles.base, buttonStyles.secondary, "h-11 px-6")}>
               <Mail className="size-4" />

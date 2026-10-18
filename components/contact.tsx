@@ -64,7 +64,7 @@ export function Contact() {
 
               <div className="mt-6 flex flex-wrap gap-3">
                 <a href={profile.resume} download={profile.resumeDownloadName} className={cn(buttonStyles.base, buttonStyles.primary)}>
-                  <Download className="size-4" /> Download résumé
+                  <Download className="size-4" /> Download resume
                 </a>
                 <a href={profile.resume} target="_blank" rel="noopener" className={cn(buttonStyles.base, buttonStyles.secondary)}>
                   <Eye className="size-4" /> View PDF

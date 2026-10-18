@@ -65,7 +65,7 @@ export function CommandMenu() {
       { id: "contact", label: "Contact", group: "Navigate", icon: Mail, keywords: "reach message talk", run: () => goTo("contact") },
       {
         id: "download",
-        label: "Download résumé",
+        label: "Download resume",
         group: "Actions",
         icon: Download,
         hint: "PDF",
@@ -77,7 +77,7 @@ export function CommandMenu() {
           a.click();
         },
       },
-      { id: "view", label: "View résumé", group: "Actions", icon: FileText, keywords: "cv resume open", run: () => window.open(profile.resume, "_blank", "noopener") },
+      { id: "view", label: "View resume", group: "Actions", icon: FileText, keywords: "cv resume open", run: () => window.open(profile.resume, "_blank", "noopener") },
       {
         id: "copy",
         label: "Copy email address",
@@ -205,7 +205,7 @@ export function CommandMenu() {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   onKeyDown={onInputKey}
-                  placeholder="Jump to a section, grab the résumé…"
+                  placeholder="Jump to a section, grab the resume…"
                   className="h-14 flex-1 bg-transparent text-[15px] text-fg placeholder:text-subtle outline-none"
                   role="combobox"
                   aria-expanded="true"

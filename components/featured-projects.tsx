@@ -40,7 +40,7 @@ function ProjectGlance({ project }: { project: FeaturedProject }) {
 
       <p className="relative mt-auto inline-flex items-center gap-1.5 pt-6 text-xs text-subtle">
         <Lock className="size-3 shrink-0" />
-        Confidential project. Code and internals aren&apos;t public.
+        Company project. The code is private.
       </p>
     </div>
   );

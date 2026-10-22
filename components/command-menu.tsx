@@ -17,7 +17,6 @@ import {
   MessageCircle,
   Moon,
   Search,
-  Sparkles,
 } from "lucide-react";
 import { profile } from "@/lib/data";
 import { OPEN_COMMAND_MENU, openQuickConnect } from "@/lib/events";
@@ -57,7 +56,7 @@ export function CommandMenu() {
   const items = useMemo<Item[]>(
     () => [
       { id: "home", label: "Home", group: "Navigate", icon: House, run: () => goTo("top") },
-      { id: "about", label: "What I do", group: "Navigate", icon: Sparkles, keywords: "about focus", run: () => goTo("about") },
+      { id: "about", label: "What I do", group: "Navigate", icon: Code, keywords: "about focus", run: () => goTo("about") },
       { id: "experience", label: "Experience", group: "Navigate", icon: Briefcase, keywords: "work jobs career", run: () => goTo("experience") },
       { id: "projects", label: "Projects", group: "Navigate", icon: FolderOpen, keywords: "work portfolio case studies", run: () => goTo("projects") },
       { id: "skills", label: "Skills", group: "Navigate", icon: Code, keywords: "stack tech toolkit", run: () => goTo("skills") },

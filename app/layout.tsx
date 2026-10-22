@@ -15,7 +15,7 @@ const instrumentSerif = Instrument_Serif({
 
 const title = `${profile.name} | AI Engineer, GenAI & Full Stack`;
 const description =
-  "SDE-I at Gemini Solutions building multi-agent GenAI platforms (LangGraph, AWS Bedrock, FastAPI) and full-stack products. Previously Syncloop.ai, PGIMER and the Indian Air Force. B.Tech CSE, Punjab Engineering College.";
+  "SWE-I at Gemini Solutions building multi-agent GenAI platforms (LangGraph, AWS Bedrock, FastAPI) and full-stack products. Previously Syncloop.ai, PGIMER and the Indian Air Force. B.Tech CSE, Punjab Engineering College.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(profile.site),
@@ -69,7 +69,7 @@ const personJsonLd = {
   url: profile.site,
   image: `${profile.site}/images/manav.png`,
   email: `mailto:${profile.email}`,
-  jobTitle: "Software Engineer (SDE-I)",
+  jobTitle: "Software Engineer (SWE-I)",
   worksFor: { "@type": "Organization", name: profile.company, url: "https://www.geminisolutions.com/" },
   alumniOf: { "@type": "CollegeOrUniversity", name: "Punjab Engineering College, Chandigarh" },
   address: { "@type": "PostalAddress", addressLocality: "Chandigarh", addressCountry: "IN" },

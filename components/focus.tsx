@@ -13,10 +13,10 @@ export function Focus() {
         eyebrow="What I do"
         title={
           <>
-            Engineering across the stack, with a bias for <Serif>AI that ships.</Serif>
+            AI, backend and <Serif>full-stack apps.</Serif>
           </>
         }
-        description="I'm happiest owning a problem end to end: designing the agent graph, writing the API, wiring the CI pipeline and polishing the UI that people actually use."
+        description="I like taking an idea from start to finish: planning it, building the backend and the screens, testing it and putting it live."
       />
       <div className="grid gap-4 md:grid-cols-3">
         {pillars.map((p, i) => {

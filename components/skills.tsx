@@ -1,10 +1,10 @@
-import { Cloud, Code, Database, LayoutTemplate, Server, Sparkles } from "lucide-react";
+import { Bot, Cloud, Code, Database, LayoutTemplate, Server } from "lucide-react";
 import { skillGroups } from "@/lib/data";
 import { Reveal } from "./reveal";
 import { SectionHeading, Serif } from "./ui";
 
 const icons = {
-  sparkles: Sparkles,
+  bot: Bot,
   code: Code,
   server: Server,
   layout: LayoutTemplate,
@@ -21,10 +21,10 @@ export function Skills() {
           eyebrow="Toolkit"
           title={
             <>
-              The stack I reach for <Serif>every day.</Serif>
+              Tools I <Serif>work with.</Serif>
             </>
           }
-          description="Comfortable across the whole lifecycle, from prompt and agent design to APIs, infrastructure and the interface on top."
+          description="Languages, frameworks and tools I use in my day-to-day work."
         />
         <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((group, i) => {

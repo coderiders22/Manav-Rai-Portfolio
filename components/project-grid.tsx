@@ -18,7 +18,7 @@ export function ProjectGrid() {
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h3 className="text-xl font-semibold tracking-tight text-fg">More projects</h3>
-          <p className="mt-1 text-sm text-muted">Hackathon winners, ML experiments and side builds.</p>
+          <p className="mt-1 text-sm text-muted">Hackathon projects, ML experiments and things I built for fun.</p>
         </div>
         <div role="tablist" aria-label="Filter projects" className="-mx-1 flex gap-1 overflow-x-auto px-1 pb-1 sm:pb-0">
           {projectFilters.map((f) => (

@@ -13,10 +13,10 @@ export function Projects() {
         eyebrow="Selected work"
         title={
           <>
-            Systems I&apos;ve designed, <Serif>built and shipped.</Serif>
+            Things I&apos;ve <Serif>built.</Serif>
           </>
         }
-        description="Three production builds: two GenAI platforms built at Gemini Solutions and a healthcare app used by real patients."
+        description="Three main projects from work, plus hackathon and side projects below."
       />
       <FeaturedProjects />
       <div className="mt-20 sm:mt-24">

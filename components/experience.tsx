@@ -13,10 +13,10 @@ export function Experience() {
           eyebrow="Experience"
           title={
             <>
-              Five teams, one habit: <Serif>ship real software.</Serif>
+              Where I&apos;ve <Serif>worked.</Serif>
             </>
           }
-          description="From enterprise GenAI platforms to a patient-facing healthcare app and a defense diagnostics tool."
+          description="From AI products at Gemini Solutions to a patient app at PGIMER and a tool for the Indian Air Force."
         />
 
         <ol className="relative">

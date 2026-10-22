@@ -32,7 +32,7 @@ export function Contact() {
                 Contact
               </p>
               <h2 className="text-balance text-3xl font-semibold tracking-tight text-fg sm:text-4xl md:text-5xl md:leading-[1.05]">
-                Let&apos;s build something <Serif>worth shipping.</Serif>
+                Let&apos;s <Serif>talk.</Serif>
               </h2>
               <p className="mt-5 max-w-md text-pretty text-base leading-relaxed text-muted">
                 Have a project, an idea or a question? Drop a note here or email me, and I&apos;ll get back to you within 24

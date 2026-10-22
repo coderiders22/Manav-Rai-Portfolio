@@ -19,14 +19,13 @@ export function Hero() {
         <div>
           <Reveal>
             <p className="text-base font-medium text-muted sm:text-lg">
-              Hi, I&apos;m <span className="text-fg">{profile.name}</span>, an AI engineer specialising in GenAI &amp; full-stack
-              development.
+              Hi, I&apos;m <span className="text-fg">{profile.name}</span>, an AI engineer from India.
             </p>
           </Reveal>
 
           <Reveal delay={0.1}>
             <h1 className="mt-3 text-balance text-[2.6rem] font-semibold leading-[1.04] tracking-[-0.035em] text-fg sm:text-6xl lg:text-[4.25rem]">
-              I build GenAI systems <Serif>that ship to production.</Serif>
+              I build AI products <Serif>that solve real problems.</Serif>
             </h1>
           </Reveal>
 

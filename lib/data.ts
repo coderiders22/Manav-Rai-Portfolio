@@ -91,11 +91,9 @@ export const experience: Experience[] = [
     location: "Gurugram, India",
     current: true,
     points: [
-      "**Lead developer of Agentic SDLC**, Gemini's in-house AI product.",
-      "Built our **own agent harness** instead of using off-the-shelf coding agents like GitHub Copilot or OpenCode.",
-      "Demoed it to VPs, management and the presales team, got great feedback, and it's now in an **internal pilot across Gemini**.",
-      "Improving it from user feedback, adding new features and extending it to Figma designs and mobile apps.",
-      "Building **smart recommendations for a healthcare client**: personalised push notifications based on each user's profile and searches.",
+      "**Leading the development of an in-house AI product** that turns business requirements into working software.",
+      "Demoed it to VPs, management and the presales team, and it's now in an **internal pilot across Gemini**.",
+      "Driving improvements from user feedback and adding new capabilities.",
     ],
     stack: ["Python", "LangGraph", "FastAPI", "AWS Services", "ChromaDB", "Docker", "Jenkins", "Azure DevOps"],
   },
@@ -107,10 +105,10 @@ export const experience: Experience[] = [
     type: "Internship",
     location: "Gurugram, India",
     points: [
-      "Built **Agentic SDLC**, an AI platform that turns a requirements doc into a live web app. **POC in 1 day vs 2 weeks (90% faster)**, by 1 person instead of a team.",
-      "AI agents design, code, test and auto-deploy, with human approval at each step. Deploy & Maintain handles standalone deploys plus AI bug fixes and features on live apps.",
-      "Monitoring with live logs, AI root-cause analysis and cost tracking.",
-      "Built an **AI API contract testing pipeline** that runs on every code push: generates tests for changed endpoints, auto-approves confident ones, sends uncertain ones to human review and explains failures.",
+      "Built **the first version of an AI platform** that turns requirement documents into working web apps, cutting **POC time from 2 weeks to 1 day**.",
+      "AI agents handle design, coding, testing and deployment, with a person approving each step.",
+      "Added monitoring and AI-based error analysis.",
+      "Built an **AI-powered API testing pipeline** that checks every code push automatically, with human review for uncertain cases.",
     ],
     stack: ["LangGraph", "FastAPI", "AWS Bedrock", "Azure OpenAI", "Jenkins", "Python"],
   },
@@ -177,15 +175,14 @@ export type FeaturedProject = {
 export const featuredProjects: FeaturedProject[] = [
   {
     slug: "agentic-sdlc",
-    title: "Agentic SDLC",
+    title: "In-house AI Platform",
     kicker: "AI platform · Gemini Solutions",
     summary:
       "An AI platform that takes a requirements document and turns it into a tested, working web app.",
     highlights: [
+      "AI agents handle design, coding, testing and deployment",
       "A person approves each step before it moves on",
-      "Tests the app and fixes errors on its own",
-      "Sends the code as a pull request and deploys it automatically",
-      "Explains errors from the logs, with login, user roles and daily limits",
+      "Monitoring and AI-based error analysis",
     ],
     stack: ["LangGraph", "FastAPI", "AWS Bedrock", "Docker", "Jenkins", "React"],
     metrics: [

@@ -8,7 +8,7 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function OpenGraphImage() {
-  const photo = await readFile(join(process.cwd(), "public/images/manav.png"));
+  const photo = await readFile(join(process.cwd(), "public/images/manav_pic.png"));
   const photoSrc = `data:image/png;base64,${photo.toString("base64")}`;
   const tags = ["LangGraph", "AWS Bedrock", "FastAPI", "Spring Boot", "Next.js", "Flutter"];
 
@@ -59,7 +59,7 @@ export default async function OpenGraphImage() {
             ))}
           </div>
         </div>
-        <img src={photoSrc} alt="" width={420} height={552} style={{ position: "absolute", right: 40, bottom: 0, objectFit: "contain" }} />
+        <img src={photoSrc} alt="" width={340} height={340} style={{ position: "absolute", right: 56, top: 145, borderRadius: 32, objectFit: "cover", border: "2px solid rgba(255,255,255,0.12)" }} />
       </div>
     ),
     size,

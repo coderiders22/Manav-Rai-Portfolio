@@ -64,26 +64,23 @@ export function Hero() {
         </div>
 
         <Reveal delay={0.15} y={24} className="relative mx-auto w-full max-w-[380px] lg:max-w-none">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-line bg-surface shadow-card">
-            <div aria-hidden="true" className="absolute inset-0 bg-grid opacity-80" />
-            <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-4/5 bg-[radial-gradient(55%_55%_at_50%_65%,var(--glow),transparent)]" />
+          <div className="relative aspect-square overflow-hidden rounded-[2rem] border border-line bg-surface shadow-card">
             <Image
-              src="/images/manav.png"
+              src="/images/manav_pic.png"
               alt="Portrait of Manav Rai"
               fill
               priority
-              sizes="(min-width: 1024px) 420px, 380px"
-              className="object-contain object-bottom pt-6"
+              sizes="(min-width: 1024px) 440px, 380px"
+              className="object-cover"
             />
-            <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-surface via-surface/70 to-transparent" />
           </div>
 
-          <div className="absolute -left-3 bottom-24 rounded-2xl border border-line bg-surface/85 p-3 pr-4 shadow-card backdrop-blur-xl sm:-left-8">
+          <div className="absolute -left-3 -top-4 rounded-2xl border border-line bg-surface/90 p-2.5 pr-4 shadow-card backdrop-blur-xl sm:-left-8 sm:-top-5">
             <div className="flex items-center gap-3">
-              <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent">
+              <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-accent-soft text-accent">
                 <Briefcase className="size-4" />
               </span>
-              <div className="min-w-0">
+              <div>
                 <p className="font-mono text-[10px] uppercase tracking-wider text-subtle">Currently</p>
                 <p className="whitespace-nowrap text-sm font-medium text-fg">
                   {profile.role} @ {profile.company}
@@ -92,12 +89,12 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="absolute -right-3 bottom-6 rounded-2xl border border-line bg-surface/85 p-3 pr-4 shadow-card backdrop-blur-xl sm:-right-6">
+          <div className="absolute -bottom-4 -right-3 rounded-2xl border border-line bg-surface/90 p-2.5 pr-4 shadow-card backdrop-blur-xl sm:-bottom-5 sm:-right-6">
             <div className="flex items-center gap-3">
-              <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent">
+              <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-accent-soft text-accent">
                 <GraduationCap className="size-4" />
               </span>
-              <div className="min-w-0">
+              <div>
                 <p className="font-mono text-[10px] uppercase tracking-wider text-subtle">B.Tech CSE · 2026</p>
                 <p className="whitespace-nowrap text-sm font-medium text-fg">{education.school.split(",")[0]}</p>
               </div>

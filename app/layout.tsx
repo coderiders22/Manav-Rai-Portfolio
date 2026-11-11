@@ -67,7 +67,7 @@ const personJsonLd = {
   "@type": "Person",
   name: profile.name,
   url: profile.site,
-  image: `${profile.site}/images/manav.png`,
+  image: `${profile.site}/images/manav_pic.png`,
   email: `mailto:${profile.email}`,
   jobTitle: "Software Engineer (SWE-I)",
   worksFor: { "@type": "Organization", name: profile.company, url: "https://www.geminisolutions.com/" },

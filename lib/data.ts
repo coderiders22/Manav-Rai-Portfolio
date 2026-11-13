@@ -95,7 +95,7 @@ export const experience: Experience[] = [
       "Demoed it to VPs, management and the presales team, and it's now in an **internal pilot across Gemini**.",
       "Driving improvements from user feedback and adding new capabilities.",
     ],
-    stack: ["Python", "LangGraph", "FastAPI", "AWS Services", "ChromaDB", "Docker", "Jenkins", "Azure DevOps"],
+    stack: ["Python", "LangGraph", "FastAPI", "AWS Services", "Docker", "Jenkins", "Azure DevOps"],
   },
   {
     company: "Gemini Solutions",
